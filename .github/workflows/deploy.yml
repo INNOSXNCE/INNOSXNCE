@@ -19,13 +19,16 @@ concurrency:
 jobs:
   # ── PREVIEW: one throwaway deploy per PR commit, posted back on the PR ──
   # Runs on pull_request only. Skipped for fork PRs so their untrusted code
-  # can never read the deploy secrets. No approval gate — previews are meant
-  # to be fast so you can eyeball the change before promoting it.
+  # can never read the deploy secrets. Also skipped for Dependabot PRs, which
+  # GitHub runs without access to secrets — the Vercel step would always fail
+  # on empty credentials, so we don't attempt a preview for them. No approval
+  # gate — previews are meant to be fast so you can eyeball the change first.
   deploy-preview:
     name: Deploy preview
     if: >-
       github.event_name == 'pull_request' &&
-      github.event.pull_request.head.repo.full_name == github.repository
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.actor != 'dependabot[bot]'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     environment: preview
