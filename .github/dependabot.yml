@@ -1,0 +1,23 @@
+version: 2
+updates:
+  # Keeps SHA-pinned actions in workflows current — this is what makes
+  # commit-SHA pinning sustainable instead of a one-time chore.
+  - package-ecosystem: github-actions
+    directory: /
+    target-branch: main
+    schedule:
+      interval: weekly
+    groups:
+      github-actions-minor-patch:
+        update-types: [minor, patch]
+    open-pull-requests-limit: 10
+
+  - package-ecosystem: npm
+    directory: /
+    target-branch: main
+    schedule:
+      interval: weekly
+    groups:
+      npm-minor-patch:
+        update-types: [minor, patch]
+    open-pull-requests-limit: 10
