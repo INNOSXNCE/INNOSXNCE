@@ -13,9 +13,9 @@ export function BootSequence() {
     try { booted = !!sessionStorage.getItem('innosxnce_booted') } catch {}
     if (booted || reduce) return
 
-    setBooting(true)
     const T = (ms: number, fn: () => void) => setTimeout(fn, ms)
     const timers = [
+      T(0,    () => setBooting(true)),
       T(680,  () => setStep(1)),
       T(1360, () => setStep(2)),
       T(2040, () => { setFlash(true); setBooting(false) }),
