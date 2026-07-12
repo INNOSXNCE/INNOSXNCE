@@ -38,9 +38,9 @@ export interface PopStyle {
 // The pop grows from POP_SCALE_FROM to 1 and rises POP_TRANSLATE_FROM px into
 // place while fading in. Scale never exceeds 1 (no horizontal overflow). A
 // larger from-scale = a more pronounced pop.
-const POP_SCALE_FROM = 0.7
-const POP_TRANSLATE_FROM = 80 // px
-const POP_OPACITY_FROM = 0.25
+const POP_SCALE_FROM = 0.6
+const POP_TRANSLATE_FROM = 100 // px
+const POP_OPACITY_FROM = 0.2
 
 function popScale(p: number): number {
   return POP_SCALE_FROM + (1 - POP_SCALE_FROM) * easeOutCubic(clamp01(p))
