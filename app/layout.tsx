@@ -3,6 +3,7 @@ import { Cinzel, Cormorant_Garamond, Manrope } from 'next/font/google'
 import './globals.css'
 import { Providers } from './providers'
 import { NoiseOverlay } from '@/components/NoiseOverlay'
+import { SpaceBackdrop } from '@/components/SpaceBackdrop'
 import { BootSequence } from '@/components/BootSequence'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
@@ -42,6 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="id" className={`${cinzel.variable} ${cormorant.variable} ${manrope.variable}`}>
       <body>
         <Providers>
+          <SpaceBackdrop />
           <NoiseOverlay />
           <BootSequence />
           <KeyboardNav />

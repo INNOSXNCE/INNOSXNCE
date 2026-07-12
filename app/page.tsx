@@ -59,7 +59,7 @@ export default function HomePage() {
           alignItems: 'center',
           justifyContent: 'center',
           overflow: 'hidden',
-          background: '#000',
+          background: 'transparent',
         }}
       >
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '9vh', background: '#000', borderBottom: '1px solid #121212', zIndex: 5 }} />
