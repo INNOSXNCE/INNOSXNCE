@@ -105,7 +105,7 @@ export default function HomePage() {
               >
                 <span style={{ display: 'block', fontSize: 'clamp(40px,9vw,126px)', color: '#fff', opacity: wordAt(0), transform: `translateY(${(1 - wordAt(0)) * 30}px)` }}>MOTIVATION.</span>
                 <span style={{ display: 'block', fontSize: 'clamp(40px,9vw,126px)', color: '#fff', opacity: wordAt(1), transform: `translateY(${(1 - wordAt(1)) * 30}px)` }}>DISCIPLINE.</span>
-                <span style={{ display: 'block', fontSize: 'clamp(40px,9vw,126px)', animation: 'dimpulse 3.4s ease-in-out infinite', opacity: wordAt(2), transform: `translateY(${(1 - wordAt(2)) * 30}px)` }}>CONSISTENCY.</span>
+                <span style={{ display: 'block', fontSize: 'clamp(40px,9vw,126px)', color: '#fff', opacity: wordAt(2), transform: `translateY(${(1 - wordAt(2)) * 30}px)` }}>CONSISTENCY.</span>
               </h1>
 
               {/* Tagline */}
