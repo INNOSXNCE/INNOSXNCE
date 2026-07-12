@@ -7,6 +7,7 @@ import { WP, PACKS } from '@/lib/data'
 import { wpArt, packArt } from '@/lib/art'
 import { WallpaperCard } from '@/components/WallpaperCard'
 import { PackCard } from '@/components/PackCard'
+import { ScrollHero, wordReveal, clamp01 } from '@/components/ScrollHero'
 
 const innoRed = '#c83232'
 
@@ -50,111 +51,123 @@ export default function HomePage() {
   return (
     <main>
       {/* ── Hero ── */}
-      <section
-        style={{
-          position: 'relative',
-          minHeight: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          overflow: 'hidden',
-          background: '#000',
+      <ScrollHero>
+        {(progress, latched) => {
+          const wordAt = (i: number) => (latched ? 1 : wordReveal(progress, i, 3))
+          const metaOpacity = latched ? 1 : clamp01((progress - 0.75) / 0.25)
+          return (
+            <section
+              style={{
+                position: 'relative',
+                minHeight: '100vh',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                overflow: 'hidden',
+                background: 'transparent',
+              }}
+            >
+              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '9vh', background: '#000', borderBottom: '1px solid #121212', zIndex: 5 }} />
+              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '9vh', background: '#000', borderTop: '1px solid #121212', zIndex: 5 }} />
+              <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(120% 80% at 50% 44%, transparent 28%, rgba(0,0,0,0.9) 100%)', zIndex: 2, pointerEvents: 'none' }} />
+              <div
+                style={{
+                  position: 'absolute',
+                  top: '50%', left: '50%',
+                  width: '62vw', height: '62vw',
+                  maxWidth: 760, maxHeight: 760,
+                  transform: 'translate(-50%,-50%)',
+                  background: 'radial-gradient(circle, rgba(255,255,255,0.10) 0%, transparent 60%)',
+                  filter: 'blur(24px)',
+                  animation: 'glow 7s ease-in-out infinite',
+                  zIndex: 1, pointerEvents: 'none',
+                }}
+              />
+
+              {/* Eyebrow */}
+              <div style={{ position: 'relative', zIndex: 6, display: 'flex', alignItems: 'center', gap: 18, marginBottom: 34, opacity: metaOpacity }}>
+                <span style={{ display: 'block', width: 58, height: 1, background: '#333' }} />
+                <span style={{ fontFamily: 'var(--font-manrope)', fontSize: 11, letterSpacing: '0.42em', color: '#7a7a7a', whiteSpace: 'nowrap' }}>INNOSXNCE PRESENTS</span>
+                <span style={{ display: 'block', width: 58, height: 1, background: '#333' }} />
+              </div>
+
+              {/* Headline */}
+              <h1
+                style={{
+                  position: 'relative', zIndex: 6,
+                  margin: 0, textAlign: 'center',
+                  fontFamily: 'var(--font-cinzel), serif',
+                  fontWeight: 700, lineHeight: 0.98, letterSpacing: '0.03em',
+                }}
+              >
+                <span style={{ display: 'block', fontSize: 'clamp(40px,9vw,126px)', color: '#fff', opacity: wordAt(0), transform: `translateY(${(1 - wordAt(0)) * 30}px)` }}>MOTIVATION.</span>
+                <span style={{ display: 'block', fontSize: 'clamp(40px,9vw,126px)', color: '#fff', opacity: wordAt(1), transform: `translateY(${(1 - wordAt(1)) * 30}px)` }}>DISCIPLINE.</span>
+                <span style={{ display: 'block', fontSize: 'clamp(40px,9vw,126px)', animation: 'dimpulse 3.4s ease-in-out infinite', opacity: wordAt(2), transform: `translateY(${(1 - wordAt(2)) * 30}px)` }}>CONSISTENCY.</span>
+              </h1>
+
+              {/* Tagline */}
+              <p
+                style={{
+                  position: 'relative', zIndex: 6,
+                  margin: '32px 0 0', maxWidth: 540, padding: '0 20px',
+                  textAlign: 'center',
+                  fontFamily: 'var(--font-manrope), sans-serif',
+                  fontSize: 13, letterSpacing: '0.04em', color: '#7a7a7a', lineHeight: 1.7,
+                  opacity: metaOpacity,
+                }}
+              >
+                {c.heroTag}
+              </p>
+
+              {/* Info panel */}
+              <div
+                style={{
+                  position: 'absolute', top: 76, right: 'clamp(16px,4vw,48px)', zIndex: 6,
+                  border: '1px solid #1d1d1d', padding: '10px 13px',
+                  fontFamily: 'var(--font-manrope), sans-serif',
+                  fontSize: 9, letterSpacing: '0.18em', color: '#7a7a7a',
+                  minWidth: 150, whiteSpace: 'nowrap',
+                  opacity: metaOpacity,
+                }}
+              >
+                {[['REEL', '01 / A'], ['DATE', '06 · 2026'], ['TC', tc]].map(([k, v]) => (
+                  <div key={k} style={{ display: 'flex', justifyContent: 'space-between', gap: 18, marginTop: k === 'REEL' ? 0 : 5 }}>
+                    <span>{k}</span>
+                    <span style={{ color: '#fff', fontVariantNumeric: k === 'TC' ? 'tabular-nums' : undefined }}>{v}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* REC */}
+              <div
+                style={{
+                  position: 'absolute', bottom: 'calc(9vh + 18px)', left: 'clamp(16px,4vw,48px)', zIndex: 6,
+                  display: 'flex', alignItems: 'center', gap: 8,
+                  fontFamily: 'var(--font-manrope), sans-serif',
+                  fontSize: 10, letterSpacing: '0.24em', color: '#7a7a7a', whiteSpace: 'nowrap',
+                  opacity: metaOpacity,
+                }}
+              >
+                <span style={{ width: 8, height: 8, borderRadius: '50%', background: innoRed, animation: 'rec 1.4s steps(1) infinite' }} />
+                <span>REC · DAY 437</span>
+              </div>
+
+              {/* Runtime */}
+              <div
+                style={{
+                  position: 'absolute', bottom: 'calc(9vh + 18px)', right: 'clamp(16px,4vw,48px)', zIndex: 6,
+                  fontFamily: 'var(--font-manrope), sans-serif',
+                  fontSize: 10, letterSpacing: '0.24em', color: '#7a7a7a',
+                  opacity: metaOpacity,
+                }}
+              >
+                RUNTIME · 1% × ∞
+              </div>
+            </section>
+          )
         }}
-      >
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '9vh', background: '#000', borderBottom: '1px solid #121212', zIndex: 5 }} />
-        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '9vh', background: '#000', borderTop: '1px solid #121212', zIndex: 5 }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(120% 80% at 50% 44%, transparent 28%, rgba(0,0,0,0.9) 100%)', zIndex: 2, pointerEvents: 'none' }} />
-        <div
-          style={{
-            position: 'absolute',
-            top: '50%', left: '50%',
-            width: '62vw', height: '62vw',
-            maxWidth: 760, maxHeight: 760,
-            transform: 'translate(-50%,-50%)',
-            background: 'radial-gradient(circle, rgba(255,255,255,0.10) 0%, transparent 60%)',
-            filter: 'blur(24px)',
-            animation: 'glow 7s ease-in-out infinite',
-            zIndex: 1, pointerEvents: 'none',
-          }}
-        />
-
-        {/* Eyebrow */}
-        <div style={{ position: 'relative', zIndex: 6, display: 'flex', alignItems: 'center', gap: 18, marginBottom: 34 }}>
-          <span style={{ display: 'block', width: 58, height: 1, background: '#333' }} />
-          <span style={{ fontFamily: 'var(--font-manrope)', fontSize: 11, letterSpacing: '0.42em', color: '#7a7a7a', whiteSpace: 'nowrap' }}>INNOSXNCE PRESENTS</span>
-          <span style={{ display: 'block', width: 58, height: 1, background: '#333' }} />
-        </div>
-
-        {/* Headline */}
-        <h1
-          style={{
-            position: 'relative', zIndex: 6,
-            margin: 0, textAlign: 'center',
-            fontFamily: 'var(--font-cinzel), serif',
-            fontWeight: 700, lineHeight: 0.98, letterSpacing: '0.03em',
-          }}
-        >
-          <span style={{ display: 'block', fontSize: 'clamp(40px,9vw,126px)', color: '#fff' }}>MOTIVATION.</span>
-          <span style={{ display: 'block', fontSize: 'clamp(40px,9vw,126px)', color: '#fff' }}>DISCIPLINE.</span>
-          <span style={{ display: 'block', fontSize: 'clamp(40px,9vw,126px)', animation: 'dimpulse 3.4s ease-in-out infinite' }}>CONSISTENCY.</span>
-        </h1>
-
-        {/* Tagline */}
-        <p
-          style={{
-            position: 'relative', zIndex: 6,
-            margin: '32px 0 0', maxWidth: 540, padding: '0 20px',
-            textAlign: 'center',
-            fontFamily: 'var(--font-manrope), sans-serif',
-            fontSize: 13, letterSpacing: '0.04em', color: '#7a7a7a', lineHeight: 1.7,
-          }}
-        >
-          {c.heroTag}
-        </p>
-
-        {/* Info panel */}
-        <div
-          style={{
-            position: 'absolute', top: 76, right: 'clamp(16px,4vw,48px)', zIndex: 6,
-            border: '1px solid #1d1d1d', padding: '10px 13px',
-            fontFamily: 'var(--font-manrope), sans-serif',
-            fontSize: 9, letterSpacing: '0.18em', color: '#7a7a7a',
-            minWidth: 150, whiteSpace: 'nowrap',
-          }}
-        >
-          {[['REEL', '01 / A'], ['DATE', '06 · 2026'], ['TC', tc]].map(([k, v]) => (
-            <div key={k} style={{ display: 'flex', justifyContent: 'space-between', gap: 18, marginTop: k === 'REEL' ? 0 : 5 }}>
-              <span>{k}</span>
-              <span style={{ color: '#fff', fontVariantNumeric: k === 'TC' ? 'tabular-nums' : undefined }}>{v}</span>
-            </div>
-          ))}
-        </div>
-
-        {/* REC */}
-        <div
-          style={{
-            position: 'absolute', bottom: 'calc(9vh + 18px)', left: 'clamp(16px,4vw,48px)', zIndex: 6,
-            display: 'flex', alignItems: 'center', gap: 8,
-            fontFamily: 'var(--font-manrope), sans-serif',
-            fontSize: 10, letterSpacing: '0.24em', color: '#7a7a7a', whiteSpace: 'nowrap',
-          }}
-        >
-          <span style={{ width: 8, height: 8, borderRadius: '50%', background: innoRed, animation: 'rec 1.4s steps(1) infinite' }} />
-          <span>REC · DAY 437</span>
-        </div>
-
-        {/* Runtime */}
-        <div
-          style={{
-            position: 'absolute', bottom: 'calc(9vh + 18px)', right: 'clamp(16px,4vw,48px)', zIndex: 6,
-            fontFamily: 'var(--font-manrope), sans-serif',
-            fontSize: 10, letterSpacing: '0.24em', color: '#7a7a7a',
-          }}
-        >
-          RUNTIME · 1% × ∞
-        </div>
-      </section>
+      </ScrollHero>
 
       {/* ── 1% ── */}
       <section
