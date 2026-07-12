@@ -47,6 +47,20 @@ export function popTransform(p: number): PopStyle {
   }
 }
 
+// Because popTransform eases-out (front-loads the visual), the section looks
+// essentially final well before raw progress reaches 1. Clickability must open
+// while the card is still perceptibly mid-pop, NOT once it already looks final —
+// otherwise a card can sit visually settled but dead while the ease-out tail
+// finishes (the exact "click does nothing" seam we must avoid). A scale
+// difference below ~1% is imperceptible, so the gate opens at eased 0.90
+// (scale ~0.986, still ~1.5% small = visibly settling) — safely before the eye
+// would call the card final and reach to click it.
+const SETTLE_EASE = 0.9
+
+export function popSettled(p: number): boolean {
+  return easeOutCubic(clamp01(p)) >= SETTLE_EASE
+}
+
 export interface PopBand {
   startFrac: number
   endFrac: number

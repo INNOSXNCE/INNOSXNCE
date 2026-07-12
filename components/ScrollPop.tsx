@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useRef, useState, type ReactNode } from 'react'
-import { scrollProgress, popTransform, popBand } from '@/lib/scroll-pop'
+import { scrollProgress, popTransform, popSettled, popBand } from '@/lib/scroll-pop'
 
 // Wraps a section's inner content in a scroll-linked scale-up / push-up "pop".
 // Structure: a stable OUTER box (measured, never transformed) + a transformed
@@ -44,7 +44,9 @@ export function ScrollPop({ children }: { children: ReactNode }) {
   }, [])
 
   const style = popTransform(p)
-  const settled = p >= 1
+  // Gate clickability on visual settle (see popSettled), not raw p===1, so cards
+  // are never visually final yet unclickable.
+  const settled = popSettled(p)
   return (
     <div ref={ref}>
       <div
