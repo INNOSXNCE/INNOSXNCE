@@ -46,12 +46,13 @@ export function ScrollCue() {
         SCROLL
       </span>
       <span
-        className="scrollcue-line"
         style={{
           display: 'block',
           width: 1,
           height: 26,
           background: 'linear-gradient(to bottom, #7a7a7a, transparent)',
+          // Reduced-motion is handled globally in globals.css (neutralizes all animations).
+          animation: 'scrollcue 1.8s ease-in-out infinite',
         }}
       />
     </div>
