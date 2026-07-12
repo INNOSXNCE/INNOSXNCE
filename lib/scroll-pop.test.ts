@@ -1,0 +1,63 @@
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
+import {
+  clamp01,
+  easeOutCubic,
+  scrollProgress,
+  popTransform,
+  popBand,
+} from './scroll-pop.ts'
+
+test('clamp01 bounds to [0,1]', () => {
+  assert.equal(clamp01(-0.5), 0)
+  assert.equal(clamp01(0.5), 0.5)
+  assert.equal(clamp01(1.5), 1)
+})
+
+test('easeOutCubic endpoints', () => {
+  assert.equal(easeOutCubic(0), 0)
+  assert.equal(easeOutCubic(1), 1)
+  assert.ok(easeOutCubic(0.5) > 0.5) // ease-out is above the diagonal
+})
+
+test('scrollProgress is 0 when section top sits at the start line', () => {
+  // startFrac 1.0, endFrac 0.5, viewport 1000 -> start=1000, end=500
+  assert.equal(scrollProgress(1000, 1000, 1.0, 0.5), 0)
+})
+
+test('scrollProgress is 1 when section top reaches the end line', () => {
+  assert.equal(scrollProgress(500, 1000, 1.0, 0.5), 1)
+})
+
+test('scrollProgress interpolates linearly between the lines', () => {
+  // halfway between 1000 and 500 is 750
+  assert.equal(scrollProgress(750, 1000, 1.0, 0.5), 0.5)
+})
+
+test('scrollProgress clamps past the end line', () => {
+  assert.equal(scrollProgress(100, 1000, 1.0, 0.5), 1)
+  assert.equal(scrollProgress(1200, 1000, 1.0, 0.5), 0)
+})
+
+test('scrollProgress returns 1 for degenerate viewport or band', () => {
+  assert.equal(scrollProgress(500, 0, 1.0, 0.5), 1)
+  assert.equal(scrollProgress(500, 1000, 0.5, 0.5), 1)
+})
+
+test('popTransform endpoints: hidden-small at 0, settled at 1', () => {
+  const a = popTransform(0)
+  assert.equal(a.opacity, 0.4)
+  assert.equal(a.transform, 'translateY(40px) scale(0.86)')
+  const b = popTransform(1)
+  assert.equal(b.opacity, 1)
+  assert.equal(b.transform, 'translateY(0px) scale(1)')
+})
+
+test('popBand narrows the settle point on smaller screens', () => {
+  const narrow = popBand(390)
+  const wide = popBand(1440)
+  assert.equal(narrow.startFrac, 1.0)
+  assert.equal(wide.startFrac, 1.0)
+  // smaller screens finish the pop earlier in the rise (higher settle) => smaller endFrac
+  assert.ok(narrow.endFrac < wide.endFrac)
+})
