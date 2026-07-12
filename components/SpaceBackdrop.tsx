@@ -1,5 +1,5 @@
 'use client'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
 // Tiled SVG star fields, one per depth layer (same data-URI idiom as NoiseOverlay).
 const STARS_FAR =
@@ -14,8 +14,49 @@ const STARS_NEAR =
 // Max mouse-parallax shift in px for the nearest layer; deeper layers scale down.
 const MAX_SHIFT = 8
 
+// Per-layer parallax depth: far moves least, near moves most.
+const LAYER_DEPTHS = [0.25, 0.6, 1]
+
 export function SpaceBackdrop() {
   const layerRefs = useRef<Array<HTMLDivElement | null>>([])
+
+  useEffect(() => {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const finePointer = window.matchMedia('(pointer: fine)').matches
+    if (reduce || !finePointer) return
+
+    const target = { x: 0, y: 0 }
+    const current = { x: 0, y: 0 }
+    let raf = 0
+    let running = false
+
+    // Lerp toward the cursor each frame so movement feels drifty, not twitchy.
+    const step = () => {
+      current.x += (target.x - current.x) * 0.06
+      current.y += (target.y - current.y) * 0.06
+      layerRefs.current.forEach((el, i) => {
+        if (!el) return
+        const shift = LAYER_DEPTHS[i] * MAX_SHIFT
+        el.style.transform = `translate3d(${current.x * shift}px, ${current.y * shift}px, 0)`
+      })
+      raf = requestAnimationFrame(step)
+    }
+
+    const onMove = (e: MouseEvent) => {
+      target.x = (e.clientX / window.innerWidth) * 2 - 1
+      target.y = (e.clientY / window.innerHeight) * 2 - 1
+      if (!running) {
+        running = true
+        raf = requestAnimationFrame(step)
+      }
+    }
+
+    window.addEventListener('mousemove', onMove, { passive: true })
+    return () => {
+      window.removeEventListener('mousemove', onMove)
+      cancelAnimationFrame(raf)
+    }
+  }, [])
 
   const layerStyle = (image: string, opacity: number): React.CSSProperties => ({
     // Oversized so parallax translation never exposes an edge.
