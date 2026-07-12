@@ -42,6 +42,15 @@ export function ScrollHero({ children }: {
       return
     }
 
+    // The browser's scroll anchoring can pick an anchor node below the spacer
+    // (outside the wrapper, so the wrapper's own overflow-anchor cannot exclude
+    // it) and double-compensate the latch collapse alongside the explicit
+    // scrollBy below. Suppress it on the root scroller while the scrub is
+    // active; the latch effect restores it.
+    const rootStyle = document.documentElement.style
+    const prevOverflowAnchor = rootStyle.overflowAnchor
+    rootStyle.overflowAnchor = 'none'
+
     let raf = 0
     const onScroll = () => {
       cancelAnimationFrame(raf)
@@ -63,6 +72,7 @@ export function ScrollHero({ children }: {
     window.addEventListener('scroll', onScroll, { passive: true })
     onScroll() // handles restored/deep-linked scroll positions on mount
     return () => {
+      rootStyle.overflowAnchor = prevOverflowAnchor
       window.removeEventListener('scroll', onScroll)
       cancelAnimationFrame(raf)
     }
@@ -70,17 +80,21 @@ export function ScrollHero({ children }: {
 
   // The spacer collapses from SPACER_VH to the hero's natural 100vh when
   // latching; shift scroll by the removed height in the same frame so the
-  // viewport does not visibly jump.
+  // viewport does not visibly jump. scrollBy forces a layout flush with
+  // anchoring still suppressed; only then is anchoring restored.
   useLayoutEffect(() => {
     if (!latched || !latchedByScrollRef.current) return
     const removed = (window.innerHeight * (SPACER_VH - 100)) / 100
     window.scrollBy(0, -removed)
+    document.documentElement.style.overflowAnchor = ''
   }, [latched])
 
   if (latched) return <>{children(1, true)}</>
 
+  // overflowAnchor: 'none' keeps the browser's native scroll anchoring out of
+  // the latch collapse, so the explicit scrollBy above is the only compensation.
   return (
-    <div ref={wrapRef} style={{ height: `${SPACER_VH}vh` }}>
+    <div ref={wrapRef} style={{ height: `${SPACER_VH}vh`, overflowAnchor: 'none' }}>
       <div style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden' }}>
         {children(progress, false)}
       </div>
