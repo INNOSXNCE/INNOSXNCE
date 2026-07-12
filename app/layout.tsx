@@ -4,7 +4,6 @@ import './globals.css'
 import { Providers } from './providers'
 import { NoiseOverlay } from '@/components/NoiseOverlay'
 import { SpaceBackdrop } from '@/components/SpaceBackdrop'
-import { BootSequence } from '@/components/BootSequence'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { KeyboardNav } from '@/components/KeyboardNav'
@@ -45,7 +44,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Providers>
           <SpaceBackdrop />
           <NoiseOverlay />
-          <BootSequence />
           <KeyboardNav />
           <Header />
           {children}

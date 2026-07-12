@@ -8,6 +8,8 @@ import { wpArt, packArt } from '@/lib/art'
 import { WallpaperCard } from '@/components/WallpaperCard'
 import { PackCard } from '@/components/PackCard'
 import { ScrollHero, wordReveal, clamp01 } from '@/components/ScrollHero'
+import { ScrollCue } from '@/components/ScrollCue'
+import { ScrollPop } from '@/components/ScrollPop'
 
 const innoRed = '#c83232'
 
@@ -103,7 +105,7 @@ export default function HomePage() {
               >
                 <span style={{ display: 'block', fontSize: 'clamp(40px,9vw,126px)', color: '#fff', opacity: wordAt(0), transform: `translateY(${(1 - wordAt(0)) * 30}px)` }}>MOTIVATION.</span>
                 <span style={{ display: 'block', fontSize: 'clamp(40px,9vw,126px)', color: '#fff', opacity: wordAt(1), transform: `translateY(${(1 - wordAt(1)) * 30}px)` }}>DISCIPLINE.</span>
-                <span style={{ display: 'block', fontSize: 'clamp(40px,9vw,126px)', animation: 'dimpulse 3.4s ease-in-out infinite', opacity: wordAt(2), transform: `translateY(${(1 - wordAt(2)) * 30}px)` }}>CONSISTENCY.</span>
+                <span style={{ display: 'block', fontSize: 'clamp(40px,9vw,126px)', color: '#fff', opacity: wordAt(2), transform: `translateY(${(1 - wordAt(2)) * 30}px)` }}>CONSISTENCY.</span>
               </h1>
 
               {/* Tagline */}
@@ -164,6 +166,8 @@ export default function HomePage() {
               >
                 RUNTIME · 1% × ∞
               </div>
+
+              <ScrollCue />
             </section>
           )
         }}
@@ -193,6 +197,7 @@ export default function HomePage() {
 
       {/* ── Featured Wallpapers ── */}
       <section style={{ borderTop: '1px solid #111', padding: 'clamp(60px,10vh,120px) clamp(20px,5vw,64px)', maxWidth: 1280, margin: '0 auto' }}>
+        <ScrollPop>
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 20, marginBottom: 42, flexWrap: 'wrap' }}>
           <div>
             <div style={{ fontFamily: 'var(--font-manrope), sans-serif', fontSize: 11, letterSpacing: '0.3em', color: '#7a7a7a', marginBottom: 14 }}>{c.fwLabel}</div>
@@ -213,6 +218,7 @@ export default function HomePage() {
             />
           ))}
         </div>
+        </ScrollPop>
       </section>
 
       {/* ── Growth interstitial ── */}
@@ -220,6 +226,7 @@ export default function HomePage() {
 
       {/* ── Packs ── */}
       <section style={{ borderTop: '1px solid #111', padding: 'clamp(60px,10vh,120px) clamp(20px,5vw,64px)', maxWidth: 1280, margin: '0 auto' }}>
+        <ScrollPop>
         <div style={{ marginBottom: 42 }}>
           <div style={{ fontFamily: 'var(--font-manrope), sans-serif', fontSize: 11, letterSpacing: '0.3em', color: '#7a7a7a', marginBottom: 14 }}>{c.packsLabel}</div>
           <h2 style={{ margin: '0 0 10px', fontFamily: 'var(--font-cinzel), serif', fontWeight: 700, fontSize: 'clamp(26px,4vw,46px)' }}>{c.packsTitle}</h2>
@@ -242,6 +249,7 @@ export default function HomePage() {
             />
           ))}
         </div>
+        </ScrollPop>
       </section>
 
       {/* ── Bangkit interstitial ── */}
