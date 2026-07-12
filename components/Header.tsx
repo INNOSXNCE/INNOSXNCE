@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { useLang } from '@/lib/lang-context'
 import { usePageFlash } from '@/lib/page-flash-context'
@@ -20,6 +20,13 @@ export function Header() {
   const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
   const c = COPY[lang]
+
+  // Header persists across routes; close the overlay on any route change
+  // (incl. browser back/forward, which bypasses navigate()).
+  useEffect(() => {
+    // Deferred a tick to satisfy react-hooks/set-state-in-effect (same pattern as ScrollHero).
+    queueMicrotask(() => setMenuOpen(false))
+  }, [pathname])
 
   const togBtn = (on: boolean): React.CSSProperties => ({
     padding: '7px 11px',
@@ -70,7 +77,7 @@ export function Header() {
         </button>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center" style={{ gap: 'clamp(12px,2.2vw,28px)' }}>
+        <nav className="hidden lg:flex items-center" style={{ gap: 'clamp(12px,2.2vw,28px)' }}>
           {NAV.map(({ key, href }) => {
             const active = pathname === href
             return (
@@ -99,7 +106,7 @@ export function Header() {
         <div className="flex items-center" style={{ gap: 14 }}>
           {/* Mobile menu toggle */}
           <button
-            className="md:hidden"
+            className="lg:hidden"
             onClick={() => setMenuOpen(o => !o)}
             style={{
               fontFamily: 'var(--font-manrope), sans-serif',
@@ -125,7 +132,7 @@ export function Header() {
       {/* Mobile menu overlay */}
       {menuOpen && (
         <div
-          className="fixed inset-0 flex flex-col items-center justify-center md:hidden"
+          className="fixed inset-0 flex flex-col items-center justify-center lg:hidden"
           style={{ top: 58, background: 'rgba(0,0,0,0.96)', zIndex: 55, gap: 28 }}
         >
           {NAV.map(({ key, href }, i) => (
