@@ -28,6 +28,46 @@ export function Header() {
     queueMicrotask(() => setMenuOpen(false))
   }, [pathname])
 
+  // Lock scroll while the overlay is open, so a swipe can't scroll the
+  // scroll-scrubbed hero underneath it (which would silently advance the scrub).
+  // The page's scroll container is <html>, not <body>, so body overflow:hidden
+  // alone doesn't lock it and can't hold scrollY under a programmatic scroll;
+  // pin the body with position:fixed and restore the exact offset on close.
+  useEffect(() => {
+    if (!menuOpen) return
+    const scrollY = window.scrollY
+    const body = document.body
+    const prev = {
+      position: body.style.position,
+      top: body.style.top,
+      width: body.style.width,
+      overflow: body.style.overflow,
+      overscrollBehavior: body.style.overscrollBehavior,
+    }
+    body.style.position = 'fixed'
+    body.style.top = `-${scrollY}px`
+    body.style.width = '100%'
+    body.style.overflow = 'hidden'
+    body.style.overscrollBehavior = 'none'
+    return () => {
+      body.style.position = prev.position
+      body.style.top = prev.top
+      body.style.width = prev.width
+      body.style.overflow = prev.overflow
+      body.style.overscrollBehavior = prev.overscrollBehavior
+      window.scrollTo(0, scrollY)
+    }
+  }, [menuOpen])
+
+  // Close the overlay if the viewport crosses to >= lg while it's open, so
+  // resizing past the desktop breakpoint doesn't leave stale menu state.
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 1024px)')
+    const closeIfDesktop = () => { if (mq.matches) setMenuOpen(false) }
+    mq.addEventListener('change', closeIfDesktop)
+    return () => mq.removeEventListener('change', closeIfDesktop)
+  }, [])
+
   const togBtn = (on: boolean): React.CSSProperties => ({
     padding: '7px 11px',
     fontFamily: 'var(--font-manrope), sans-serif',
