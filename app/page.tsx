@@ -8,6 +8,7 @@ import { wpArt, packArt } from '@/lib/art'
 import { WallpaperCard } from '@/components/WallpaperCard'
 import { PackCard } from '@/components/PackCard'
 import { ScrollHero, wordReveal, clamp01 } from '@/components/ScrollHero'
+import { ScrollCue } from '@/components/ScrollCue'
 
 const innoRed = '#c83232'
 
@@ -164,6 +165,8 @@ export default function HomePage() {
               >
                 RUNTIME · 1% × ∞
               </div>
+
+              <ScrollCue />
             </section>
           )
         }}

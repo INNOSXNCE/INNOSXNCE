@@ -75,3 +75,18 @@
   4%    { transform: translate(-42vw, 26vw) rotate(-35deg); opacity: 0; }
   100%  { transform: translate(-42vw, 26vw) rotate(-35deg); opacity: 0; }
 }
+
+@keyframes scrollcue {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(6px); }
+}
+
+.scrollcue-line {
+  animation: scrollcue 1.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrollcue-line {
+    animation: none;
+  }
+}
