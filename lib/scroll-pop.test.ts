@@ -47,8 +47,8 @@ test('scrollProgress returns 1 for degenerate viewport or band', () => {
 
 test('popTransform endpoints: hidden-small at 0, settled at 1', () => {
   const a = popTransform(0)
-  assert.equal(a.opacity, 0.4)
-  assert.equal(a.transform, 'translateY(40px) scale(0.86)')
+  assert.equal(a.opacity, 0.25)
+  assert.equal(a.transform, 'translateY(80px) scale(0.7)')
   const b = popTransform(1)
   assert.equal(b.opacity, 1)
   assert.equal(b.transform, 'translateY(0px) scale(1)')
