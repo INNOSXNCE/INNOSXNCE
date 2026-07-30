@@ -52,7 +52,7 @@ export default function CommunityPage() {
       {/* CTA */}
       <div style={{ textAlign: 'center', marginTop: 54 }}>
         <a
-          href="https://discord.gg/innosxnce"
+          href="https://discord.com/invite/pyvX8V3E8Q"
           target="_blank"
           rel="noopener noreferrer"
           onMouseEnter={() => setBtnH(true)}

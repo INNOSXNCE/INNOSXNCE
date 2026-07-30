@@ -5,7 +5,7 @@ import { COPY } from '@/lib/copy'
 const SOCIALS = [
   { label: 'TIKTOK',    href: 'https://tiktok.com/@innosxnce1' },
   { label: 'INSTAGRAM', href: 'https://instagram.com/innosxnce1' },
-  { label: 'DISCORD',   href: 'https://discord.gg/innosxnce' },
+  { label: 'DISCORD',   href: 'https://discord.com/invite/pyvX8V3E8Q' },
 ]
 
 export function Footer() {

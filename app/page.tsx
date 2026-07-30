@@ -239,7 +239,7 @@ export default function HomePage() {
         <div style={{ fontFamily: 'var(--font-manrope), sans-serif', fontSize: 11, letterSpacing: '0.3em', color: '#7a7a7a' }}>{c.discordLabel}</div>
         <h2 style={{ margin: '18px 0 0', fontFamily: 'var(--font-cinzel), serif', fontWeight: 700, fontSize: 'clamp(34px,6vw,74px)', lineHeight: 1.02 }}>{c.discordTitle}</h2>
         <p style={{ maxWidth: 520, margin: '24px auto 34px', fontFamily: 'var(--font-manrope), sans-serif', fontSize: 14, lineHeight: 1.7, color: '#9a9a9a' }}>{c.discordBody}</p>
-        <ExternalCta href="https://discord.gg/innosxnce">{c.discordCta} →</ExternalCta>
+        <ExternalCta href="https://discord.com/invite/pyvX8V3E8Q">{c.discordCta} →</ExternalCta>
       </section>
     </main>
   )
