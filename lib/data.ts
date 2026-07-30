@@ -1,7 +1,5 @@
 import type { WallpaperItem, PackItem } from './types'
 
-export const BOOT = ['MOTIVATION.', 'DISCIPLINE.', 'CONSISTENCY.']
-
 export const WP: WallpaperItem[] = [
   { slug: 'patience',    name: 'SABAR',    red: false, desc: { id: 'Diam bukan berarti kalah. Sabar itu strategi.',                 en: 'Silence is not defeat. Patience is the long game.' } },
   { slug: 'growth',     name: 'TUMBUH',   red: false, desc: { id: 'Tumbuh itu sepi dan pelan. Nikmatin prosesnya.',                en: 'Growth is quiet and slow. Trust the process.' } },
