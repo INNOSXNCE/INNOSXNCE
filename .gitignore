@@ -13,6 +13,8 @@ out/
 .env.production.local
 
 # debug
+.build.log
+.lint.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -21,6 +23,11 @@ yarn-error.log*
 .DS_Store
 *.pem
 Thumbs.db
+
+# local archives and reference assets — not source, and .next.zip is past
+# GitHub's 100MB file limit
+*.zip
+Lombakita_Brandbook_v1.pdf
 
 # typescript
 tsconfig.tsbuildinfo

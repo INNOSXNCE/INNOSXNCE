@@ -12,23 +12,33 @@ interface PackCardProps {
   price: string
   takeLabel: string
   artStyle: CSSProperties
-  onTake: () => void
+  /** Product URL on the storefront. Build it with productLink() from lib/data. */
+  href: string
 }
 
-export function PackCard({ num, tier, title, desc, lessons, dur, price, takeLabel, artStyle, onTake }: PackCardProps) {
+export function PackCard({ num, tier, title, desc, lessons, dur, price, takeLabel, artStyle, href }: PackCardProps) {
   const [hovered, setHovered] = useState(false)
 
   return (
-    <div
+    // A real anchor, not a clickable <div>: middle-click and cmd/ctrl-click open
+    // a new tab, the card is reachable by keyboard, and search engines can
+    // finally see the product URLs.
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
       className="flex flex-col bg-black"
       style={{
         border: `1px solid ${hovered ? '#fff' : '#1a1a1a'}`,
         transition: 'border-color 0.12s',
-        cursor: 'inherit',
+        textDecoration: 'none',
+        color: 'inherit',
       }}
-      onClick={onTake}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      // Keyboard focus gets the same white border as hover.
+      onFocus={() => setHovered(true)}
+      onBlur={() => setHovered(false)}
     >
       {/* Art */}
       <div style={artStyle}>
@@ -46,6 +56,7 @@ export function PackCard({ num, tier, title, desc, lessons, dur, price, takeLabe
           PACK {num}
         </span>
         <span
+          aria-hidden
           style={{
             position: 'absolute',
             top: '50%',
@@ -128,6 +139,6 @@ export function PackCard({ num, tier, title, desc, lessons, dur, price, takeLabe
           </span>
         </div>
       </div>
-    </div>
+    </a>
   )
 }

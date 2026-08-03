@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { useLang } from '@/lib/lang-context'
 import { COPY } from '@/lib/copy'
-import { PACKS } from '@/lib/data'
+import { PACKS, productLink } from '@/lib/data'
 import { packArt } from '@/lib/art'
 import { PackCard } from '@/components/PackCard'
 
@@ -50,7 +50,7 @@ export default function TutorialsPage() {
             price={p.price}
             takeLabel={c.tut.take}
             artStyle={p.artStyle}
-            onTake={() => window.open(`https://lynk.id/innosxnce/${p.slug}`, '_blank', 'noopener')}
+            href={productLink(p.slug)}
           />
         ))}
       </div>

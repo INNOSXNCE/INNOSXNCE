@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { useLang } from '@/lib/lang-context'
 import { COPY } from '@/lib/copy'
-import { WP } from '@/lib/data'
+import { WP, productLink } from '@/lib/data'
 import { wpArt } from '@/lib/art'
 import { WallpaperCard } from '@/components/WallpaperCard'
 import { DevicePreview } from '@/components/DevicePreview'
@@ -44,7 +44,7 @@ export default function WallpapersPage() {
             subtextSize={11}
             artStyle={wpArt(i, w.red)}
             buyLabel={c.wp.buy}
-            onBuy={() => window.open(`https://lynk.id/innosxnce/${w.slug}`, '_blank', 'noopener')}
+            href={productLink(w.slug)}
             onEnter={() => setHoveredWp({ name: w.name, artStyle: wpArt(i, w.red) })}
             onLeave={() => setHoveredWp(null)}
           />
@@ -95,7 +95,7 @@ function BundleBanner({
         <p style={{ margin: 0, maxWidth: 460, fontFamily: 'var(--font-manrope), sans-serif', fontSize: 13, lineHeight: 1.7, color: '#9a9a9a' }}>{body}</p>
       </div>
       <a
-        href="https://lynk.id/innosxnce/all-access"
+        href={productLink('all-access')}
         target="_blank"
         rel="noopener noreferrer"
         onMouseEnter={() => setBtnH(true)}

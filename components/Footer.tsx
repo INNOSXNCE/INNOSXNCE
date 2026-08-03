@@ -1,4 +1,5 @@
 'use client'
+import { useRouter } from 'next/navigation'
 import { useLang } from '@/lib/lang-context'
 import { COPY } from '@/lib/copy'
 
@@ -10,6 +11,7 @@ const SOCIALS = [
 
 export function Footer() {
   const { lang } = useLang()
+  const router = useRouter()
   const c = COPY[lang]
 
   const linkStyle: React.CSSProperties = {
@@ -40,7 +42,26 @@ export function Footer() {
         >
           {c.footerMade} · <span style={{ color: '#fff' }}>✦ 1% PER HARI</span>
         </div>
-        <div style={{ display: 'flex', gap: 18 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 18, flexWrap: 'wrap' }}>
+          {/* Community moved out of the main nav, but kept white here so it stays
+              findable. A real <a href> — the onClick only intercepts plain left
+              clicks, so ctrl/cmd/middle-click still open it in a new tab. */}
+          <a
+            href="/community"
+            onClick={e => {
+              if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return
+              e.preventDefault()
+              router.push('/community')
+            }}
+            style={{ ...linkStyle, color: '#fff' }}
+            onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.textDecoration = 'underline')}
+            onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.textDecoration = 'none')}
+          >
+            {c.nav.community}
+          </a>
+
+          <span aria-hidden style={{ width: 1, height: 10, background: '#222' }} />
+
           {SOCIALS.map(({ label, href }) => (
             <a
               key={label}

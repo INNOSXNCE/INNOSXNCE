@@ -1,5 +1,10 @@
 import type { WallpaperItem, PackItem } from './types'
 
+/** Storefront every product links out to. Change it here, not at the call sites. */
+export const STORE_BASE = 'https://lynk.id/innosxnce'
+
+export const productLink = (slug: string) => `${STORE_BASE}/${slug}`
+
 export const WP: WallpaperItem[] = [
   { slug: 'patience',    name: 'SABAR',    red: false, desc: { id: 'Diam bukan berarti kalah. Sabar itu strategi.',                 en: 'Silence is not defeat. Patience is the long game.' } },
   { slug: 'growth',     name: 'TUMBUH',   red: false, desc: { id: 'Tumbuh itu sepi dan pelan. Nikmatin prosesnya.',                en: 'Growth is quiet and slow. Trust the process.' } },

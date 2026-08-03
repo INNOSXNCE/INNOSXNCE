@@ -2,25 +2,25 @@ export const COPY = {
   id: {
     nav: {
       home: 'BERANDA',
-      manifesto: 'MANIFESTO',
       wallpapers: 'WALLPAPER',
       tutorials: 'KELAS',
+      // Tidak lagi di nav utama — dipakai untuk link internal di footer.
       community: 'KOMUNITAS',
-      journal: 'TONTON',
+      business: 'BISNIS',
     },
     heroTag: '1% PER HARI.',
     onePctLabel: 'KENAPA SATU PERSEN',
     onePctBody:
       'Bukan transformasi. Bukan keajaiban semalam. Cuma satu persen lebih baik dari kemarin, diulang seribu kali. Disiplin yang nggak keliatan hari ini jadi hasil yang nggak bisa diabaikan tahun depan.',
     onePctSub: '1% setiap hari = 37x lebih baik dalam setahun.',
+    // Diselamatkan dari halaman Manifesto yang dihapus.
+    onePctLine: 'Konsistensi ngalahin bakat yang nggak pernah muncul.',
     fwLabel: 'PILIHAN · 9:16',
     fwTitle: 'Wallpaper buat layar lo.',
     fwCta: 'SEMUA 12 →',
-    interOneSub: 'Pelan bukan berarti berhenti.',
     packsLabel: 'KELAS EDIT',
     packsTitle: 'Belajar dari nol sampai jadi.',
     packsSub: 'Tiga paket. Satu metode. Tanpa teori basi.',
-    interTwoSub: 'Jatuh itu wajar. Diam yang bahaya.',
     discordLabel: 'KOMUNITAS',
     discordTitle: 'Lo nggak harus sendirian.',
     discordBody:
@@ -29,20 +29,6 @@ export const COPY = {
     wp: { buy: 'Beli →' },
     tut: { take: 'Ambil →' },
     deviceNotif: { time: 'sekarang', msg: '1% hari ini. Udah belum?' },
-    manifesto: {
-      kicker: 'MANIFESTO · 001',
-      title: '1% Per Hari.',
-      lead: 'Lo nggak butuh hari yang sempurna. Lo butuh hari yang dikerjain.',
-      body: [
-        'Semua orang pengen lompatan. Pengen bangun besok jadi orang yang beda. Tapi perubahan nggak kerja kayak gitu. Perubahan itu pelan, ngebosenin, dan hampir nggak keliatan pas lagi terjadi.',
-        'Satu persen hari ini nggak akan ngubah apa apa. Lo nggak bakal ngerasain bedanya. Tapi satu persen yang diulang, hari demi hari, numpuk jadi sesuatu yang nggak bisa lo bohongin. Itu bukan motivasi. Itu matematika.',
-        'Hari hari yang males adalah ujian sebenarnya. Siapa pun bisa kerja pas lagi semangat. Yang bikin lo beda adalah pas lo tetap muncul walau nggak ada yang nonton, walau nggak ada yang peduli, walau lo sendiri ragu.',
-        'Jadi berhenti nunggu momen yang tepat. Berhenti nyari versi diri lo yang udah jadi. Mulai dari satu persen. Hari ini. Lagi.',
-      ],
-      pull1: 'Disiplin adalah jembatan antara mimpi dan kenyataan.',
-      pull2: 'Konsistensi ngalahin bakat yang nggak pernah muncul.',
-      signature: '— INNOSXNCE',
-    },
     wpPage: {
       kicker: 'KOLEKSI · 12',
       title: 'Wallpaper',
@@ -79,16 +65,72 @@ export const COPY = {
       ],
       cta: 'Gabung Discord →',
     },
-    journal: {
-      kicker: 'TONTON',
-      title: 'Semua ada di TikTok.',
-      sub: 'Konten harian, edit pendek, dan pengingat satu persen. Update tiap hari di @innosxnce1.',
-      cta: 'Tonton di TikTok →',
-      videos: [
-        { t: 'Cara mulai pas lagi nggak mood', v: '1.2M' },
-        { t: 'Satu persen, dijelasin 30 detik', v: '890K' },
-        { t: 'Rutinitas pagi tanpa drama', v: '2.4M' },
-      ],
+    inno: {
+      kicker: 'INNOPRODUCTIONS · RUMAH PRODUKSI',
+      title: 'Kami yang\nngedit.',
+      lead: 'InnoProductions adalah sisi bisnis dari INNOSXNCE. Kamu kirim footage mentah, kami kirim balik video yang layak diupload — shortform, longform, atau keduanya.',
+      ctaPrimary: 'Mulai Proyek →',
+      ctaSecondary: 'Lihat Harga',
+      relation:
+        'INNOSXNCE adalah brand kreatornya. InnoProductions adalah studio yang ngerjain. Skill yang sama, cuma kali ini buat channel kamu.',
+
+      servicesLabel: 'LAYANAN · 03',
+      servicesTitle: 'Tiga cara kerjanya.',
+      servicesSub: 'Semua dikerjain manual. Nggak ada template yang tinggal diisi.',
+
+      workLabel: 'HASIL KERJA',
+      workTitle: 'Geser buat lihat bedanya.',
+      workSub: 'Kiri footage mentah. Kanan hasil akhir. Selisihnya itu yang kamu bayar.',
+      workBefore: 'MENTAH',
+      workAfter: 'HASIL',
+      workHint: 'Geser · atau pakai tombol panah',
+
+      processLabel: 'ALUR KERJA · 04',
+      processTitle: 'Dari brief sampai file final.',
+      processSub: 'Nggak ada tahap yang disembunyiin. Kamu selalu tahu posisi proyeknya di mana.',
+
+      pricingLabel: 'HARGA',
+      pricingTitle: 'Angkanya di depan.',
+      pricingSub: 'Nggak perlu nanya dulu buat tahu harga. Semua sudah termasuk revisi dan file siap upload.',
+      pricingFeatured: 'PALING SERING DIAMBIL',
+      pricingPick: 'Ambil Paket →',
+      pricingNote:
+        'Harga di atas untuk lingkup standar. Proyek dengan footage sangat panjang, animasi berat, atau deadline mepet dihitung terpisah — tanya aja, penawarannya gratis.',
+
+      addonsLabel: 'TAMBAHAN',
+      addonsTitle: 'Bisa ditambah kapan aja.',
+      addonsSub: 'Dibeli terpisah atau digabung ke paket mana pun.',
+
+      faqLabel: 'PERTANYAAN',
+      faqTitle: 'Yang biasanya ditanya.',
+
+      contactLabel: 'MULAI',
+      contactTitle: 'Ceritain proyeknya.',
+      contactSub: 'Isi brief singkat ini. Formnya otomatis nyusun pesan — tinggal pilih mau dikirim lewat WhatsApp atau email.',
+      contactDirect: 'Atau langsung aja:',
+
+      form: {
+        name: 'Nama / brand',
+        namePh: 'Siapa yang aku ajak ngomong?',
+        type: 'Tipe proyek',
+        typeOpts: ['Shortform (Reels / TikTok / Shorts)', 'Longform (YouTube)', 'Podcast clipping', 'Retainer bulanan', 'Belum yakin'],
+        qty: 'Jumlah video',
+        qtyPh: 'contoh: 4',
+        dur: 'Perkiraan durasi hasil',
+        durPh: 'contoh: 60 detik / 12 menit',
+        deadline: 'Deadline',
+        footage: 'Link footage',
+        footagePh: 'Google Drive / WeTransfer / Dropbox',
+        notes: 'Referensi & catatan',
+        notesPh: 'Gaya edit yang kamu suka, mood, atau apa pun yang perlu aku tahu.',
+        optional: 'opsional',
+        required: 'wajib',
+        sendWa: 'Kirim via WhatsApp →',
+        sendMail: 'Kirim via Email →',
+        subject: 'Brief Proyek — InnoProductions',
+        missing: 'Isi dulu nama dan tipe proyeknya.',
+        greeting: 'Halo InnoProductions, aku mau order edit video.',
+      },
     },
     footerMade: '© 2026 INNOSXNCE · DIBUAT DI TANGERANG SELATAN',
     footerDisc:
@@ -97,25 +139,25 @@ export const COPY = {
   en: {
     nav: {
       home: 'HOME',
-      manifesto: 'MANIFESTO',
       wallpapers: 'WALLPAPERS',
       tutorials: 'CLASSES',
+      // No longer in the main nav — used for the internal footer link.
       community: 'COMMUNITY',
-      journal: 'WATCH',
+      business: 'BUSINESS',
     },
     heroTag: 'One percent better. Every day. No compromise. No drama.',
     onePctLabel: 'WHY ONE PERCENT',
     onePctBody:
       'Not a transformation. Not an overnight miracle. Just one percent better than yesterday, repeated a thousand times. The discipline nobody sees today becomes a result nobody can ignore next year.',
     onePctSub: '1% every day = 37x better in a year.',
+    // Salvaged from the deleted Manifesto page.
+    onePctLine: 'Consistency beats talent that never shows up.',
     fwLabel: 'FEATURED · 9:16',
     fwTitle: 'Wallpapers for your screen.',
     fwCta: 'ALL 12 →',
-    interOneSub: 'Slow is not the same as stopped.',
     packsLabel: 'EDIT CLASSES',
     packsTitle: 'Learn from zero to finished.',
     packsSub: 'Three packs. One method. No stale theory.',
-    interTwoSub: 'Falling is normal. Staying down is the danger.',
     discordLabel: 'COMMUNITY',
     discordTitle: 'You do not have to do it alone.',
     discordBody:
@@ -124,20 +166,6 @@ export const COPY = {
     wp: { buy: 'Buy →' },
     tut: { take: 'Get →' },
     deviceNotif: { time: 'now', msg: '1% today. Did you?' },
-    manifesto: {
-      kicker: 'MANIFESTO · 001',
-      title: '1% A Day.',
-      lead: 'You do not need a perfect day. You need a day you actually worked.',
-      body: [
-        'Everyone wants the leap. To wake up tomorrow as a different person. But change does not work that way. Change is slow, boring, and almost invisible while it is happening.',
-        'One percent today changes nothing. You will not feel the difference. But one percent repeated, day after day, stacks into something you cannot lie about. That is not motivation. That is math.',
-        'The lazy days are the real test. Anyone can work when they feel inspired. What sets you apart is showing up when no one is watching, when no one cares, when even you have doubts.',
-        'So stop waiting for the right moment. Stop looking for the finished version of yourself. Start with one percent. Today. Again.',
-      ],
-      pull1: 'Discipline is the bridge between dreams and reality.',
-      pull2: 'Consistency beats talent that never shows up.',
-      signature: '— INNOSXNCE',
-    },
     wpPage: {
       kicker: 'COLLECTION · 12',
       title: 'Wallpapers',
@@ -174,16 +202,72 @@ export const COPY = {
       ],
       cta: 'Join Discord →',
     },
-    journal: {
-      kicker: 'WATCH',
-      title: 'It all lives on TikTok.',
-      sub: 'Daily content, short edits and one percent reminders. New every day at @innosxnce1.',
-      cta: 'Watch on TikTok →',
-      videos: [
-        { t: 'How to start when the mood is gone', v: '1.2M' },
-        { t: 'One percent, explained in 30 seconds', v: '890K' },
-        { t: 'A morning routine with no drama', v: '2.4M' },
-      ],
+    inno: {
+      kicker: 'INNOPRODUCTIONS · PRODUCTION HOUSE',
+      title: 'We do\nthe edit.',
+      lead: 'InnoProductions is the business side of INNOSXNCE. You send the raw footage, we send back a video worth publishing — shortform, longform, or both.',
+      ctaPrimary: 'Start a Project →',
+      ctaSecondary: 'See Pricing',
+      relation:
+        'INNOSXNCE is the creator brand. InnoProductions is the studio that does the work. Same craft, pointed at your channel this time.',
+
+      servicesLabel: 'SERVICES · 03',
+      servicesTitle: 'Three ways in.',
+      servicesSub: 'All cut by hand. No fill-in-the-blank templates.',
+
+      workLabel: 'THE WORK',
+      workTitle: 'Drag to see the difference.',
+      workSub: 'Raw footage on the left. Finished cut on the right. The gap is what you are paying for.',
+      workBefore: 'RAW',
+      workAfter: 'FINAL',
+      workHint: 'Drag · or use the arrow keys',
+
+      processLabel: 'PROCESS · 04',
+      processTitle: 'From brief to final file.',
+      processSub: 'No hidden stage. You always know where the project stands.',
+
+      pricingLabel: 'PRICING',
+      pricingTitle: 'Numbers up front.',
+      pricingSub: 'No need to ask before you know the cost. Revisions and upload-ready files are already in.',
+      pricingFeatured: 'MOST CHOSEN',
+      pricingPick: 'Take This →',
+      pricingNote:
+        'These prices cover standard scope. Projects with very long footage, heavy animation or a tight deadline are quoted separately — just ask, quoting is free.',
+
+      addonsLabel: 'ADD-ONS',
+      addonsTitle: 'Bolt on anything.',
+      addonsSub: 'Bought on their own or attached to any package.',
+
+      faqLabel: 'QUESTIONS',
+      faqTitle: 'What people usually ask.',
+
+      contactLabel: 'START',
+      contactTitle: 'Tell me about the project.',
+      contactSub: 'Fill in this short brief. The form assembles the message for you — just pick WhatsApp or email to send it.',
+      contactDirect: 'Or go direct:',
+
+      form: {
+        name: 'Name / brand',
+        namePh: 'Who am I talking to?',
+        type: 'Project type',
+        typeOpts: ['Shortform (Reels / TikTok / Shorts)', 'Longform (YouTube)', 'Podcast clipping', 'Monthly retainer', 'Not sure yet'],
+        qty: 'Number of videos',
+        qtyPh: 'e.g. 4',
+        dur: 'Approximate final runtime',
+        durPh: 'e.g. 60 seconds / 12 minutes',
+        deadline: 'Deadline',
+        footage: 'Footage link',
+        footagePh: 'Google Drive / WeTransfer / Dropbox',
+        notes: 'References & notes',
+        notesPh: 'Edit styles you like, the mood, or anything else I should know.',
+        optional: 'optional',
+        required: 'required',
+        sendWa: 'Send via WhatsApp →',
+        sendMail: 'Send via Email →',
+        subject: 'Project Brief — InnoProductions',
+        missing: 'Add your name and project type first.',
+        greeting: 'Hi InnoProductions, I would like to order a video edit.',
+      },
     },
     footerMade: '© 2026 INNOSXNCE · MADE IN TANGERANG SELATAN',
     footerDisc:

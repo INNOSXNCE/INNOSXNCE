@@ -1,22 +1,21 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { useLang } from '@/lib/lang-context'
-import { usePageFlash } from '@/lib/page-flash-context'
 import { COPY } from '@/lib/copy'
 
+// Main nav is the sales path only. /community still exists but is reached from
+// the footer and the Discord section on the home page.
 const NAV: Array<{ key: keyof typeof COPY.id.nav; href: string }> = [
   { key: 'home',      href: '/' },
-  { key: 'manifesto', href: '/manifesto' },
   { key: 'wallpapers',href: '/wallpapers' },
   { key: 'tutorials', href: '/tutorials' },
-  { key: 'community', href: '/community' },
-  { key: 'journal',   href: '/journal' },
+  { key: 'business',  href: '/innoproductions' },
 ]
 
 export function Header() {
   const { lang, setLang } = useLang()
-  const { startFlash } = usePageFlash()
+  const router = useRouter()
   const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
   const c = COPY[lang]
@@ -76,12 +75,11 @@ export function Header() {
     background: on ? '#fff' : 'transparent',
     color: on ? '#000' : '#7a7a7a',
     border: 'none',
-    cursor: 'inherit',
   })
 
   const navigate = (href: string) => {
     setMenuOpen(false)
-    startFlash(href)
+    router.push(href)
   }
 
   return (
@@ -109,7 +107,6 @@ export function Header() {
             background: 'none',
             border: 'none',
             padding: 0,
-            cursor: 'inherit',
           }}
         >
           <span style={{ fontSize: 13 }}>✦</span>
@@ -134,7 +131,6 @@ export function Header() {
                   background: 'none',
                   border: 'none',
                   borderBottom: `1px solid ${active ? '#c83232' : 'transparent'}`,
-                  cursor: 'inherit',
                 }}
               >
                 {c.nav[key]}
@@ -155,7 +151,6 @@ export function Header() {
               color: menuOpen ? '#fff' : '#7a7a7a',
               background: 'none',
               border: 'none',
-              cursor: 'inherit',
             }}
           >
             {menuOpen ? 'CLOSE' : 'MENU'}
@@ -187,7 +182,6 @@ export function Header() {
                 color: pathname === href ? '#c83232' : '#fff',
                 background: 'none',
                 border: 'none',
-                cursor: 'inherit',
               }}
             >
               <span

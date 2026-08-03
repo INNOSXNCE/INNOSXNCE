@@ -16,3 +16,64 @@ export interface PackItem {
   dur: { id: string; en: string }
   desc: { id: string; en: string }
 }
+
+/* ── InnoProductions ──────────────────────────────────────────────── */
+
+export type Bi = { id: string; en: string }
+
+export interface ServiceItem {
+  slug: string
+  num: string
+  /** Aspect ratio badge shown on the card, e.g. '9:16'. */
+  ratio: string
+  title: Bi
+  desc: Bi
+  /** Concrete deliverables, so the client knows exactly what lands in their inbox. */
+  includes: Bi[]
+}
+
+export interface TierItem {
+  slug: string
+  name: string
+  price: string
+  /** Billing unit, e.g. '/ video' or '/ bulan'. */
+  unit: Bi
+  tagline: Bi
+  /** Highlighted as the recommended tier. */
+  featured: boolean
+  features: Bi[]
+  /** Working days (or SLA phrasing) shown in the tier footer. */
+  turnaround: Bi
+  revisions: Bi
+}
+
+export interface AddOnItem {
+  slug: string
+  name: Bi
+  price: string
+  note: Bi
+}
+
+export interface ProcessStep {
+  num: string
+  title: Bi
+  desc: Bi
+}
+
+export interface WorkItem {
+  slug: string
+  /** Client-facing project label. */
+  title: Bi
+  category: Bi
+  ratio: '9:16' | '16:9'
+  /** On-screen hook text rendered into the AFTER frame. */
+  hook: Bi
+  /** Optional real video link; when set the card links out to it. */
+  href?: string
+}
+
+export interface FaqItem {
+  q: Bi
+  a: Bi
+}
+
