@@ -72,13 +72,13 @@ export function SpaceBackdrop() {
       className="fixed inset-0 pointer-events-none overflow-hidden"
       style={{ zIndex: -1 }}
     >
-      <div ref={el => { layerRefs.current[0] = el }} style={layerStyle(STARS_FAR, 0.55)}>
+      <div ref={el => { layerRefs.current[0] = el }} style={layerStyle(STARS_FAR, 0.41)}>
         <div style={shootingStarStyle} />
       </div>
-      <div ref={el => { layerRefs.current[1] = el }} style={layerStyle(STARS_MID, 0.65)}>
+      <div ref={el => { layerRefs.current[1] = el }} style={layerStyle(STARS_MID, 0.49)}>
         <Planet size={12} top="64%" left="82%" tint="#46586a" delay="-30s" />
       </div>
-      <div ref={el => { layerRefs.current[2] = el }} style={layerStyle(STARS_NEAR, 0.75)}>
+      <div ref={el => { layerRefs.current[2] = el }} style={layerStyle(STARS_NEAR, 0.56)}>
         <Planet size={18} top="22%" left="11%" tint="#6a4a44" delay="0s" />
         <Planet size={7} top="38%" left="76%" tint="#c83232" delay="-55s" />
       </div>
