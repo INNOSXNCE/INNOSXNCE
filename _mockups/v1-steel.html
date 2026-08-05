@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>V1 — Steel Object</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0a0a0a;color:#f4f4f4;font-family:'Figtree',-apple-system,'Segoe UI',sans-serif;font-weight:400;-webkit-font-smoothing:antialiased}
+.blk{padding:clamp(64px,10vw,140px) clamp(24px,6vw,80px)}
+.inv{background:#f4f4f4;color:#0a0a0a}
+.mid{background:#191919}
+.wrap{max-width:1080px;margin:0 auto}
+h1,h2,h3{font-weight:600;letter-spacing:-.035em;line-height:.98}
+h1{font-size:clamp(40px,7.4vw,104px)}
+h2{font-size:clamp(30px,4.6vw,64px)}
+h3{font-size:clamp(19px,2vw,26px);letter-spacing:-.02em;line-height:1.1}
+p{font-size:16px;line-height:1.6;color:#9d9d9d;max-width:46ch}
+.inv p{color:#5a5a5a}
+.sub{font-weight:600;font-size:15px;color:#f4f4f4;margin-top:22px;max-width:40ch}
+.inv .sub{color:#0a0a0a}
+.pill{display:inline-block;margin-top:30px;padding:15px 34px;border-radius:999px;background:#f4f4f4;color:#0a0a0a;font-weight:600;font-size:15px;text-decoration:none;border:none}
+.inv .pill{background:#0a0a0a;color:#f4f4f4}
+.spec{font-size:14px;color:#7d7d7d;letter-spacing:.01em;margin-top:34px}
+.calc{margin-top:44px;max-width:520px}
+.row{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.row label{font-size:14px;color:#9d9d9d;width:132px;flex-shrink:0}
+.row input{flex:1;accent-color:#f4f4f4}
+.row b{font-weight:600;font-size:15px;width:64px;text-align:right}
+.out{margin-top:30px;padding-top:26px;border-top:1px solid #2c2c2c}
+.big{font-size:clamp(44px,7vw,84px);font-weight:600;letter-spacing:-.04em;line-height:1}
+.grid{display:grid;gap:14px;margin-top:44px}
+.g4{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.card{background:#191919;border-radius:18px;padding:26px}
+.inv .card{background:#e6e2da}
+.tag{font-size:13px;font-weight:600;color:#7d7d7d}
+.price{font-size:30px;font-weight:600;letter-spacing:-.03em;margin:14px 0 6px}
+.was{font-size:14px;color:#7d7d7d;text-decoration:line-through;margin-left:8px;font-weight:400}
+.feat{background:#f4f4f4;color:#0a0a0a}
+.feat .tag,.feat p{color:#4a4a4a}
+.free{border:2px dashed #3a3a3a;background:none}
+ul{list-style:none;margin-top:16px}
+li{font-size:14px;color:#9d9d9d;padding:6px 0}
+.feat li{color:#4a4a4a}
+.qris{display:inline-flex;gap:10px;align-items:center;margin-top:26px;font-size:13px;color:#7d7d7d}
+.dot{width:7px;height:7px;border-radius:50%;background:#f4f4f4;display:inline-block}
+</style>
+</head>
+<body>
+
+<section class="blk">
+  <div class="wrap">
+    <h1>Satu persen. Setiap hari.</h1>
+    <p class="sub">Bukan transformasi. Bukan keajaiban semalam. Cuma satu persen lebih baik dari kemarin, diulang seribu kali.</p>
+    <a class="pill" href="#harga">Mulai hari ini</a>
+    <div class="spec">12 wallpaper &nbsp;·&nbsp; 3 kelas edit &nbsp;·&nbsp; 1 tantangan 30 hari &nbsp;·&nbsp; Tanpa langganan</div>
+  </div>
+</section>
+
+<section class="blk mid">
+  <div class="wrap">
+    <h2>Hitung sendiri berapa yang sudah hilang.</h2>
+    <div class="calc">
+      <div class="row"><label>Umur kamu</label><input id="a" type="range" min="14" max="45" value="21"><b id="av">21</b></div>
+      <div class="row"><label>Jam scroll / hari</label><input id="s" type="range" min="1" max="10" step="0.5" value="4.5"><b id="sv">4,5</b></div>
+      <div class="out">
+        <div class="big" id="yrs">6,7 tahun</div>
+        <p style="margin-top:12px">masih di depan kamu, habis di layar — kalau kebiasaan ini nggak berubah.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="blk inv">
+  <div class="wrap">
+    <h2>Ambil satu hal kecil. Hari ini.</h2>
+    <p style="margin-top:20px">Setiap produk di bawah dirancang untuk satu tujuan: bikin kamu muncul lagi besok.</p>
+    <div class="grid g4" id="harga">
+      <div class="card free" style="border-color:#c9c4ba">
+        <div class="tag">GRATIS</div>
+        <div class="price">Rp 0</div>
+        <p style="font-size:14px">3 wallpaper pilihan, dikirim ke email.</p>
+        <ul><li>Tanpa kartu</li><li>Langsung dapat</li></ul>
+      </div>
+      <div class="card">
+        <div class="tag">MULAI DI SINI</div>
+        <div class="price">Rp 39K</div>
+        <p style="font-size:14px">Semua 12 wallpaper, sekali bayar.</p>
+        <ul><li>12 file 9:16</li><li>Update gratis</li></ul>
+      </div>
+      <div class="card">
+        <div class="tag">BUAT YANG NGEDIT</div>
+        <div class="price">Rp 49K</div>
+        <p style="font-size:14px">Preset, LUT, dan project file yang dipakai di feed.</p>
+        <ul><li>18 preset</li><li>6 LUT</li></ul>
+      </div>
+      <div class="card feat">
+        <div class="tag">PALING SERING DIAMBIL</div>
+        <div class="price">Rp 199K</div>
+        <p style="font-size:14px">Tantangan 30 hari. Satu angkatan, mulai bareng, selesai bareng.</p>
+        <ul><li>Sekali bayar per angkatan</li><li>Bukan langganan</li></ul>
+      </div>
+    </div>
+    <div class="qris"><span class="dot" style="background:#0a0a0a"></span> QRIS · e-wallet · transfer bank</div>
+  </div>
+</section>
+
+<section class="blk">
+  <div class="wrap">
+    <h2>Kelas edit, kalau mau lebih jauh.</h2>
+    <div class="grid g4">
+      <div class="card"><div class="tag">PEMULA</div><h3 style="margin:10px 0">Edit Mastery</h3><div class="price">Rp 79K<span class="was">Rp 149K</span></div><p style="font-size:14px">12 pelajaran · 2j 40m</p></div>
+      <div class="card"><div class="tag">MENENGAH</div><h3 style="margin:10px 0">Cinematic Edit</h3><div class="price">Rp 149K<span class="was">Rp 249K</span></div><p style="font-size:14px">18 pelajaran · 4j 15m</p></div>
+      <div class="card"><div class="tag">LENGKAP</div><h3 style="margin:10px 0">The Method</h3><div class="price">Rp 299K<span class="was">Rp 527K</span></div><p style="font-size:14px">30 pelajaran · 9j+</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="blk mid">
+  <div class="wrap" style="text-align:center">
+    <h2>Discord-nya gratis. Selamanya.</h2>
+    <p style="margin:20px auto 0">Tempat orang posting progress dan saling nagih kalau ada yang ngilang. Nggak ada yang dikunci.</p>
+    <a class="pill" href="#">Masuk barisan</a>
+  </div>
+</section>
+
+<script>
+var a=document.getElementById('a'),s=document.getElementById('s');
+function up(){
+  var age=+a.value, hrs=+s.value;
+  document.getElementById('av').textContent=age;
+  document.getElementById('sv').textContent=String(hrs).replace('.',',');
+  var yrsLeft=78-age, lost=yrsLeft*hrs/24;
+  document.getElementById('yrs').textContent=lost.toFixed(1).replace('.',',')+' tahun';
+}
+a.addEventListener('input',up);s.addEventListener('input',up);up();
+</script>
+</body>
+</html>

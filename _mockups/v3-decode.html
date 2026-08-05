@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>V3 — Decode</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#050607;color:#e8e8e6;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;font-weight:300;-webkit-font-smoothing:antialiased}
+.w{max-width:1000px;margin:0 auto;padding:0 clamp(20px,5vw,48px)}
+.sec{padding:clamp(56px,9vw,120px) 0}
+h1{font-size:clamp(26px,4.6vw,62px);font-weight:500;line-height:1.14;letter-spacing:-.02em;white-space:pre-wrap}
+h2{font-size:clamp(20px,3vw,36px);font-weight:500;line-height:1.2;letter-spacing:-.015em}
+h3{font-size:15px;font-weight:500}
+p{font-size:13px;line-height:1.75;color:#7c8080;max-width:56ch;font-weight:300}
+.lc{font-size:11px;letter-spacing:.02em;color:#5e6363;text-transform:lowercase}
+.lime{color:#ccff00}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid #14181a}
+.nav a{color:#5e6363;text-decoration:none;font-size:11px;margin-left:20px}
+.logo{font-weight:700;font-size:14px}
+.stat{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));border-top:1px solid #14181a;margin-top:44px}
+.stat div{padding:20px 0 20px 18px;border-right:1px solid #14181a;border-bottom:1px solid #14181a}
+.stat b{display:block;font-size:24px;font-weight:500;letter-spacing:-.02em}
+.stat span{font-size:10.5px;color:#5e6363;display:block;margin-top:7px;line-height:1.5}
+.blk{border:1px solid #14181a;padding:24px;position:relative;margin-top:14px}
+.n{position:absolute;right:20px;bottom:16px;font-size:11px;color:#22282a;font-weight:500}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.pr{font-size:26px;font-weight:500;letter-spacing:-.03em;margin:14px 0 4px}
+.was{font-size:11px;color:#3a4042;text-decoration:line-through;margin-left:8px;font-weight:300}
+.btn{display:inline-block;margin-top:18px;padding:11px 20px;border:1px solid #2a3033;color:#e8e8e6;text-decoration:none;font-size:11px;text-transform:lowercase}
+.btn.pri{border-color:#ccff00;color:#ccff00}
+.log{font-size:11px;line-height:2;color:#4a5052}
+.log b{color:#7c8080;font-weight:400}
+.embargo{color:#2a3033}
+.free{border-color:#2a3033;border-style:dashed}
+</style>
+</head>
+<body>
+<div class="w">
+
+  <div class="nav">
+    <span class="logo">./</span>
+    <nav><a href="#">produk</a><a href="#">kelas</a><a href="#">discord</a><a href="#" class="lime">mulai</a></nav>
+  </div>
+
+  <section class="sec">
+    <h1 id="hl">Disiplin yang bisa diverifikasi, bukan motivasi yang bisa dirasakan.</h1>
+    <p style="margin-top:26px">Satu persen sehari terdengar kecil karena memang kecil. Yang tidak kecil adalah 437 kali pengulangan. Sistem ini menghitung, bukan menyemangati.</p>
+    <a class="btn pri" href="#harga">ambil produk pertama</a>
+  </section>
+
+  <div class="stat">
+    <div><b>437</b><span>hari beruntun tercatat</span></div>
+    <div><b>37×</b><span>lipat dalam 12 bulan</span></div>
+    <div><b>0,62%</b><span>median konversi gratis→bayar</span></div>
+    <div><b class="lime">Rp 0</b><span>biaya langganan, selamanya</span></div>
+  </div>
+
+  <section class="sec">
+    <h2>Log harian.</h2>
+    <div class="blk" style="margin-top:22px">
+      <div class="log">
+        <div>0x01A9 &nbsp; hari_436 &nbsp;·&nbsp; <b>rekam 40 menit</b> &nbsp;·&nbsp; selesai</div>
+        <div>0x01AA &nbsp; hari_437 &nbsp;·&nbsp; <b>edit 3 klip</b> &nbsp;·&nbsp; selesai</div>
+        <div>0x01AB &nbsp; hari_438 &nbsp;·&nbsp; <b class="lime">berjalan</b> &nbsp;·&nbsp; belum selesai</div>
+        <div class="embargo">0x01AC &nbsp; hari_439 &nbsp;·&nbsp; belum dibuka</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="harga">
+    <h2>Katalog.</h2>
+    <p style="margin-top:14px">Semua sekali bayar. Tidak ada auto-debit, tidak ada tanggal perpanjangan.</p>
+    <div class="grid" style="margin-top:26px">
+      <div class="blk free">
+        <span class="lc">rung 00 — gratis</span>
+        <h3 style="margin-top:12px">Contoh</h3>
+        <div class="pr">Rp 0</div>
+        <p style="font-size:12px">3 wallpaper, ditukar dengan alamat email.</p>
+        <a class="btn" href="#">tukar</a>
+        <span class="n">00</span>
+      </div>
+      <div class="blk">
+        <span class="lc">rung 01 — masuk</span>
+        <h3 style="margin-top:12px">Set wallpaper</h3>
+        <div class="pr">Rp 39K</div>
+        <p style="font-size:12px">Dua belas berkas 1080×1920, satu unduhan.</p>
+        <a class="btn" href="#">ambil</a>
+        <span class="n">01</span>
+      </div>
+      <div class="blk">
+        <span class="lc">rung 02 — alat</span>
+        <h3 style="margin-top:12px">Preset &amp; LUT</h3>
+        <div class="pr">Rp 49K</div>
+        <p style="font-size:12px">18 preset, 6 LUT, 2 project file. Persis yang dipakai.</p>
+        <a class="btn" href="#">ambil</a>
+        <span class="n">02</span>
+      </div>
+      <div class="blk" style="border-color:#ccff00">
+        <span class="lc lime">rung 03 — angkatan</span>
+        <h3 style="margin-top:12px">30 hari beruntun</h3>
+        <div class="pr">Rp 199K</div>
+        <p style="font-size:12px">Satu angkatan, tanggal mulai tetap. Bayar per angkatan, bukan per bulan.</p>
+        <a class="btn pri" href="#">daftar</a>
+        <span class="n" style="color:#4a5f00">03</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2>Kelas edit.</h2>
+    <div class="grid" style="margin-top:22px">
+      <div class="blk"><span class="lc">pemula</span><h3 style="margin-top:10px">Edit Mastery</h3><div class="pr">Rp 79K<span class="was">Rp 149K</span></div><p style="font-size:12px">12 pelajaran · 2j 40m</p><span class="n">04</span></div>
+      <div class="blk"><span class="lc">menengah</span><h3 style="margin-top:10px">Cinematic Edit</h3><div class="pr">Rp 149K<span class="was">Rp 249K</span></div><p style="font-size:12px">18 pelajaran · 4j 15m</p><span class="n">05</span></div>
+      <div class="blk"><span class="lc">lengkap</span><h3 style="margin-top:10px">The Method</h3><div class="pr">Rp 299K<span class="was">Rp 527K</span></div><p style="font-size:12px">30 pelajaran · 9j+</p><span class="n">06</span></div>
+    </div>
+    <p style="margin-top:22px;font-size:11px">bayar: qris · gopay · ovo · dana · transfer bank</p>
+  </section>
+
+  <section class="sec" style="border-top:1px solid #14181a">
+    <h2>Discord tetap terbuka.</h2>
+    <p style="margin-top:14px">Tidak ada kanal yang dikunci belakangan. Yang gratis hari ini gratis selamanya — itu bagian dari kesepakatan.</p>
+    <a class="btn" href="#">masuk</a>
+    <p style="margin-top:40px;font-size:10.5px;color:#2a3033">INNOSXNCE · TANGERANG SELATAN · 1% PER HARI · MMXXVI</p>
+  </section>
+
+</div>
+
+<script>
+var el=document.getElementById('hl'),real=el.textContent,pool='#$%&@0123456789';
+var frame=0,total=34;
+function tick(){
+  frame++;
+  var p=frame/total,out='';
+  for(var i=0;i<real.length;i++){
+    var c=real[i];
+    if(c===' '||c==='\n'){out+=c;continue}
+    out += (i/real.length < p) ? c : pool[(i*7+frame*3)%pool.length];
+  }
+  el.textContent=out;
+  if(frame<total)setTimeout(tick,42); else el.textContent=real;
+}
+if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){el.textContent='';tick()}
+</script>
+</body>
+</html>

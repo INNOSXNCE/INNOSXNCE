@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>V5 — Field Manual</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#f4f1ea;color:#141414;font-family:'Barlow',Helvetica,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.w{max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,56px)}
+.sec{padding:clamp(56px,8vw,110px) 0}
+h1,h2,h3{font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.005em;line-height:.9}
+h1{font-size:clamp(52px,12.5vw,168px)}
+h2{font-size:clamp(30px,5.6vw,74px)}
+h3{font-size:clamp(19px,2.2vw,27px);line-height:1}
+p{font-size:15px;line-height:1.6;color:#4a4a4a;max-width:48ch}
+.hot{color:#ff5c00}
+.bg-hot{background:#ff5c00;color:#fff}
+.bg-ink{background:#141414;color:#f4f1ea}
+.tick{background:#141414;color:#f4f1ea;overflow:hidden;white-space:nowrap;padding:13px 0}
+.tick div{display:inline-block;animation:sc 26s linear infinite;font-family:'Anton',sans-serif;text-transform:uppercase;font-size:20px;letter-spacing:.02em}
+.tick span{padding:0 20px}
+.tick i{font-style:normal;color:#ff5c00}
+@keyframes sc{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.tick div{animation:none}}
+.stamp{display:inline-block;border:3px solid #141414;padding:7px 14px;font-family:'Anton',sans-serif;text-transform:uppercase;font-size:13px;transform:rotate(-2.4deg)}
+.grid{display:grid;gap:clamp(14px,2vw,22px)}
+.g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(215px,1fr))}
+.card{background:#fff;border:3px solid #141414;padding:22px;position:relative}
+.card.dark{background:#141414;color:#f4f1ea}
+.card.dark p{color:#a8a49c}
+.pr{font-family:'Anton',sans-serif;font-size:40px;line-height:1;margin:12px 0 8px}
+.was{font-family:'Barlow',sans-serif;font-size:14px;color:#8d8a83;text-decoration:line-through;margin-left:8px;font-weight:500}
+.btn{display:inline-block;margin-top:16px;padding:12px 22px;background:#141414;color:#f4f1ea;font-family:'Anton',sans-serif;text-transform:uppercase;font-size:14px;text-decoration:none}
+.btn.hotbtn{background:#ff5c00}
+.corner{position:absolute;top:-3px;right:-3px;background:#ff5c00;color:#fff;font-family:'Anton',sans-serif;font-size:11px;padding:5px 9px;text-transform:uppercase}
+.quote{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(21px,3vw,34px);line-height:1.02}
+.qmeta{font-size:13px;color:#6a6a6a;margin-top:12px;font-weight:500}
+.big-n{font-family:'Anton',sans-serif;font-size:clamp(56px,11vw,140px);line-height:.82;color:#ff5c00}
+.rowline{display:flex;justify-content:space-between;align-items:center;gap:16px;border-top:3px solid #141414;padding:16px 0;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<div class="tick"><div><span>Disiplin <i>di atas</i> mood</span><span>Konsisten <i>di atas</i> bakat</span><span>Muncul <i>di atas</i> sempurna</span><span>Hari ini <i>di atas</i> nanti</span><span>Disiplin <i>di atas</i> mood</span><span>Konsisten <i>di atas</i> bakat</span><span>Muncul <i>di atas</i> sempurna</span><span>Hari ini <i>di atas</i> nanti</span></div></div>
+
+<div class="w">
+  <section class="sec">
+    <div class="stamp">Buku lapangan · edisi 437</div>
+    <h1 style="margin-top:24px">Satu<br>persen<br><span class="hot">sehari</span></h1>
+    <p style="margin-top:26px;font-size:17px">Kamu tidak butuh hari yang sempurna. Kamu butuh hari yang dikerjakan.</p>
+    <a class="btn hotbtn" href="#katalog">Ambil alat pertama</a>
+  </section>
+</div>
+
+<div class="bg-ink">
+  <div class="w sec" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:34px;align-items:center">
+    <div><div class="big-n">437</div><p style="color:#a8a49c;margin-top:10px">hari berturut-turut, tercatat</p></div>
+    <div>
+      <h2 style="color:#f4f1ea">Hari malas adalah ujian yang sebenarnya.</h2>
+      <p style="color:#a8a49c;margin-top:16px">Siapa pun bisa kerja pas lagi semangat. Yang membedakan adalah pas kamu tetap muncul walau tidak ada yang menonton.</p>
+    </div>
+  </div>
+</div>
+
+<div class="w">
+  <section class="sec" id="katalog">
+    <h2>Katalog lapangan</h2>
+    <p style="margin-top:14px">Semua sekali bayar. Tidak ada yang menagih sendiri tiap bulan.</p>
+    <div class="grid g4" style="margin-top:30px">
+      <div class="card">
+        <h3>Contoh</h3>
+        <div class="pr">Gratis</div>
+        <p style="font-size:14px">3 wallpaper, ditukar dengan email.</p>
+        <a class="btn" href="#">Tukar</a>
+      </div>
+      <div class="card">
+        <h3>Set wallpaper</h3>
+        <div class="pr">39K</div>
+        <p style="font-size:14px">Dua belas berkas 9:16, sekali unduh.</p>
+        <a class="btn" href="#">Ambil</a>
+      </div>
+      <div class="card">
+        <h3>Preset &amp; LUT</h3>
+        <div class="pr">49K</div>
+        <p style="font-size:14px">18 preset, 6 LUT, 2 project file.</p>
+        <a class="btn" href="#">Ambil</a>
+      </div>
+      <div class="card dark">
+        <span class="corner">Angkatan</span>
+        <h3>30 hari beruntun</h3>
+        <div class="pr hot">199K</div>
+        <p style="font-size:14px">Mulai bareng, selesai bareng. Bayar per angkatan.</p>
+        <a class="btn hotbtn" href="#">Daftar</a>
+      </div>
+    </div>
+    <p style="margin-top:22px;font-size:13px;font-weight:500;color:#6a6a6a">QRIS · GOPAY · OVO · DANA · TRANSFER BANK</p>
+  </section>
+</div>
+
+<div class="bg-hot">
+  <div class="w sec">
+    <h2>Kalau mau serius ngedit.</h2>
+    <div class="grid g3" style="margin-top:26px">
+      <div class="card"><h3>Edit Mastery</h3><div class="pr">79K<span class="was">149K</span></div><p style="font-size:14px">Pemula · 12 pelajaran · 2j 40m</p><a class="btn" href="#">Ambil</a></div>
+      <div class="card"><h3>Cinematic Edit</h3><div class="pr">149K<span class="was">249K</span></div><p style="font-size:14px">Menengah · 18 pelajaran · 4j 15m</p><a class="btn" href="#">Ambil</a></div>
+      <div class="card"><h3>The Method</h3><div class="pr">299K<span class="was">527K</span></div><p style="font-size:14px">Lengkap · 30 pelajaran · 9j+</p><a class="btn" href="#">Ambil</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="w">
+  <section class="sec">
+    <div class="grid g3">
+      <div><div class="quote">"Gue berhenti nunggu mood. Itu doang yang berubah."</div><div class="qmeta">Rangga · angkatan 03</div></div>
+      <div><div class="quote">"Hari ke-11 gue mau berhenti. Grupnya nggak ngizinin."</div><div class="qmeta">Nadia · angkatan 02</div></div>
+      <div><div class="quote">"Editan gue sekarang beda. Bukan bakat, cuma diulang."</div><div class="qmeta">Farrel · angkatan 03</div></div>
+    </div>
+    <p style="margin-top:20px;font-size:12px;color:#8d8a83">Kutipan di atas placeholder — ganti dengan testimoni asli sebelum tayang.</p>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="rowline"><h2 style="font-size:clamp(24px,4vw,46px)">Discord gratis</h2><a class="btn" href="#">Masuk</a></div>
+    <div class="rowline" style="border-bottom:3px solid #141414"><p style="max-width:60ch">Tidak ada kanal yang dikunci belakangan. Yang gratis hari ini, gratis selamanya.</p><span style="font-family:'Anton',sans-serif;text-transform:uppercase;font-size:14px">Sejak 2026</span></div>
+  </section>
+</div>
+
+<div class="tick"><div><span>1% <i>·</i> hari 437</span><span>1% <i>·</i> hari 438</span><span>1% <i>·</i> hari 439</span><span>1% <i>·</i> hari 440</span><span>1% <i>·</i> hari 437</span><span>1% <i>·</i> hari 438</span><span>1% <i>·</i> hari 439</span><span>1% <i>·</i> hari 440</span></div></div>
+
+</body>
+</html>

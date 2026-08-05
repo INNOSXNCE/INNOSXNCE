@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>INNOSXNCE — 5 arah desain</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#111214;color:#e9e9e7;font-family:ui-sans-serif,-apple-system,'Segoe UI',sans-serif;padding:34px clamp(16px,4vw,48px) 80px}
+h1{font-size:21px;font-weight:600;letter-spacing:-.01em}
+.lede{font-size:14px;color:#8d9095;margin-top:9px;max-width:70ch;line-height:1.6}
+.hint{font-size:12px;color:#63666b;margin-top:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:26px;margin-top:34px}
+.card{background:#191b1e;border:1px solid #26292d;border-radius:12px;overflow:hidden}
+.wrap{position:relative;overflow:hidden;aspect-ratio:16/11;background:#000;cursor:pointer;border-bottom:1px solid #26292d}
+.wrap iframe{width:1440px;height:990px;border:0;transform-origin:top left;pointer-events:none}
+.meta{padding:16px 18px 18px}
+.nm{font-size:15px;font-weight:600;display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+.k{font-size:10px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;padding:3px 7px;border-radius:4px;background:#26292d;color:#a8abb0}
+.k.safe{background:#1e3226;color:#7fcf99}
+.k.mem{background:#33261e;color:#e0a06b}
+.gen{font-size:12.5px;color:#8d9095;margin-top:6px}
+.note{font-size:13px;color:#b6b9bd;margin-top:11px;line-height:1.6}
+.ref{font-size:11.5px;color:#63666b;margin-top:10px;font-family:ui-monospace,monospace}
+dialog{border:0;padding:0;width:96vw;height:94vh;max-width:none;background:#000;border-radius:10px}
+dialog::backdrop{background:rgba(0,0,0,.86)}
+dialog iframe{width:100%;height:100%;border:0}
+.x{position:fixed;top:18px;right:22px;z-index:9;background:#e9e9e7;color:#111;border:0;border-radius:6px;padding:8px 15px;font-size:13px;font-weight:600;cursor:pointer}
+</style>
+</head>
+<body>
+<h1>INNOSXNCE — lima arah desain</h1>
+<p class="lede">Lima keluarga, bukan lima variasi. Masing-masing berbeda di minimal empat sumbu: warna, tipografi, densitas, suara, citra, format. Semuanya memakai struktur harga baru hasil riset — rung gratis untuk menangkap email, entry Rp 39K, produk alat Rp 49K yang selama ini hilang, dan tantangan berbayar per angkatan, bukan langganan.</p>
+<p class="hint">Klik kartu mana pun untuk membuka lebar penuh. Tombol panah kiri/kanan untuk berpindah. Esc untuk menutup.</p>
+<div class="grid" id="g"></div>
+
+<dialog id="d"><button class="x" onclick="document.getElementById('d').close()">Tutup</button><iframe id="di"></iframe></dialog>
+
+<script>
+var V=[
+ {f:'v1-steel.html',n:'Steel Object',tag:'safe',tagl:'Aman komersial',
+  gen:'Near-black, kalimat utuh ber-titik, blok warna penuh tanpa garis, tombol pill',
+  note:'Paling kuat menjual karena satu ide per layar dan kalkulator yang menohok pembacanya — kamu memasukkan umur dan jam scroll, lalu dia memberi tahu berapa tahun hidupmu yang hilang. Risikonya: paling dekat dengan konvensi produk premium, jadi paling mudah terasa generik kalau dieksekusi setengah hati.',
+  ref:'ref: nor.ma · Figtree 600 · pill radius 999px'},
+ {f:'v2-press.html',n:'Daily Press',tag:'mem',tagl:'Paling berkesan',
+  gen:'Kertas dan tinta, Archivo Black, garis 3px, tipe mungil sebagai tekstur, karcis sobek',
+  note:'Mengubah "1% per hari" jadi mesin penerbitan: setiap hari satu edisi bernomor, produk berbentuk karcis. Memberi alasan struktural untuk memposting tiap hari. Risikonya: densitas setinggi ini berat di layar HP, dan butuh disiplin terbit yang nyata — kalau edisinya berhenti di 437, seluruh premisnya runtuh.',
+  ref:'ref: recent.design — Micrographic, Palantir×Quartr'},
+ {f:'v3-decode.html',n:'Decode Terminal',tag:'',tagl:'',
+  gen:'Mono penuh, headline men-decode karakter, UI huruf kecil, nomor di belakang blok',
+  note:'Bicara langsung ke audiens editor: log harian dengan alamat heksadesimal, angka yang bisa diverifikasi, nol bahasa motivasi. Paling jujur soal "ini matematika, bukan semangat". Risikonya: mono sepanjang halaman melelahkan dibaca, dan estetika ini menyaring audiens non-teknis.',
+  ref:'ref: bynar.io · JetBrains Mono · aksen #ccff00'},
+ {f:'v4-bone.html',n:'Bone Editorial',tag:'',tagl:'',
+  gen:'Terang hangat #e8e2d6, Instrument Serif, ruang kosong luas, satu ide per layar',
+  note:'Satu-satunya arah terang, dan itu yang membuatnya berharga: di feed penuh brand disiplin serba hitam, ini yang berhenti di-scroll. Nada tenang, bukan berteriak. Risikonya: paling jauh dari identitasmu sekarang, dan ruang kosong sebanyak ini menuntut copy yang benar-benar bagus untuk mengisinya.',
+  ref:'ref: chapitreresidentiel.com · #e8e2d6'},
+ {f:'v5-field.html',n:'Field Manual',tag:'',tagl:'',
+  gen:'Anton condensed, oranye #ff5c00, border 3px, ticker "X di atas Y"',
+  note:'Paling keras dan paling cocok dengan asal traffic-mu — ini terbaca sebagai TikTok, bukan sebagai situs korporat. Ticker "Disiplin di atas mood" adalah ethos yang bergerak. Risikonya: Anton di mana-mana menua cepat, dan nada berteriak sulit dipertahankan tanpa terdengar seperti akun motivasi mana pun.',
+  ref:'ref: get-ripe.com · Anton · #ff5c00'}
+];
+var g=document.getElementById('g'),d=document.getElementById('d'),di=document.getElementById('di'),cur=0;
+V.forEach(function(v,i){
+  var c=document.createElement('div');c.className='card';
+  c.innerHTML='<div class="wrap"><iframe src="'+v.f+'" loading="lazy" title="'+v.n+'"></iframe></div>'+
+    '<div class="meta"><div class="nm">'+(i+1)+'. '+v.n+(v.tag?' <span class="k '+v.tag+'">'+v.tagl+'</span>':'')+'</div>'+
+    '<div class="gen">'+v.gen+'</div><div class="note">'+v.note+'</div><div class="ref">'+v.ref+'</div></div>';
+  c.querySelector('.wrap').addEventListener('click',function(){open_(i)});
+  g.appendChild(c);
+});
+function open_(i){cur=i;di.src=V[i].f;if(!d.open)d.showModal()}
+function fit(){
+  document.querySelectorAll('.wrap').forEach(function(w){
+    w.querySelector('iframe').style.transform='scale('+(w.clientWidth/1440)+')';
+  });
+}
+window.addEventListener('resize',fit);fit();setTimeout(fit,400);
+document.addEventListener('keydown',function(e){
+  if(!d.open)return;
+  if(e.key==='ArrowRight'){open_((cur+1)%V.length)}
+  if(e.key==='ArrowLeft'){open_((cur-1+V.length)%V.length)}
+});
+</script>
+</body>
+</html>
