@@ -10,7 +10,10 @@ const NAV: Array<{ key: keyof typeof COPY.id.nav; href: string }> = [
   { key: 'home',      href: '/' },
   { key: 'wallpapers',href: '/wallpapers' },
   { key: 'tutorials', href: '/tutorials' },
-  { key: 'business',  href: '/innoproductions' },
+  // Hidden while /innoproductions is being reworked. The page and its copy are
+  // still in the repo — uncomment this to put it back in the nav (and restore
+  // the matching '4' entry in KeyboardNav).
+  // { key: 'business',  href: '/innoproductions' },
 ]
 
 export function Header() {

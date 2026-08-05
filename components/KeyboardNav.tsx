@@ -7,7 +7,8 @@ const KEY_MAP: Record<string, string> = {
   '1': '/',
   '2': '/wallpapers',
   '3': '/tutorials',
-  '4': '/innoproductions',
+  // Hidden alongside the header nav entry while /innoproductions is reworked.
+  // '4': '/innoproductions',
 }
 
 export function KeyboardNav() {
