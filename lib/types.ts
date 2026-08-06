@@ -15,6 +15,10 @@ export interface PackItem {
   tier: { id: string; en: string }
   dur: { id: string; en: string }
   desc: { id: string; en: string }
+  /** Bullet list shown on the pricing cards at /tutorials. */
+  features: Array<{ id: string; en: string }>
+  /** Exactly one pack should carry this — it renders as the red card. */
+  featured?: boolean
 }
 
 /* ── InnoProductions ──────────────────────────────────────────────── */
@@ -36,8 +40,8 @@ export interface TierItem {
   slug: string
   name: string
   price: string
-  /** Billing unit, e.g. '/ video' or '/ bulan'. */
-  unit: Bi
+  /** Billing unit, e.g. '/ video'. Omitted when the price is not a fixed figure. */
+  unit?: Bi
   tagline: Bi
   /** Highlighted as the recommended tier. */
   featured: boolean
@@ -65,6 +69,7 @@ export interface WorkItem {
   /** Client-facing project label. */
   title: Bi
   category: Bi
+  /** BeforeAfter still lays out either orientation; every sample is 16:9 today. */
   ratio: '9:16' | '16:9'
   /** On-screen hook text rendered into the AFTER frame. */
   hook: Bi

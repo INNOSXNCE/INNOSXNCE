@@ -1,6 +1,7 @@
 'use client'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { WorkItem } from '@/lib/types'
+import { T, TRACK, C } from '@/lib/type-scale'
 
 /**
  * Before/after comparison slider for the InnoProductions showcase.
@@ -17,7 +18,7 @@ import type { WorkItem } from '@/lib/types'
  */
 
 const SILVER = '#d4d4d4'
-const DIM = '#7a7a7a'
+const DIM = C.dim
 
 interface Props {
   work: WorkItem
@@ -157,7 +158,7 @@ export function BeforeAfter({ work, lang, beforeLabel, afterLabel }: Props) {
             justifyContent: 'center',
             gap: 4,
             color: '#fff',
-            fontSize: 9,
+            fontSize: T.micro,
             letterSpacing: '0.05em',
             cursor: 'inherit',
           }}
@@ -174,9 +175,9 @@ export function BeforeAfter({ work, lang, beforeLabel, afterLabel }: Props) {
             style={{
               fontFamily: 'var(--font-cinzel), serif',
               fontWeight: 600,
-              fontSize: 16,
+              fontSize: T.lead,
               color: '#fff',
-              letterSpacing: '0.04em',
+              letterSpacing: TRACK.body,
             }}
           >
             {work.title[lang]}
@@ -184,9 +185,9 @@ export function BeforeAfter({ work, lang, beforeLabel, afterLabel }: Props) {
           <div
             style={{
               marginTop: 5,
-              fontFamily: 'var(--font-manrope), sans-serif',
-              fontSize: 10,
-              letterSpacing: '0.2em',
+              fontFamily: 'var(--font-archivo), sans-serif',
+              fontSize: T.micro,
+              letterSpacing: TRACK.label,
               color: DIM,
             }}
           >
@@ -195,10 +196,10 @@ export function BeforeAfter({ work, lang, beforeLabel, afterLabel }: Props) {
         </div>
         <div
           style={{
-            fontFamily: 'var(--font-manrope), sans-serif',
-            fontSize: 10,
-            letterSpacing: '0.14em',
-            color: '#3a3a3a',
+            fontFamily: 'var(--font-archivo), sans-serif',
+            fontSize: T.micro,
+            letterSpacing: TRACK.button,
+            color: C.faint,
             whiteSpace: 'nowrap',
           }}
         >
@@ -240,7 +241,7 @@ function BeforeFrame() {
           position: 'absolute',
           top: 12,
           right: 12,
-          fontFamily: 'var(--font-manrope), sans-serif',
+          fontFamily: 'var(--font-archivo), sans-serif',
           fontSize: 9,
           letterSpacing: '0.12em',
           color: 'rgba(255,255,255,0.5)',
@@ -253,7 +254,7 @@ function BeforeFrame() {
           position: 'absolute',
           bottom: 12,
           left: 12,
-          fontFamily: 'var(--font-manrope), sans-serif',
+          fontFamily: 'var(--font-archivo), sans-serif',
           fontSize: 9,
           letterSpacing: '0.12em',
           color: 'rgba(255,255,255,0.35)',
@@ -349,7 +350,7 @@ function AfterFrame({
           padding: '5px 11px',
           background: 'rgba(255,255,255,0.94)',
           color: '#000',
-          fontFamily: 'var(--font-manrope), sans-serif',
+          fontFamily: 'var(--font-archivo), sans-serif',
           fontWeight: 700,
           fontSize: vertical ? 11 : 10,
           letterSpacing: '0.05em',
@@ -397,9 +398,9 @@ function Tag({ side, text, muted }: { side: 'left' | 'right'; text: string; mute
         padding: '4px 9px',
         background: 'rgba(0,0,0,0.62)',
         border: `1px solid ${muted ? '#333' : 'rgba(255,255,255,0.5)'}`,
-        fontFamily: 'var(--font-manrope), sans-serif',
-        fontSize: 9,
-        letterSpacing: '0.22em',
+        fontFamily: 'var(--font-archivo), sans-serif',
+        fontSize: T.micro,
+        letterSpacing: TRACK.label,
         color: muted ? DIM : '#fff',
         pointerEvents: 'none',
       }}

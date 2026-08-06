@@ -27,7 +27,7 @@ export const COPY = {
       'Ribuan orang lagi ngejar hal yang sama. Masuk, posting progress lo, dan biarin grup yang jagain konsistensi lo.',
     discordCta: 'Gabung Discord',
     wp: { buy: 'Beli →' },
-    tut: { take: 'Ambil →' },
+    tut: { take: 'Ambil →', takePack: 'Ambil paket', packLabel: 'Pack' },
     deviceNotif: { time: 'sekarang', msg: '1% hari ini. Udah belum?' },
     wpPage: {
       kicker: 'KOLEKSI · 12',
@@ -68,7 +68,7 @@ export const COPY = {
     inno: {
       kicker: 'INNOPRODUCTIONS · RUMAH PRODUKSI',
       title: 'Kami yang\nngedit.',
-      lead: 'InnoProductions adalah sisi bisnis dari INNOSXNCE. Kamu kirim footage mentah, kami kirim balik video yang layak diupload — shortform, longform, atau keduanya.',
+      lead: 'InnoProductions adalah sisi bisnis dari INNOSXNCE. Kamu kirim footage mentah, kami kirim balik video yang layak diupload. Shortform, longform, atau keduanya.',
       ctaPrimary: 'Mulai Proyek →',
       ctaSecondary: 'Lihat Harga',
       relation:
@@ -93,9 +93,9 @@ export const COPY = {
       pricingTitle: 'Angkanya di depan.',
       pricingSub: 'Nggak perlu nanya dulu buat tahu harga. Semua sudah termasuk revisi dan file siap upload.',
       pricingFeatured: 'PALING SERING DIAMBIL',
-      pricingPick: 'Ambil Paket →',
+      pricingPick: 'Hubungi Kami →',
       pricingNote:
-        'Harga di atas untuk lingkup standar. Proyek dengan footage sangat panjang, animasi berat, atau deadline mepet dihitung terpisah — tanya aja, penawarannya gratis.',
+        'Harga di atas untuk lingkup standar. Proyek dengan footage sangat panjang, animasi berat, atau deadline mepet dihitung terpisah. Tanya aja, penawarannya gratis.',
 
       addonsLabel: 'TAMBAHAN',
       addonsTitle: 'Bisa ditambah kapan aja.',
@@ -106,7 +106,7 @@ export const COPY = {
 
       contactLabel: 'MULAI',
       contactTitle: 'Ceritain proyeknya.',
-      contactSub: 'Isi brief singkat ini. Formnya otomatis nyusun pesan — tinggal pilih mau dikirim lewat WhatsApp atau email.',
+      contactSub: 'Isi brief singkat ini. Formnya otomatis nyusun pesan, tinggal pilih mau dikirim lewat WhatsApp atau email.',
       contactDirect: 'Atau langsung aja:',
 
       form: {
@@ -127,7 +127,7 @@ export const COPY = {
         required: 'wajib',
         sendWa: 'Kirim via WhatsApp →',
         sendMail: 'Kirim via Email →',
-        subject: 'Brief Proyek — InnoProductions',
+        subject: 'Brief Proyek untuk InnoProductions',
         missing: 'Isi dulu nama dan tipe proyeknya.',
         greeting: 'Halo InnoProductions, aku mau order edit video.',
       },
@@ -164,7 +164,7 @@ export const COPY = {
       'Thousands of people chasing the same thing. Get in, post your progress, and let the room hold your consistency.',
     discordCta: 'Join Discord',
     wp: { buy: 'Buy →' },
-    tut: { take: 'Get →' },
+    tut: { take: 'Get →', takePack: 'Take this pack', packLabel: 'Pack' },
     deviceNotif: { time: 'now', msg: '1% today. Did you?' },
     wpPage: {
       kicker: 'COLLECTION · 12',
@@ -205,7 +205,7 @@ export const COPY = {
     inno: {
       kicker: 'INNOPRODUCTIONS · PRODUCTION HOUSE',
       title: 'We do\nthe edit.',
-      lead: 'InnoProductions is the business side of INNOSXNCE. You send the raw footage, we send back a video worth publishing — shortform, longform, or both.',
+      lead: 'InnoProductions is the business side of INNOSXNCE. You send the raw footage, we send back a video worth publishing. Shortform, longform, or both.',
       ctaPrimary: 'Start a Project →',
       ctaSecondary: 'See Pricing',
       relation:
@@ -230,9 +230,9 @@ export const COPY = {
       pricingTitle: 'Numbers up front.',
       pricingSub: 'No need to ask before you know the cost. Revisions and upload-ready files are already in.',
       pricingFeatured: 'MOST CHOSEN',
-      pricingPick: 'Take This →',
+      pricingPick: 'Contact Us →',
       pricingNote:
-        'These prices cover standard scope. Projects with very long footage, heavy animation or a tight deadline are quoted separately — just ask, quoting is free.',
+        'These prices cover standard scope. Projects with very long footage, heavy animation or a tight deadline are quoted separately. Just ask, quoting is free.',
 
       addonsLabel: 'ADD-ONS',
       addonsTitle: 'Bolt on anything.',
@@ -243,7 +243,7 @@ export const COPY = {
 
       contactLabel: 'START',
       contactTitle: 'Tell me about the project.',
-      contactSub: 'Fill in this short brief. The form assembles the message for you — just pick WhatsApp or email to send it.',
+      contactSub: 'Fill in this short brief. The form assembles the message for you, then just pick WhatsApp or email to send it.',
       contactDirect: 'Or go direct:',
 
       form: {
@@ -264,7 +264,7 @@ export const COPY = {
         required: 'required',
         sendWa: 'Send via WhatsApp →',
         sendMail: 'Send via Email →',
-        subject: 'Project Brief — InnoProductions',
+        subject: 'Project Brief for InnoProductions',
         missing: 'Add your name and project type first.',
         greeting: 'Hi InnoProductions, I would like to order a video edit.',
       },

@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect, type CSSProperties } from 'react'
+import { useState, type CSSProperties } from 'react'
 import { useRouter } from 'next/navigation'
 import { useLang } from '@/lib/lang-context'
 import { COPY } from '@/lib/copy'
@@ -8,7 +8,9 @@ import { wpArt, packArt } from '@/lib/art'
 import { WallpaperCard } from '@/components/WallpaperCard'
 import { PackCard } from '@/components/PackCard'
 import { ScrollCue } from '@/components/ScrollCue'
+import { SocialOrbs } from '@/components/SocialOrbs'
 import { ScrollPop } from '@/components/ScrollPop'
+import { T, TRACK, C } from '@/lib/type-scale'
 
 const innoRed = '#c83232'
 
@@ -32,30 +34,10 @@ const heroFade = (delay: number): CSSProperties => ({
   animation: `heroFade 0.9s ${EASE_OUT_EXPO} ${delay}s both`,
 })
 
-function fmtTC(f: number): string {
-  const fps = 24
-  const tf = Math.floor(f)
-  const p = (n: number) => String(n).padStart(2, '0')
-  return `${p(Math.floor(tf / (fps * 3600)) % 24)}:${p(Math.floor(tf / (fps * 60)) % 60)}:${p(Math.floor(tf / fps) % 60)}:${p(tf % fps)}`
-}
-
 export default function HomePage() {
   const { lang } = useLang()
   const router = useRouter()
   const c = COPY[lang]
-
-  const [tc, setTc] = useState('00:00:00:00')
-
-  useEffect(() => {
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (reduce) return
-    let frame = 0
-    const id = setInterval(() => {
-      frame += 7
-      setTc(fmtTC(frame))
-    }, 250)
-    return () => clearInterval(id)
-  }, [])
 
   const featuredWp = WP.slice(0, 4)
 
@@ -104,9 +86,9 @@ export default function HomePage() {
 
         {/* Eyebrow — the rules draw outward from the label as it fades in. */}
         <div style={{ position: 'relative', zIndex: 6, display: 'flex', alignItems: 'center', gap: 18, marginBottom: 34 }}>
-          <span style={{ display: 'block', width: 58, height: 1, background: '#333', transformOrigin: 'right', animation: `heroRule 1s ${EASE_OUT_EXPO} 0.1s both` }} />
-          <span style={{ fontFamily: 'var(--font-manrope)', fontSize: 11, letterSpacing: '0.42em', color: '#7a7a7a', whiteSpace: 'nowrap', ...heroFade(0) }}>INNOSXNCE PRESENTS</span>
-          <span style={{ display: 'block', width: 58, height: 1, background: '#333', transformOrigin: 'left', animation: `heroRule 1s ${EASE_OUT_EXPO} 0.1s both` }} />
+          <span style={{ display: 'block', width: 58, height: 1, background: C.ghost, transformOrigin: 'right', animation: `heroRule 1s ${EASE_OUT_EXPO} 0.1s both` }} />
+          <span style={{ fontFamily: 'var(--font-archivo)', fontSize: T.micro, letterSpacing: '0.42em', color: C.dim, whiteSpace: 'nowrap', ...heroFade(0) }}>INNOSXNCE PRESENTS</span>
+          <span style={{ display: 'block', width: 58, height: 1, background: C.ghost, transformOrigin: 'left', animation: `heroRule 1s ${EASE_OUT_EXPO} 0.1s both` }} />
         </div>
 
         {/* Headline */}
@@ -129,58 +111,17 @@ export default function HomePage() {
             position: 'relative', zIndex: 6,
             margin: '32px 0 0', maxWidth: 540, padding: '0 20px',
             textAlign: 'center',
-            fontFamily: 'var(--font-manrope), sans-serif',
-            fontSize: 13, letterSpacing: '0.04em', color: '#7a7a7a', lineHeight: 1.7,
+            fontFamily: 'var(--font-archivo), sans-serif',
+            fontSize: T.item, letterSpacing: '0.04em', color: C.dim, lineHeight: 1.7,
             ...heroFade(0.95),
           }}
         >
           {c.heroTag}
         </p>
 
-        {/* Info panel */}
-        <div
-          style={{
-            position: 'absolute', top: 76, right: 'clamp(16px,4vw,48px)', zIndex: 6,
-            border: '1px solid #1d1d1d', padding: '10px 13px',
-            fontFamily: 'var(--font-manrope), sans-serif',
-            fontSize: 9, letterSpacing: '0.18em', color: '#7a7a7a',
-            minWidth: 150, whiteSpace: 'nowrap',
-            ...heroFade(1.1),
-          }}
-        >
-          {[['REEL', '01 / A'], ['DATE', '06 · 2026'], ['TC', tc]].map(([k, v]) => (
-            <div key={k} style={{ display: 'flex', justifyContent: 'space-between', gap: 18, marginTop: k === 'REEL' ? 0 : 5 }}>
-              <span>{k}</span>
-              <span style={{ color: '#fff', fontVariantNumeric: k === 'TC' ? 'tabular-nums' : undefined }}>{v}</span>
-            </div>
-          ))}
-        </div>
-
-        {/* REC */}
-        <div
-          style={{
-            position: 'absolute', bottom: 'calc(9vh + 18px)', left: 'clamp(16px,4vw,48px)', zIndex: 6,
-            display: 'flex', alignItems: 'center', gap: 8,
-            fontFamily: 'var(--font-manrope), sans-serif',
-            fontSize: 10, letterSpacing: '0.24em', color: '#7a7a7a', whiteSpace: 'nowrap',
-            ...heroFade(1.2),
-          }}
-        >
-          <span style={{ width: 8, height: 8, borderRadius: '50%', background: innoRed, animation: 'rec 1.4s steps(1) infinite' }} />
-          <span>REC · DAY 437</span>
-        </div>
-
-        {/* Runtime */}
-        <div
-          style={{
-            position: 'absolute', bottom: 'calc(9vh + 18px)', right: 'clamp(16px,4vw,48px)', zIndex: 6,
-            fontFamily: 'var(--font-manrope), sans-serif',
-            fontSize: 10, letterSpacing: '0.24em', color: '#7a7a7a',
-            ...heroFade(1.2),
-          }}
-        >
-          RUNTIME · 1% × ∞
-        </div>
+        {/* Socials — last thing in the hero to arrive, after the tagline has
+            settled, so the eye still lands on the headline first. */}
+        <SocialOrbs delay={1.15} />
 
         <ScrollCue />
       </section>
@@ -201,9 +142,9 @@ export default function HomePage() {
           1<span style={{ color: innoRed }}>%</span>
         </div>
         <div>
-          <div style={{ fontFamily: 'var(--font-manrope), sans-serif', fontSize: 11, letterSpacing: '0.3em', color: '#7a7a7a', marginBottom: 22 }}>{c.onePctLabel}</div>
+          <div style={{ fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.micro, letterSpacing: TRACK.wide, color: C.dim, marginBottom: 22 }}>{c.onePctLabel}</div>
           <p style={{ fontFamily: 'var(--font-cormorant), serif', fontStyle: 'italic', fontSize: 'clamp(22px,2.6vw,32px)', lineHeight: 1.5, color: '#e6e6e6', margin: '0 0 28px' }}>{c.onePctBody}</p>
-          <div style={{ fontFamily: 'var(--font-manrope), sans-serif', fontSize: 13, letterSpacing: '0.04em', color: '#fff', borderLeft: `2px solid ${innoRed}`, paddingLeft: 14, lineHeight: 1.6 }}>{c.onePctSub}</div>
+          <div style={{ fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.item, letterSpacing: '0.04em', color: '#fff', borderLeft: `2px solid ${innoRed}`, paddingLeft: 14, lineHeight: 1.6 }}>{c.onePctSub}</div>
 
           {/* Closing line + signature, carried over from the retired Manifesto
               page so the brand argument still lands without costing a route. */}
@@ -223,10 +164,10 @@ export default function HomePage() {
             <div
               style={{
                 marginTop: 14,
-                fontFamily: 'var(--font-manrope), sans-serif',
-                fontSize: 10,
-                letterSpacing: '0.3em',
-                color: '#7a7a7a',
+                fontFamily: 'var(--font-archivo), sans-serif',
+                fontSize: T.micro,
+                letterSpacing: TRACK.wide,
+                color: C.dim,
               }}
             >
               — INNOSXNCE
@@ -240,7 +181,7 @@ export default function HomePage() {
         <ScrollPop>
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 20, marginBottom: 42, flexWrap: 'wrap' }}>
           <div>
-            <div style={{ fontFamily: 'var(--font-manrope), sans-serif', fontSize: 11, letterSpacing: '0.3em', color: '#7a7a7a', marginBottom: 14 }}>{c.fwLabel}</div>
+            <div style={{ fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.micro, letterSpacing: TRACK.wide, color: C.dim, marginBottom: 14 }}>{c.fwLabel}</div>
             <h2 style={{ margin: 0, fontFamily: 'var(--font-cinzel), serif', fontWeight: 700, fontSize: 'clamp(26px,4vw,46px)' }}>{c.fwTitle}</h2>
           </div>
           <HoverLink onClick={() => router.push('/wallpapers')}>{c.fwCta}</HoverLink>
@@ -265,9 +206,9 @@ export default function HomePage() {
       <section style={{ borderTop: '1px solid #111', padding: 'clamp(60px,10vh,120px) clamp(20px,5vw,64px)', maxWidth: 1280, margin: '0 auto' }}>
         <ScrollPop>
         <div style={{ marginBottom: 42 }}>
-          <div style={{ fontFamily: 'var(--font-manrope), sans-serif', fontSize: 11, letterSpacing: '0.3em', color: '#7a7a7a', marginBottom: 14 }}>{c.packsLabel}</div>
+          <div style={{ fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.micro, letterSpacing: TRACK.wide, color: C.dim, marginBottom: 14 }}>{c.packsLabel}</div>
           <h2 style={{ margin: '0 0 10px', fontFamily: 'var(--font-cinzel), serif', fontWeight: 700, fontSize: 'clamp(26px,4vw,46px)' }}>{c.packsTitle}</h2>
-          <p style={{ margin: 0, fontFamily: 'var(--font-manrope), sans-serif', fontSize: 13, color: '#8a8a8a', letterSpacing: '0.02em' }}>{c.packsSub}</p>
+          <p style={{ margin: 0, fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.item, color: C.body, letterSpacing: '0.02em' }}>{c.packsSub}</p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'clamp(12px,1.6vw,20px)' }}>
           {packs.map(p => (
@@ -291,9 +232,9 @@ export default function HomePage() {
 
       {/* ── Discord CTA ── */}
       <section style={{ borderTop: '1px solid #111', padding: 'clamp(80px,14vh,160px) 20px', textAlign: 'center' }}>
-        <div style={{ fontFamily: 'var(--font-manrope), sans-serif', fontSize: 11, letterSpacing: '0.3em', color: '#7a7a7a' }}>{c.discordLabel}</div>
+        <div style={{ fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.micro, letterSpacing: TRACK.wide, color: C.dim }}>{c.discordLabel}</div>
         <h2 style={{ margin: '18px 0 0', fontFamily: 'var(--font-cinzel), serif', fontWeight: 700, fontSize: 'clamp(34px,6vw,74px)', lineHeight: 1.02 }}>{c.discordTitle}</h2>
-        <p style={{ maxWidth: 520, margin: '24px auto 34px', fontFamily: 'var(--font-manrope), sans-serif', fontSize: 14, lineHeight: 1.7, color: '#9a9a9a' }}>{c.discordBody}</p>
+        <p style={{ maxWidth: 520, margin: '24px auto 34px', fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.body, lineHeight: 1.7, color: C.body }}>{c.discordBody}</p>
         <ExternalCta href="https://discord.com/invite/pyvX8V3E8Q">{c.discordCta} →</ExternalCta>
       </section>
     </main>
@@ -307,7 +248,7 @@ function HoverLink({ onClick, children }: { onClick: () => void; children: React
       onClick={onClick}
       onMouseEnter={() => setH(true)}
       onMouseLeave={() => setH(false)}
-      style={{ fontFamily: 'var(--font-manrope), sans-serif', fontSize: 12, letterSpacing: '0.16em', color: h ? '#fff' : '#7a7a7a', whiteSpace: 'nowrap', background: 'none', border: 'none', transition: 'color 0.12s' }}
+      style={{ fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.meta, letterSpacing: TRACK.button, color: h ? '#fff' : C.dim, whiteSpace: 'nowrap', background: 'none', border: 'none', transition: 'color 0.12s' }}
     >
       {children}
     </button>
@@ -327,8 +268,8 @@ function ExternalCta({ href, children }: { href: string; children: React.ReactNo
         display: 'inline-block',
         background: h ? '#c83232' : '#fff',
         color: h ? '#fff' : '#000',
-        fontFamily: 'var(--font-manrope), sans-serif',
-        fontSize: 13, fontWeight: 600, letterSpacing: '0.16em',
+        fontFamily: 'var(--font-archivo), sans-serif',
+        fontSize: T.item, fontWeight: 600, letterSpacing: TRACK.button,
         padding: '15px 34px',
         textDecoration: 'none',
         transition: 'background 0.12s, color 0.12s',

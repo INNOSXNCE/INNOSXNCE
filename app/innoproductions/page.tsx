@@ -17,13 +17,14 @@ import { BeforeAfter } from '@/components/BeforeAfter'
 import { BriefForm } from '@/components/BriefForm'
 import { ScrollPop } from '@/components/ScrollPop'
 import type { TierItem, ServiceItem } from '@/lib/types'
+import { T, TRACK, C } from '@/lib/type-scale'
 
 /* InnoProductions runs a monochrome palette on purpose: INNOSXNCE owns the
    red, the studio side stays silver so the two brands read as related but
    distinct within the same shell. */
 const SILVER = '#d4d4d4'
-const DIM = '#7a7a7a'
-const LINE = '#1a1a1a'
+const DIM = C.dim
+const LINE = C.line
 const PAD = '0 clamp(20px,5vw,48px)'
 const MAX = 1100
 
@@ -55,10 +56,10 @@ export default function InnoProductionsPage() {
           style={{
             margin: '0 0 34px',
             maxWidth: 560,
-            fontFamily: 'var(--font-manrope), sans-serif',
-            fontSize: 15,
+            fontFamily: 'var(--font-archivo), sans-serif',
+            fontSize: T.lead,
             lineHeight: 1.75,
-            color: '#9a9a9a',
+            color: C.body,
           }}
         >
           {c.lead}
@@ -74,10 +75,10 @@ export default function InnoProductionsPage() {
               background: ctaH ? 'transparent' : '#fff',
               color: ctaH ? '#fff' : '#000',
               border: '1px solid #fff',
-              fontFamily: 'var(--font-manrope), sans-serif',
-              fontSize: 12,
+              fontFamily: 'var(--font-archivo), sans-serif',
+              fontSize: T.meta,
               fontWeight: 600,
-              letterSpacing: '0.16em',
+              letterSpacing: TRACK.button,
               textDecoration: 'none',
               transition: 'background 0.12s, color 0.12s',
             }}
@@ -93,10 +94,10 @@ export default function InnoProductionsPage() {
               background: 'transparent',
               color: cta2H ? '#fff' : DIM,
               border: `1px solid ${cta2H ? '#fff' : LINE}`,
-              fontFamily: 'var(--font-manrope), sans-serif',
-              fontSize: 12,
+              fontFamily: 'var(--font-archivo), sans-serif',
+              fontSize: T.meta,
               fontWeight: 600,
-              letterSpacing: '0.16em',
+              letterSpacing: TRACK.button,
               textDecoration: 'none',
               transition: 'color 0.12s, border-color 0.12s',
             }}
@@ -133,9 +134,9 @@ export default function InnoProductionsPage() {
               <div
                 style={{
                   marginTop: 10,
-                  fontFamily: 'var(--font-manrope), sans-serif',
-                  fontSize: 9,
-                  letterSpacing: '0.2em',
+                  fontFamily: 'var(--font-archivo), sans-serif',
+                  fontSize: T.micro,
+                  letterSpacing: TRACK.label,
                   color: DIM,
                 }}
               >
@@ -152,7 +153,7 @@ export default function InnoProductionsPage() {
             maxWidth: 620,
             fontFamily: 'var(--font-cormorant), serif',
             fontStyle: 'italic',
-            fontSize: 17,
+            fontSize: T.quote,
             lineHeight: 1.65,
             color: DIM,
             borderLeft: `1px solid ${SILVER}`,
@@ -205,10 +206,10 @@ export default function InnoProductionsPage() {
         <div
           style={{
             marginTop: 20,
-            fontFamily: 'var(--font-manrope), sans-serif',
-            fontSize: 10,
-            letterSpacing: '0.16em',
-            color: '#3a3a3a',
+            fontFamily: 'var(--font-archivo), sans-serif',
+            fontSize: T.micro,
+            letterSpacing: TRACK.button,
+            color: C.ghost,
           }}
         >
           {c.workHint}
@@ -258,10 +259,10 @@ export default function InnoProductionsPage() {
                     style={{
                       margin: 0,
                       maxWidth: 620,
-                      fontFamily: 'var(--font-manrope), sans-serif',
-                      fontSize: 13,
+                      fontFamily: 'var(--font-archivo), sans-serif',
+                      fontSize: T.item,
                       lineHeight: 1.75,
-                      color: '#9a9a9a',
+                      color: C.body,
                     }}
                   >
                     {p.desc[lang]}
@@ -299,10 +300,10 @@ export default function InnoProductionsPage() {
           style={{
             margin: '24px 0 0',
             maxWidth: 660,
-            fontFamily: 'var(--font-manrope), sans-serif',
-            fontSize: 12,
+            fontFamily: 'var(--font-archivo), sans-serif',
+            fontSize: T.meta,
             lineHeight: 1.75,
-            color: '#5a5a5a',
+            color: C.faint,
           }}
         >
           {c.pricingNote}
@@ -329,8 +330,8 @@ export default function InnoProductionsPage() {
               <div style={{ flex: '1 1 240px' }}>
                 <span
                   style={{
-                    fontFamily: 'var(--font-manrope), sans-serif',
-                    fontSize: 14,
+                    fontFamily: 'var(--font-archivo), sans-serif',
+                    fontSize: T.body,
                     fontWeight: 500,
                     color: '#fff',
                   }}
@@ -340,9 +341,9 @@ export default function InnoProductionsPage() {
                 <span
                   style={{
                     marginLeft: 12,
-                    fontFamily: 'var(--font-manrope), sans-serif',
-                    fontSize: 11,
-                    color: '#5a5a5a',
+                    fontFamily: 'var(--font-archivo), sans-serif',
+                    fontSize: T.micro,
+                    color: C.faint,
                   }}
                 >
                   {a.note[lang]}
@@ -352,7 +353,7 @@ export default function InnoProductionsPage() {
                 style={{
                   fontFamily: 'var(--font-cinzel), serif',
                   fontWeight: 600,
-                  fontSize: 16,
+                  fontSize: T.lead,
                   color: SILVER,
                   whiteSpace: 'nowrap',
                 }}
@@ -384,9 +385,9 @@ export default function InnoProductionsPage() {
             <div
               style={{
                 marginBottom: 16,
-                fontFamily: 'var(--font-manrope), sans-serif',
-                fontSize: 10,
-                letterSpacing: '0.22em',
+                fontFamily: 'var(--font-archivo), sans-serif',
+                fontSize: T.micro,
+                letterSpacing: TRACK.label,
                 color: DIM,
               }}
             >
@@ -426,9 +427,9 @@ function Kicker({ children }: { children: React.ReactNode }) {
     <div
       style={{
         marginBottom: 18,
-        fontFamily: 'var(--font-manrope), sans-serif',
-        fontSize: 11,
-        letterSpacing: '0.3em',
+        fontFamily: 'var(--font-archivo), sans-serif',
+        fontSize: T.micro,
+        letterSpacing: TRACK.wide,
         color: DIM,
       }}
     >
@@ -457,10 +458,10 @@ function SectionHead({ label, title, sub }: { label: string; title: string; sub?
           style={{
             margin: 0,
             maxWidth: 560,
-            fontFamily: 'var(--font-manrope), sans-serif',
-            fontSize: 14,
+            fontFamily: 'var(--font-archivo), sans-serif',
+            fontSize: T.body,
             lineHeight: 1.7,
-            color: '#9a9a9a',
+            color: C.body,
           }}
         >
           {sub}
@@ -486,14 +487,14 @@ function ServiceCard({ s, lang }: { s: ServiceItem; lang: 'id' | 'en' }) {
       }}
     >
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 18 }}>
-        <span style={{ fontFamily: 'var(--font-manrope), sans-serif', fontSize: 10, letterSpacing: '0.2em', color: DIM }}>
+        <span style={{ fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.micro, letterSpacing: TRACK.label, color: DIM }}>
           {s.num}
         </span>
         <span
           style={{
-            fontFamily: 'var(--font-manrope), sans-serif',
-            fontSize: 9,
-            letterSpacing: '0.18em',
+            fontFamily: 'var(--font-archivo), sans-serif',
+            fontSize: T.micro,
+            letterSpacing: TRACK.label,
             color: SILVER,
             border: `1px solid ${LINE}`,
             padding: '3px 8px',
@@ -513,7 +514,7 @@ function ServiceCard({ s, lang }: { s: ServiceItem; lang: 'id' | 'en' }) {
       >
         {s.title[lang]}
       </h3>
-      <p style={{ margin: '0 0 20px', fontFamily: 'var(--font-manrope), sans-serif', fontSize: 13, lineHeight: 1.7, color: '#9a9a9a' }}>
+      <p style={{ margin: '0 0 20px', fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.item, lineHeight: 1.7, color: C.body }}>
         {s.desc[lang]}
       </p>
       <ul style={{ margin: 0, padding: 0, listStyle: 'none', borderTop: `1px solid ${LINE}` }}>
@@ -523,10 +524,10 @@ function ServiceCard({ s, lang }: { s: ServiceItem; lang: 'id' | 'en' }) {
             style={{
               padding: '9px 0',
               borderBottom: `1px solid ${LINE}`,
-              fontFamily: 'var(--font-manrope), sans-serif',
-              fontSize: 12,
+              fontFamily: 'var(--font-archivo), sans-serif',
+              fontSize: T.meta,
               lineHeight: 1.5,
-              color: '#8a8a8a',
+              color: C.body,
             }}
           >
             <span style={{ color: SILVER, marginRight: 9 }}>✦</span>
@@ -552,7 +553,9 @@ function TierCard({
   greeting: string
 }) {
   const [h, setH] = useState(false)
-  const msg = `${greeting}\n\n${lang === 'id' ? 'Paket' : 'Package'}: ${t.name} (${t.price} ${t.unit[lang]})`
+  // STUDIO is quoted, not listed, so it carries a price with no billing unit.
+  const priceLabel = t.unit ? `${t.price} ${t.unit[lang]}` : t.price
+  const msg = `${greeting}\n\n${lang === 'id' ? 'Paket' : 'Package'}: ${t.name} (${priceLabel})`
 
   return (
     <div
@@ -575,10 +578,10 @@ function TierCard({
             padding: '5px 11px',
             background: SILVER,
             color: '#000',
-            fontFamily: 'var(--font-manrope), sans-serif',
-            fontSize: 9,
+            fontFamily: 'var(--font-archivo), sans-serif',
+            fontSize: T.micro,
             fontWeight: 700,
-            letterSpacing: '0.18em',
+            letterSpacing: TRACK.label,
           }}
         >
           {featuredLabel}
@@ -588,9 +591,9 @@ function TierCard({
       <div
         style={{
           marginTop: t.featured ? 12 : 0,
-          fontFamily: 'var(--font-manrope), sans-serif',
-          fontSize: 11,
-          letterSpacing: '0.28em',
+          fontFamily: 'var(--font-archivo), sans-serif',
+          fontSize: T.micro,
+          letterSpacing: TRACK.wide,
           color: DIM,
         }}
       >
@@ -609,7 +612,9 @@ function TierCard({
         >
           {t.price}
         </span>
-        <span style={{ fontFamily: 'var(--font-manrope), sans-serif', fontSize: 12, color: DIM }}>{t.unit[lang]}</span>
+        {t.unit && (
+          <span style={{ fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.meta, color: DIM }}>{t.unit[lang]}</span>
+        )}
       </div>
 
       <p
@@ -617,9 +622,9 @@ function TierCard({
           margin: '0 0 20px',
           fontFamily: 'var(--font-cormorant), serif',
           fontStyle: 'italic',
-          fontSize: 16,
+          fontSize: T.lead,
           lineHeight: 1.5,
-          color: '#9a9a9a',
+          color: C.body,
         }}
       >
         {t.tagline[lang]}
@@ -632,10 +637,10 @@ function TierCard({
             style={{
               padding: '9px 0',
               borderBottom: `1px solid ${LINE}`,
-              fontFamily: 'var(--font-manrope), sans-serif',
-              fontSize: 12,
+              fontFamily: 'var(--font-archivo), sans-serif',
+              fontSize: T.meta,
               lineHeight: 1.5,
-              color: '#8a8a8a',
+              color: C.body,
             }}
           >
             <span style={{ color: SILVER, marginRight: 9 }}>✦</span>
@@ -650,10 +655,10 @@ function TierCard({
           justifyContent: 'space-between',
           gap: 10,
           padding: '15px 0 20px',
-          fontFamily: 'var(--font-manrope), sans-serif',
-          fontSize: 10,
+          fontFamily: 'var(--font-archivo), sans-serif',
+          fontSize: T.micro,
           letterSpacing: '0.12em',
-          color: '#5a5a5a',
+          color: C.faint,
         }}
       >
         <span>{t.turnaround[lang]}</span>
@@ -673,10 +678,10 @@ function TierCard({
           background: t.featured || h ? '#fff' : 'transparent',
           color: t.featured || h ? '#000' : '#fff',
           border: '1px solid #fff',
-          fontFamily: 'var(--font-manrope), sans-serif',
-          fontSize: 11,
+          fontFamily: 'var(--font-archivo), sans-serif',
+          fontSize: T.micro,
           fontWeight: 600,
-          letterSpacing: '0.16em',
+          letterSpacing: TRACK.button,
           textDecoration: 'none',
           transition: 'background 0.12s, color 0.12s',
         }}
@@ -704,25 +709,25 @@ function FaqRow({ q, a }: { q: string; a: string }) {
           background: 'none',
           border: 'none',
           textAlign: 'left',
-          fontFamily: 'var(--font-manrope), sans-serif',
-          fontSize: 14,
+          fontFamily: 'var(--font-archivo), sans-serif',
+          fontSize: T.body,
           fontWeight: 500,
           color: open ? '#fff' : '#c8c8c8',
           cursor: 'inherit',
         }}
       >
         <span>{q}</span>
-        <span style={{ color: SILVER, fontSize: 15, flexShrink: 0 }}>{open ? '−' : '+'}</span>
+        <span style={{ color: SILVER, fontSize: T.lead, flexShrink: 0 }}>{open ? '−' : '+'}</span>
       </button>
       {open && (
         <p
           style={{
             margin: '0 0 20px',
             paddingRight: 30,
-            fontFamily: 'var(--font-manrope), sans-serif',
-            fontSize: 13,
+            fontFamily: 'var(--font-archivo), sans-serif',
+            fontSize: T.item,
             lineHeight: 1.8,
-            color: '#8a8a8a',
+            color: C.body,
           }}
         >
           {a}
@@ -743,13 +748,13 @@ function DirectLink({ label, value, href }: { label: string; value: string; href
       onMouseLeave={() => setH(false)}
       style={{ textDecoration: 'none', display: 'block' }}
     >
-      <div style={{ fontFamily: 'var(--font-manrope), sans-serif', fontSize: 9, letterSpacing: '0.22em', color: '#3a3a3a', marginBottom: 7 }}>
+      <div style={{ fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.micro, letterSpacing: TRACK.label, color: C.ghost, marginBottom: 7 }}>
         {label}
       </div>
       <div
         style={{
-          fontFamily: 'var(--font-manrope), sans-serif',
-          fontSize: 14,
+          fontFamily: 'var(--font-archivo), sans-serif',
+          fontSize: T.body,
           color: h ? '#fff' : SILVER,
           borderBottom: `1px solid ${h ? '#fff' : 'transparent'}`,
           paddingBottom: 2,

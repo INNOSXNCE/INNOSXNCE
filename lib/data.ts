@@ -32,6 +32,13 @@ export const PACKS: PackItem[] = [
       id: 'Dasar dari nol. Cut, timing, sound, dan transisi yang bikin editan lo nggak keliatan kaku.',
       en: 'The fundamentals. Cuts, timing, sound and transitions that stop your edits looking stiff.',
     },
+    // ── EN di bawah ini masih draft, tinggal ditimpa ──
+    features: [
+      { id: 'Cut, timing, dan napas', en: 'Cuts, timing, and breathing room' },
+      { id: 'Transisi yang nggak kaku', en: 'Transitions that never look stiff' },
+      { id: 'Project file tiap pelajaran', en: 'A project file with every lesson' },
+      { id: 'Akses selamanya', en: 'Lifetime access' },
+    ],
   },
   {
     slug: 'cinematic-edit',
@@ -44,6 +51,14 @@ export const PACKS: PackItem[] = [
       id: 'Color grade, motion, dan rasa sinematik. Bikin tiap klip kerasa kayak film pendek.',
       en: 'Color grade, motion and cinematic feel. Make every clip land like a short film.',
     },
+    // ── EN di bawah ini masih draft, tinggal ditimpa ──
+    features: [
+      { id: 'Color grade khas Innosxnce', en: 'The Innosxnce color grade' },
+      { id: 'Motion dan rasa sinematik', en: 'Motion and cinematic feel' },
+      { id: 'LUT pack + sound library', en: 'LUT pack + sound library' },
+      { id: 'Review karya sekali', en: 'One work review' },
+    ],
+    featured: true,
   },
   {
     slug: 'the-method',
@@ -56,5 +71,12 @@ export const PACKS: PackItem[] = [
       id: 'Semuanya. Dari nol sampai bikin konten yang konsisten dan punya gaya sendiri.',
       en: 'Everything. From zero to a consistent style that is unmistakably yours.',
     },
+    // ── EN di bawah ini masih draft, tinggal ditimpa ──
+    features: [
+      { id: 'Semua isi Pack 01 & 02', en: 'Everything in Pack 01 & 02' },
+      { id: 'Sistem konten 30 hari', en: 'A 30-day content system' },
+      { id: 'Cara bikin template sendiri', en: 'How to build your own templates' },
+      { id: 'Grup khusus alumni', en: 'Alumni-only group' },
+    ],
   },
 ]

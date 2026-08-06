@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useLang } from '@/lib/lang-context'
 import { COPY } from '@/lib/copy'
 import { CONTACT, waLink, mailLink } from '@/lib/inno-productions'
+import { T, TRACK, C } from '@/lib/type-scale'
 
 /**
  * Client brief form.
@@ -13,8 +14,8 @@ import { CONTACT, waLink, mailLink } from '@/lib/inno-productions'
  * instead of a blank "hi" — which is the whole point of the form.
  */
 
-const DIM = '#7a7a7a'
-const LINE = '#1a1a1a'
+const DIM = C.dim
+const LINE = C.line
 
 interface Fields {
   name: string
@@ -70,10 +71,10 @@ export function BriefForm() {
     flex: '1 1 220px',
     textAlign: 'center',
     padding: '15px 26px',
-    fontFamily: 'var(--font-manrope), sans-serif',
-    fontSize: 12,
+    fontFamily: 'var(--font-archivo), sans-serif',
+    fontSize: T.meta,
     fontWeight: 600,
-    letterSpacing: '0.16em',
+    letterSpacing: TRACK.button,
     textDecoration: 'none',
     background: hover ? '#fff' : 'transparent',
     color: hover ? '#000' : '#fff',
@@ -134,8 +135,8 @@ export function BriefForm() {
           role="alert"
           style={{
             marginTop: 14,
-            fontFamily: 'var(--font-manrope), sans-serif',
-            fontSize: 12,
+            fontFamily: 'var(--font-archivo), sans-serif',
+            fontSize: T.meta,
             letterSpacing: '0.04em',
             color: '#c83232',
           }}
@@ -170,10 +171,10 @@ export function BriefForm() {
       <div
         style={{
           marginTop: 16,
-          fontFamily: 'var(--font-manrope), sans-serif',
-          fontSize: 10,
+          fontFamily: 'var(--font-archivo), sans-serif',
+          fontSize: T.micro,
           letterSpacing: '0.1em',
-          color: '#3a3a3a',
+          color: C.ghost,
         }}
       >
         {CONTACT.hours[lang]}
@@ -188,8 +189,8 @@ const inputStyle: React.CSSProperties = {
   background: '#000',
   border: `1px solid ${LINE}`,
   color: '#fff',
-  fontFamily: 'var(--font-manrope), sans-serif',
-  fontSize: 13,
+  fontFamily: 'var(--font-archivo), sans-serif',
+  fontSize: T.item,
   outline: 'none',
   borderRadius: 0,
   cursor: 'inherit',
@@ -205,15 +206,15 @@ function Field({ label, hint, children }: { label: string; hint: string; childre
           justifyContent: 'space-between',
           gap: 8,
           marginBottom: 8,
-          fontFamily: 'var(--font-manrope), sans-serif',
-          fontSize: 10,
-          letterSpacing: '0.18em',
+          fontFamily: 'var(--font-archivo), sans-serif',
+          fontSize: T.micro,
+          letterSpacing: TRACK.label,
           color: DIM,
           textTransform: 'uppercase',
         }}
       >
         <span>{label}</span>
-        <span style={{ color: '#333', letterSpacing: '0.1em', textTransform: 'lowercase' }}>{hint}</span>
+        <span style={{ color: C.ghost, letterSpacing: '0.1em', textTransform: 'lowercase' }}>{hint}</span>
       </span>
       {children}
     </label>

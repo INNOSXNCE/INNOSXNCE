@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
+import { T, TRACK, C } from '@/lib/type-scale'
 
 // A "scroll down" hint over the hero. Arrives after the hero intro has played
 // and fades out permanently the first time the user scrolls, pointing them at
@@ -41,10 +42,10 @@ export function ScrollCue() {
     >
       <span
         style={{
-          fontFamily: 'var(--font-manrope), sans-serif',
-          fontSize: 10,
+          fontFamily: 'var(--font-archivo), sans-serif',
+          fontSize: T.micro,
           letterSpacing: '0.34em',
-          color: '#7a7a7a',
+          color: C.dim,
           paddingLeft: '0.34em',
         }}
       >
@@ -55,7 +56,7 @@ export function ScrollCue() {
           display: 'block',
           width: 1,
           height: 26,
-          background: 'linear-gradient(to bottom, #7a7a7a, transparent)',
+          background: 'linear-gradient(to bottom, #9a9a9a, transparent)',
           // Reduced-motion is handled globally in globals.css (neutralizes all animations).
           animation: 'scrollcue 1.8s ease-in-out infinite',
         }}

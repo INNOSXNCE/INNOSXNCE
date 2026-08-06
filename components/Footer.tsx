@@ -2,6 +2,7 @@
 import { useRouter } from 'next/navigation'
 import { useLang } from '@/lib/lang-context'
 import { COPY } from '@/lib/copy'
+import { T, TRACK, C } from '@/lib/type-scale'
 
 const SOCIALS = [
   { label: 'TIKTOK',    href: 'https://tiktok.com/@innosxnce1' },
@@ -15,10 +16,10 @@ export function Footer() {
   const c = COPY[lang]
 
   const linkStyle: React.CSSProperties = {
-    fontFamily: 'var(--font-manrope), sans-serif',
-    fontSize: 10,
-    letterSpacing: '0.16em',
-    color: '#7a7a7a',
+    fontFamily: 'var(--font-archivo), sans-serif',
+    fontSize: T.micro,
+    letterSpacing: TRACK.button,
+    color: C.dim,
     textDecoration: 'none',
   }
 
@@ -34,10 +35,10 @@ export function Footer() {
       >
         <div
           style={{
-            fontFamily: 'var(--font-manrope), sans-serif',
-            fontSize: 10,
-            letterSpacing: '0.16em',
-            color: '#7a7a7a',
+            fontFamily: 'var(--font-archivo), sans-serif',
+            fontSize: T.micro,
+            letterSpacing: TRACK.button,
+            color: C.dim,
           }}
         >
           {c.footerMade} · <span style={{ color: '#fff' }}>✦ 1% PER HARI</span>
@@ -70,7 +71,7 @@ export function Footer() {
               rel="noopener noreferrer"
               style={linkStyle}
               onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = '#fff')}
-              onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = '#7a7a7a')}
+              onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = C.dim)}
             >
               {label}
             </a>
@@ -80,10 +81,10 @@ export function Footer() {
       <div
         style={{
           padding: '6px clamp(20px,5vw,48px) 28px',
-          fontFamily: 'var(--font-manrope), sans-serif',
-          fontSize: 10,
+          fontFamily: 'var(--font-archivo), sans-serif',
+          fontSize: T.micro,
           lineHeight: 1.6,
-          color: '#3a3a3a',
+          color: C.ghost,
           maxWidth: 660,
         }}
       >

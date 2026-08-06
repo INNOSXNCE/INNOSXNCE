@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import type { CSSProperties } from 'react'
+import { T, TRACK, C } from '@/lib/type-scale'
 
 interface PackCardProps {
   num: string
@@ -47,9 +48,9 @@ export function PackCard({ num, tier, title, desc, lessons, dur, price, takeLabe
             position: 'absolute',
             top: 14,
             left: 16,
-            fontFamily: 'var(--font-manrope), sans-serif',
-            fontSize: 10,
-            letterSpacing: '0.24em',
+            fontFamily: 'var(--font-archivo), sans-serif',
+            fontSize: T.micro,
+            letterSpacing: TRACK.label,
             color: 'rgba(255,255,255,0.55)',
           }}
         >
@@ -73,10 +74,10 @@ export function PackCard({ num, tier, title, desc, lessons, dur, price, takeLabe
       {/* Content */}
       <div className="flex flex-col gap-3 flex-1" style={{ padding: 22 }}>
         <div className="flex justify-between items-center">
-          <span style={{ fontFamily: 'var(--font-manrope), sans-serif', fontSize: 10, letterSpacing: '0.24em', color: '#7a7a7a' }}>
+          <span style={{ fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.micro, letterSpacing: TRACK.label, color: C.dim }}>
             {tier}
           </span>
-          <span style={{ fontFamily: 'var(--font-manrope), sans-serif', fontSize: 10, letterSpacing: '0.1em', color: '#444' }}>
+          <span style={{ fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.micro, letterSpacing: '0.1em', color: '#444' }}>
             {num}
           </span>
         </div>
@@ -96,10 +97,10 @@ export function PackCard({ num, tier, title, desc, lessons, dur, price, takeLabe
         <p
           className="m-0 flex-1"
           style={{
-            fontFamily: 'var(--font-manrope), sans-serif',
-            fontSize: 13,
+            fontFamily: 'var(--font-archivo), sans-serif',
+            fontSize: T.item,
             lineHeight: 1.65,
-            color: '#9a9a9a',
+            color: C.body,
           }}
         >
           {desc}
@@ -108,16 +109,16 @@ export function PackCard({ num, tier, title, desc, lessons, dur, price, takeLabe
         <div
           className="flex gap-3"
           style={{
-            fontFamily: 'var(--font-manrope), sans-serif',
-            fontSize: 11,
+            fontFamily: 'var(--font-archivo), sans-serif',
+            fontSize: T.micro,
             letterSpacing: '0.06em',
-            color: '#7a7a7a',
+            color: C.dim,
             borderTop: '1px solid #141414',
             paddingTop: 14,
           }}
         >
           <span>{lessons}</span>
-          <span style={{ color: '#333' }}>·</span>
+          <span style={{ color: C.ghost }}>·</span>
           <span>{dur}</span>
         </div>
 
@@ -127,9 +128,9 @@ export function PackCard({ num, tier, title, desc, lessons, dur, price, takeLabe
           </span>
           <span
             style={{
-              fontFamily: 'var(--font-manrope), sans-serif',
-              fontSize: 12,
-              letterSpacing: '0.16em',
+              fontFamily: 'var(--font-archivo), sans-serif',
+              fontSize: T.meta,
+              letterSpacing: TRACK.button,
               color: '#fff',
               borderBottom: '1px solid #c83232',
               paddingBottom: 2,

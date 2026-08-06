@@ -33,7 +33,7 @@ export const mailLink = (subject: string, body: string) =>
 export const STATS: Array<{ n: string; l: { id: string; en: string } }> = [
   { n: '48 JAM', l: { id: 'DRAFT PERTAMA', en: 'FIRST DRAFT' } },
   { n: '4K', l: { id: 'RESOLUSI MAKS', en: 'MAX RESOLUTION' } },
-  { n: '9:16 · 16:9 · 1:1', l: { id: 'SEMUA FORMAT', en: 'EVERY FORMAT' } },
+  { n: '16:9', l: { id: 'FORMAT STANDAR', en: 'STANDARD FORMAT' } },
   { n: '2×', l: { id: 'REVISI MINIMUM', en: 'MINIMUM REVISIONS' } },
 ]
 
@@ -42,7 +42,7 @@ export const SERVICES: ServiceItem[] = [
   {
     slug: 'shortform',
     num: '01',
-    ratio: '9:16',
+    ratio: '16:9',
     title: { id: 'Shortform', en: 'Shortform' },
     desc: {
       id: 'Reels, TikTok, dan Shorts yang nahan orang di tiga detik pertama. Retensi dulu, estetika belakangan.',
@@ -53,7 +53,7 @@ export const SERVICES: ServiceItem[] = [
       { id: 'Subtitle bergaya (auto-sync)', en: 'Styled auto-synced subtitles' },
       { id: 'Sound design & SFX', en: 'Sound design & SFX' },
       { id: 'Pacing cepat, zero dead air', en: 'Fast pacing, zero dead air' },
-      { id: 'Export 1080×1920 siap upload', en: '1080×1920 export, upload-ready' },
+      { id: 'Export 1920×1080 siap upload', en: '1920×1080 export, upload-ready' },
     ],
   },
   {
@@ -76,16 +76,16 @@ export const SERVICES: ServiceItem[] = [
   {
     slug: 'podcast-clipping',
     num: '03',
-    ratio: '9:16',
+    ratio: '16:9',
     title: { id: 'Podcast Clipping', en: 'Podcast Clipping' },
     desc: {
-      id: 'Satu episode panjang dibedah jadi sepuluh klip vertikal. Satu rekaman, sebulan konten.',
-      en: 'One long episode dissected into ten vertical clips. One recording, a month of content.',
+      id: 'Satu episode panjang dibedah jadi sepuluh klip. Satu rekaman, sebulan konten.',
+      en: 'One long episode dissected into ten clips. One recording, a month of content.',
     },
     includes: [
       { id: 'Seleksi momen paling kuat', en: 'Selection of the strongest moments' },
       { id: '10 klip per episode', en: '10 clips per episode' },
-      { id: 'Reframe otomatis ke 9:16', en: 'Auto-reframe to 9:16' },
+      { id: 'Reframe otomatis ke 16:9', en: 'Auto-reframe to 16:9' },
       { id: 'Subtitle + speaker highlight', en: 'Subtitles + speaker highlight' },
       { id: 'Penamaan file siap jadwal', en: 'Scheduling-ready file naming' },
     ],
@@ -100,7 +100,7 @@ export const TIERS: TierItem[] = [
   {
     slug: 'cut',
     name: 'CUT',
-    price: 'Rp 350K',
+    price: 'Rp 299K',
     unit: { id: '/ video', en: '/ video' },
     tagline: {
       id: 'Satu video pendek, dikerjain sampai tajam.',
@@ -109,7 +109,7 @@ export const TIERS: TierItem[] = [
     featured: false,
     features: [
       { id: 'Durasi hasil maks 90 detik', en: 'Final runtime up to 90 seconds' },
-      { id: 'Format vertikal 9:16', en: 'Vertical 9:16 format' },
+      { id: 'Format 16:9', en: '16:9 format' },
       { id: 'Subtitle bergaya + sound design', en: 'Styled subtitles + sound design' },
       { id: 'Footage mentah maks 20 menit', en: 'Raw footage up to 20 minutes' },
       { id: 'Export 1080p', en: '1080p export' },
@@ -120,7 +120,7 @@ export const TIERS: TierItem[] = [
   {
     slug: 'feature',
     name: 'FEATURE',
-    price: 'Rp 1.5JT',
+    price: 'Rp 449K',
     unit: { id: '/ video', en: '/ video' },
     tagline: {
       id: 'Longform utuh, dari struktur sampai warna.',
@@ -141,8 +141,7 @@ export const TIERS: TierItem[] = [
   {
     slug: 'studio',
     name: 'STUDIO',
-    price: 'Rp 6.5JT',
-    unit: { id: '/ bulan', en: '/ month' },
+    price: 'Custom',
     tagline: {
       id: 'Editor tetap buat channel yang jalan tiap minggu.',
       en: 'A standing editor for a channel that ships weekly.',
@@ -190,7 +189,7 @@ export const ADDONS: AddOnItem[] = [
     slug: 'clipping',
     name: { id: 'Podcast clipping batch', en: 'Podcast clipping batch' },
     price: 'Rp 2.5JT',
-    note: { id: '1 episode → 10 klip vertikal', en: '1 episode → 10 vertical clips' },
+    note: { id: '1 episode → 10 klip', en: '1 episode → 10 clips' },
   },
   {
     slug: 'express',
@@ -242,8 +241,8 @@ export const WORK: WorkItem[] = [
   {
     slug: 'hook-retention',
     title: { id: 'Hook & Retensi', en: 'Hook & Retention' },
-    category: { id: 'SHORTFORM · 9:16', en: 'SHORTFORM · 9:16' },
-    ratio: '9:16',
+    category: { id: 'SHORTFORM · 16:9', en: 'SHORTFORM · 16:9' },
+    ratio: '16:9',
     hook: { id: 'JANGAN\nSKIP\nDULU', en: 'DO NOT\nSKIP\nTHIS' },
   },
   {
@@ -256,8 +255,8 @@ export const WORK: WorkItem[] = [
   {
     slug: 'clip-extraction',
     title: { id: 'Ekstraksi Klip', en: 'Clip Extraction' },
-    category: { id: 'PODCAST · 9:16', en: 'PODCAST · 9:16' },
-    ratio: '9:16',
+    category: { id: 'PODCAST · 16:9', en: 'PODCAST · 16:9' },
+    ratio: '16:9',
     hook: { id: 'BAGIAN\nINI YANG\nPENTING', en: 'THIS IS\nTHE PART\nTHAT MATTERS' },
   },
 ]
@@ -267,8 +266,8 @@ export const FAQ: FaqItem[] = [
   {
     q: { id: 'Gimana cara kirim footage-nya?', en: 'How do I send my footage?' },
     a: {
-      id: 'Google Drive, WeTransfer, atau Dropbox. Cukup kirim satu link yang bisa diakses, jangan dikompres dulu — makin mentah makin bagus hasil gradingnya.',
-      en: 'Google Drive, WeTransfer or Dropbox. One accessible link is enough, and please do not pre-compress it — the rawer the file, the better the grade.',
+      id: 'Google Drive, WeTransfer, atau Dropbox. Cukup kirim satu link yang bisa diakses, jangan dikompres dulu. Makin mentah, makin bagus hasil gradingnya.',
+      en: 'Google Drive, WeTransfer or Dropbox. One accessible link is enough, and please do not pre-compress it. The rawer the file, the better the grade.',
     },
   },
   {

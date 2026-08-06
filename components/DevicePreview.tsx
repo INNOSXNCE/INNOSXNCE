@@ -64,10 +64,10 @@ export function DevicePreview({ name, artStyle }: DevicePreviewProps) {
 
       {/* Clock */}
       <div className="absolute left-0 right-0 text-center" style={{ top: 62, zIndex: 2 }}>
-        <div style={{ fontFamily: 'var(--font-manrope), sans-serif', fontSize: 11, letterSpacing: '0.16em', color: 'rgba(255,255,255,0.82)' }}>
+        <div style={{ fontFamily: 'var(--font-archivo), sans-serif', fontSize: 11, letterSpacing: '0.16em', color: 'rgba(255,255,255,0.82)' }}>
           {clockDate}
         </div>
-        <div style={{ fontFamily: 'var(--font-manrope), sans-serif', fontWeight: 200, fontSize: 66, color: '#fff', lineHeight: 1, marginTop: 4 }}>
+        <div style={{ fontFamily: 'var(--font-archivo), sans-serif', fontWeight: 200, fontSize: 66, color: '#fff', lineHeight: 1, marginTop: 4 }}>
           {clock}
         </div>
       </div>
@@ -100,10 +100,10 @@ export function DevicePreview({ name, artStyle }: DevicePreviewProps) {
           zIndex: 2,
         }}
       >
-        <div style={{ fontFamily: 'var(--font-manrope), sans-serif', fontSize: 9, letterSpacing: '0.1em', color: 'rgba(255,255,255,0.65)' }}>
+        <div style={{ fontFamily: 'var(--font-archivo), sans-serif', fontSize: 9, letterSpacing: '0.1em', color: 'rgba(255,255,255,0.65)' }}>
           INNOSXNCE · {notif.time}
         </div>
-        <div style={{ fontFamily: 'var(--font-manrope), sans-serif', fontSize: 11, color: '#fff', marginTop: 3 }}>
+        <div style={{ fontFamily: 'var(--font-archivo), sans-serif', fontSize: 11, color: '#fff', marginTop: 3 }}>
           {notif.msg}
         </div>
       </div>

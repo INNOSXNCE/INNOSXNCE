@@ -7,6 +7,7 @@ import { wpArt } from '@/lib/art'
 import { WallpaperCard } from '@/components/WallpaperCard'
 import { DevicePreview } from '@/components/DevicePreview'
 import type { CSSProperties } from 'react'
+import { T, TRACK, C } from '@/lib/type-scale'
 
 interface HoveredWp {
   name: string
@@ -28,9 +29,9 @@ export default function WallpapersPage() {
     >
       {/* Header */}
       <div style={{ marginBottom: 50, maxWidth: 620 }}>
-        <div style={{ fontFamily: 'var(--font-manrope), sans-serif', fontSize: 11, letterSpacing: '0.3em', color: '#7a7a7a', marginBottom: 16 }}>{wp.kicker}</div>
+        <div style={{ fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.micro, letterSpacing: TRACK.wide, color: C.dim, marginBottom: 16 }}>{wp.kicker}</div>
         <h1 style={{ margin: '0 0 16px', fontFamily: 'var(--font-cinzel), serif', fontWeight: 700, fontSize: 'clamp(44px,8vw,86px)', lineHeight: 0.95 }}>{wp.title}</h1>
-        <p style={{ margin: 0, fontFamily: 'var(--font-manrope), sans-serif', fontSize: 14, lineHeight: 1.7, color: '#9a9a9a' }}>{wp.sub}</p>
+        <p style={{ margin: 0, fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.body, lineHeight: 1.7, color: C.body }}>{wp.sub}</p>
       </div>
 
       {/* Grid */}
@@ -90,9 +91,9 @@ function BundleBanner({
       onMouseLeave={() => setH(false)}
     >
       <div>
-        <div style={{ fontFamily: 'var(--font-manrope), sans-serif', fontSize: 10, letterSpacing: '0.3em', color: '#c83232', marginBottom: 12 }}>{label}</div>
+        <div style={{ fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.micro, letterSpacing: TRACK.wide, color: '#c83232', marginBottom: 12 }}>{label}</div>
         <h2 style={{ margin: '0 0 12px', fontFamily: 'var(--font-cinzel), serif', fontWeight: 700, fontSize: 'clamp(26px,3.4vw,40px)' }}>{title}</h2>
-        <p style={{ margin: 0, maxWidth: 460, fontFamily: 'var(--font-manrope), sans-serif', fontSize: 13, lineHeight: 1.7, color: '#9a9a9a' }}>{body}</p>
+        <p style={{ margin: 0, maxWidth: 460, fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.item, lineHeight: 1.7, color: C.body }}>{body}</p>
       </div>
       <a
         href={productLink('all-access')}
@@ -104,8 +105,8 @@ function BundleBanner({
           display: 'inline-block', whiteSpace: 'nowrap',
           background: btnH ? '#c83232' : '#fff',
           color: btnH ? '#fff' : '#000',
-          fontFamily: 'var(--font-manrope), sans-serif',
-          fontSize: 13, fontWeight: 600, letterSpacing: '0.14em',
+          fontFamily: 'var(--font-archivo), sans-serif',
+          fontSize: T.item, fontWeight: 600, letterSpacing: TRACK.button,
           padding: '15px 30px', textDecoration: 'none',
           transition: 'background 0.12s, color 0.12s',
         }}

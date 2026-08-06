@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { useLang } from '@/lib/lang-context'
 import { COPY } from '@/lib/copy'
+import { T, TRACK, C } from '@/lib/type-scale'
 
 export default function CommunityPage() {
   const { lang } = useLang()
@@ -18,9 +19,9 @@ export default function CommunityPage() {
     >
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: 54 }}>
-        <div style={{ fontFamily: 'var(--font-manrope), sans-serif', fontSize: 11, letterSpacing: '0.3em', color: '#7a7a7a', marginBottom: 16 }}>{com.kicker}</div>
+        <div style={{ fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.micro, letterSpacing: TRACK.wide, color: C.dim, marginBottom: 16 }}>{com.kicker}</div>
         <h1 style={{ margin: '0 0 16px', fontFamily: 'var(--font-cinzel), serif', fontWeight: 700, fontSize: 'clamp(40px,7vw,82px)', lineHeight: 0.96 }}>{com.title}</h1>
-        <p style={{ margin: '0 auto', maxWidth: 480, fontFamily: 'var(--font-manrope), sans-serif', fontSize: 14, lineHeight: 1.7, color: '#9a9a9a' }}>{com.sub}</p>
+        <p style={{ margin: '0 auto', maxWidth: 480, fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.body, lineHeight: 1.7, color: C.body }}>{com.sub}</p>
       </div>
 
       {/* Stats grid */}
@@ -29,7 +30,7 @@ export default function CommunityPage() {
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
           gap: 1,
-          background: '#1a1a1a',
+          background: C.line,
           border: '1px solid #1a1a1a',
           marginBottom: 46,
         }}
@@ -37,7 +38,7 @@ export default function CommunityPage() {
         {com.stats.map(s => (
           <div key={s.l} style={{ background: '#000', padding: '30px 14px', textAlign: 'center' }}>
             <div style={{ fontFamily: 'var(--font-cinzel), serif', fontWeight: 700, fontSize: 'clamp(28px,4vw,46px)', color: '#fff', lineHeight: 1 }}>{s.n}</div>
-            <div style={{ fontFamily: 'var(--font-manrope), sans-serif', fontSize: 10, letterSpacing: '0.2em', color: '#7a7a7a', marginTop: 12 }}>{s.l}</div>
+            <div style={{ fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.micro, letterSpacing: TRACK.label, color: C.dim, marginTop: 12 }}>{s.l}</div>
           </div>
         ))}
       </div>
@@ -61,8 +62,8 @@ export default function CommunityPage() {
             display: 'inline-block',
             background: btnH ? '#c83232' : '#fff',
             color: btnH ? '#fff' : '#000',
-            fontFamily: 'var(--font-manrope), sans-serif',
-            fontSize: 13, fontWeight: 600, letterSpacing: '0.16em',
+            fontFamily: 'var(--font-archivo), sans-serif',
+            fontSize: T.item, fontWeight: 600, letterSpacing: TRACK.button,
             padding: '16px 38px', textDecoration: 'none',
             transition: 'background 0.12s, color 0.12s',
           }}
@@ -82,9 +83,9 @@ function BenefitCard({ title, desc }: { title: string; desc: string }) {
       onMouseEnter={() => setH(true)}
       onMouseLeave={() => setH(false)}
     >
-      <div style={{ color: '#c83232', fontSize: 14, marginBottom: 16 }}>✦</div>
+      <div style={{ color: '#c83232', fontSize: T.body, marginBottom: 16 }}>✦</div>
       <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-cinzel), serif', fontWeight: 600, fontSize: 'clamp(18px,2.2vw,24px)', color: '#fff' }}>{title}</h3>
-      <p style={{ margin: 0, fontFamily: 'var(--font-manrope), sans-serif', fontSize: 13, lineHeight: 1.7, color: '#9a9a9a' }}>{desc}</p>
+      <p style={{ margin: 0, fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.item, lineHeight: 1.7, color: C.body }}>{desc}</p>
     </div>
   )
 }

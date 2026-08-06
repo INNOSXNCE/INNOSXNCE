@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import type { CSSProperties } from 'react'
+import { T, TRACK, C } from '@/lib/type-scale'
 
 interface WallpaperCardProps {
   idx: string
@@ -51,9 +52,9 @@ export function WallpaperCard({
       <div
         className="absolute top-3 left-3 right-3 flex justify-between"
         style={{
-          fontFamily: 'var(--font-manrope), sans-serif',
-          fontSize: 10,
-          letterSpacing: '0.2em',
+          fontFamily: 'var(--font-archivo), sans-serif',
+          fontSize: T.micro,
+          letterSpacing: TRACK.label,
           color: 'rgba(255,255,255,0.5)',
           zIndex: 2,
         }}
@@ -77,10 +78,10 @@ export function WallpaperCard({
         </div>
         <div
           style={{
-            fontFamily: 'var(--font-manrope), sans-serif',
+            fontFamily: 'var(--font-archivo), sans-serif',
             fontSize: subtextSize,
-            letterSpacing: '0.18em',
-            color: '#8a8a8a',
+            letterSpacing: TRACK.label,
+            color: C.body,
             marginTop: 4,
             lineHeight: subtextSize > 10 ? 1.5 : undefined,
           }}
@@ -98,9 +99,9 @@ export function WallpaperCard({
           style={{
             border: '1px solid #fff',
             padding: '8px 16px',
-            fontFamily: 'var(--font-manrope), sans-serif',
-            fontSize: 11,
-            letterSpacing: '0.2em',
+            fontFamily: 'var(--font-archivo), sans-serif',
+            fontSize: T.micro,
+            letterSpacing: TRACK.label,
             color: '#fff',
           }}
         >

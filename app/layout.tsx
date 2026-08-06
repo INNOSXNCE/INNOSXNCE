@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Cinzel, Cormorant_Garamond, Manrope } from 'next/font/google'
+import { Cinzel, Cormorant_Garamond, Archivo } from 'next/font/google'
 import './globals.css'
 import { Providers } from './providers'
 import { NoiseOverlay } from '@/components/NoiseOverlay'
@@ -21,10 +21,10 @@ const cormorant = Cormorant_Garamond({
   variable: '--font-cormorant',
 })
 
-const manrope = Manrope({
+const archivo = Archivo({
   subsets: ['latin'],
   weight: ['200', '300', '400', '500', '600', '700'],
-  variable: '--font-manrope',
+  variable: '--font-archivo',
 })
 
 export const metadata: Metadata = {
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="id" className={`${cinzel.variable} ${cormorant.variable} ${manrope.variable}`}>
+    <html lang="id" className={`${cinzel.variable} ${cormorant.variable} ${archivo.variable}`}>
       <body>
         <Providers>
           <SpaceBackdrop />

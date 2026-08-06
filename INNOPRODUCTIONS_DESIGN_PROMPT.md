@@ -39,7 +39,7 @@ InnoProductions is the parent business; INNOSXNCE is its creator sub-brand. But 
 | React | **React 19** |
 | Language | **TypeScript**, strict |
 | Styling | **Tailwind CSS v4** (`@import "tailwindcss"` + `@theme` block in `app/globals.css`) |
-| Fonts | `next/font/google` — Cinzel, Cormorant Garamond, Manrope |
+| Fonts | `next/font/google` — Cinzel, Cormorant Garamond, Archivo |
 | Hosting | Vercel |
 | Backend | **None. There is no server, no database, no API route.** |
 
@@ -56,7 +56,7 @@ style={{
 }}
 ```
 
-Follow this. Do not convert the page to Tailwind classes. Do not add CSS modules, styled-components, or a `.css` file. Font variables available: `--font-cinzel`, `--font-cormorant`, `--font-manrope`.
+Follow this. Do not convert the page to Tailwind classes. Do not add CSS modules, styled-components, or a `.css` file. Font variables available: `--font-cinzel`, `--font-cormorant`, `--font-archivo`.
 
 ### Existing app shell (already built — do not rebuild, just fit inside it)
 
@@ -105,9 +105,9 @@ Hover behaviour throughout the site: borders go `#1a1a1a → #fff`, and primary 
 | H1 | Cinzel 700, `clamp(42px,8.5vw,96px)`, `line-height: 0.94`, `letterSpacing: -0.01em` |
 | H2 (section) | Cinzel 700, `clamp(28px,5vw,54px)`, `line-height: 1.02` |
 | H3 (card) | Cinzel 600, `clamp(17px,2.4vw,25px)` |
-| Kicker / eyebrow | Manrope 11px, `letterSpacing: 0.3em`, uppercase, `#7a7a7a` |
-| Micro label | Manrope 9–10px, `letterSpacing: 0.18–0.22em`, uppercase |
-| Body | Manrope 13–15px, `line-height: 1.7–1.8`, `#9a9a9a` |
+| Kicker / eyebrow | Archivo 11px, `letterSpacing: 0.3em`, uppercase, `#7a7a7a` |
+| Micro label | Archivo 9–10px, `letterSpacing: 0.18–0.22em`, uppercase |
+| Body | Archivo 13–15px, `line-height: 1.7–1.8`, `#9a9a9a` |
 | Pull quote | Cormorant Garamond **italic** 16–17px, `line-height: 1.5–1.65` |
 | Price figure | Cinzel 700, `clamp(28px,4vw,40px)`, `#fff` |
 
@@ -151,7 +151,7 @@ Headline renders with `whiteSpace: 'pre-line'` so the `\n` breaks.
 
 ### 4.2 SPEC STRIP + BRAND RELATIONSHIP
 
-A 4-cell grid, hairline-separated (`gap: 1` over a `#1a1a1a` background — the classic 1px-gap grid trick), each cell `background: #000`, centered, big Cinzel figure over a tiny Manrope label.
+A 4-cell grid, hairline-separated (`gap: 1` over a `#1a1a1a` background — the classic 1px-gap grid trick), each cell `background: #000`, centered, big Cinzel figure over a tiny Archivo label.
 
 **These are specifications, not vanity metrics — deliberately so.** Do not replace them with invented client counts or testimonial numbers. Nothing on this page may claim social proof that cannot be verified.
 
@@ -207,7 +207,7 @@ Three comparison sliders in a responsive grid. Corner labels — ID `MENTAH` / `
 | `narrative-cut` | Potongan Naratif / Narrative Cut | `LONGFORM · 16:9` | 16:9 | `BAB 01 — AWAL` / `CHAPTER 01 — THE START` |
 | `clip-extraction` | Ekstraksi Klip / Clip Extraction | `PODCAST · 9:16` | 9:16 | `BAGIAN\nINI YANG\nPENTING` / `THIS IS\nTHE PART\nTHAT MATTERS` |
 
-Below each slider: Cinzel title, dim Manrope category line, and the live slider position as a percentage on the right.
+Below each slider: Cinzel title, dim Archivo category line, and the live slider position as a percentage on the right.
 
 Full interaction and visual spec in **§5.2** — read it, this is the most involved component on the page.
 
@@ -323,7 +323,7 @@ Each row: a full-width borderless button, question on the left, a silver `+` / `
 
 Header — ID: `MULAI`, `Ceritain proyeknya.`, `Isi brief singkat ini. Formnya otomatis nyusun pesan — tinggal pilih mau dikirim lewat WhatsApp atau email.` / EN: `START`, `Tell me about the project.`, `Fill in this short brief. The form assembles the message for you — just pick WhatsApp or email to send it.`
 
-Max-width 760. Fields in a `repeat(auto-fit, minmax(230px, 1fr))` grid, with the notes textarea full-width below. Every field label is a flex row: uppercase Manrope 10px label on the left, a lowercase `wajib`/`opsional` (`required`/`optional`) hint in `#333` on the right. Inputs are black-filled with a `#1a1a1a` border, `borderRadius: 0`, no focus glow — just swap the border to `#fff`.
+Max-width 760. Fields in a `repeat(auto-fit, minmax(230px, 1fr))` grid, with the notes textarea full-width below. Every field label is a flex row: uppercase Archivo 10px label on the left, a lowercase `wajib`/`opsional` (`required`/`optional`) hint in `#333` on the right. Inputs are black-filled with a `#1a1a1a` border, `borderRadius: 0`, no focus glow — just swap the border to `#fff`.
 
 | Field | Label ID / EN | Type | Placeholder ID / EN | Required |
 |---|---|---|---|---|

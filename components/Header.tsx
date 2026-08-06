@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import { useLang } from '@/lib/lang-context'
 import { COPY } from '@/lib/copy'
+import { T, TRACK, C } from '@/lib/type-scale'
 
 // Main nav is the sales path only. /community still exists but is reached from
 // the footer and the Discord section on the home page.
@@ -72,11 +73,11 @@ export function Header() {
 
   const togBtn = (on: boolean): React.CSSProperties => ({
     padding: '7px 11px',
-    fontFamily: 'var(--font-manrope), sans-serif',
+    fontFamily: 'var(--font-archivo), sans-serif',
     fontSize: '11px',
-    letterSpacing: '0.18em',
+    letterSpacing: TRACK.label,
     background: on ? '#fff' : 'transparent',
-    color: on ? '#000' : '#7a7a7a',
+    color: on ? '#000' : C.dim,
     border: 'none',
   })
 
@@ -105,14 +106,14 @@ export function Header() {
           style={{
             fontFamily: 'var(--font-cinzel), serif',
             fontWeight: 600,
-            fontSize: 14,
-            letterSpacing: '0.3em',
+            fontSize: T.body,
+            letterSpacing: TRACK.wide,
             background: 'none',
             border: 'none',
             padding: 0,
           }}
         >
-          <span style={{ fontSize: 13 }}>✦</span>
+          <span style={{ fontSize: T.item }}>✦</span>
           <span>INNOSXNCE</span>
         </button>
 
@@ -126,11 +127,11 @@ export function Header() {
                 onClick={() => navigate(href)}
                 style={{
                   padding: '4px 0',
-                  fontFamily: 'var(--font-manrope), sans-serif',
-                  fontSize: 11,
-                  letterSpacing: '0.2em',
+                  fontFamily: 'var(--font-archivo), sans-serif',
+                  fontSize: T.micro,
+                  letterSpacing: TRACK.label,
                   whiteSpace: 'nowrap',
-                  color: active ? '#fff' : '#7a7a7a',
+                  color: active ? '#fff' : C.dim,
                   background: 'none',
                   border: 'none',
                   borderBottom: `1px solid ${active ? '#c83232' : 'transparent'}`,
@@ -148,10 +149,10 @@ export function Header() {
             className="lg:hidden"
             onClick={() => setMenuOpen(o => !o)}
             style={{
-              fontFamily: 'var(--font-manrope), sans-serif',
-              fontSize: 11,
-              letterSpacing: '0.24em',
-              color: menuOpen ? '#fff' : '#7a7a7a',
+              fontFamily: 'var(--font-archivo), sans-serif',
+              fontSize: T.micro,
+              letterSpacing: TRACK.label,
+              color: menuOpen ? '#fff' : C.dim,
               background: 'none',
               border: 'none',
             }}
@@ -181,7 +182,7 @@ export function Header() {
                 fontFamily: 'var(--font-cinzel), serif',
                 fontWeight: 600,
                 fontSize: 22,
-                letterSpacing: '0.18em',
+                letterSpacing: TRACK.label,
                 color: pathname === href ? '#c83232' : '#fff',
                 background: 'none',
                 border: 'none',
@@ -189,10 +190,10 @@ export function Header() {
             >
               <span
                 style={{
-                  fontFamily: 'var(--font-manrope), sans-serif',
-                  fontSize: 10,
-                  letterSpacing: '0.2em',
-                  color: '#7a7a7a',
+                  fontFamily: 'var(--font-archivo), sans-serif',
+                  fontSize: T.micro,
+                  letterSpacing: TRACK.label,
+                  color: C.dim,
                   marginRight: 12,
                 }}
               >
