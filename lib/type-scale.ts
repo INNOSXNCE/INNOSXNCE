@@ -52,20 +52,53 @@ export const TRACK = {
   body: '0.04em',
 } as const
 
-/** Greys, lightest to darkest. Each one is a step up from what it replaced. */
+/**
+ * The palette, as inline-style-ready strings.
+ *
+ * These are deliberately `var(--color-…)` references rather than hex. The
+ * actual values live in the `@theme` block of `app/globals.css`, which is the
+ * single definition — so the CSS-only rules there (placeholder, scrollbar,
+ * selection, focus ring) and the inline style objects here cannot drift apart.
+ * They used to: the stylesheet was still on #7a7a7a-era greys long after this
+ * file had moved off them.
+ *
+ * Everything resolves at paint time, so gradients, borders and box-shadows all
+ * accept these unchanged. Nothing on this site paints to a canvas or writes a
+ * colour into an SVG `fill` attribute, which are the two places a `var()` would
+ * not resolve — if that ever changes, read the hex out of `globals.css`.
+ */
 export const C = {
+  /* Text ladder, lightest to darkest. */
   /** Headings and key figures. */
-  text: '#fff',
+  text: 'var(--color-text)',
   /** Paragraph copy. Was #9a9a9a. */
-  body: '#b4b4b4',
+  body: 'var(--color-body)',
   /** Labels, kickers, metadata. Was #7a7a7a. */
-  dim: '#9a9a9a',
+  dim: 'var(--color-dim)',
   /** Fine print. Was #5a5a5a. */
-  faint: '#6e6e6e',
+  faint: 'var(--color-faint)',
   /** Decorative only — never for text a visitor must read. Was #3a3a3a. */
-  ghost: '#4a4a4a',
+  ghost: 'var(--color-ghost)',
+
+  /* Surfaces. */
+  /** The page itself. */
+  bg: 'var(--color-bg)',
+  /** Lifted a hair off the page: the featured pricing tier, device bezels. */
+  raised: 'var(--color-raised)',
+
+  /* Rules. */
   /** Hairline rules and card edges. */
-  line: '#1a1a1a',
+  line: 'var(--color-line)',
+  /** Every bordered surface goes here on hover, in 0.12s. Not a new colour —
+      naming it stops the next card from inventing its own #2a2a2a. */
+  lineHover: 'var(--color-line-hover)',
+
+  /* Accents. */
+  /** InnoProductions silver: bullets, prices, step numbers, featured edge. */
+  silver: 'var(--color-silver)',
   /** INNOSXNCE red. Used sparingly. */
-  red: '#c83232',
+  red: 'var(--color-red-inno)',
+
+  /** Ink on the white-filled brief form fields — the one inverse context. */
+  fieldInk: 'var(--color-field-ink)',
 } as const

@@ -5,7 +5,45 @@
   --font-family-cinzel: var(--font-cinzel), serif;
   --font-family-cormorant: var(--font-cormorant), serif;
   --font-family-archivo: var(--font-archivo), sans-serif;
+
+  /* ── The palette. This block is the only place a colour is defined. ──
+     `C` in lib/type-scale.ts is a thin typed wrapper that points every
+     inline style object at these same variables, so TypeScript and CSS
+     cannot drift apart the way they did before.
+
+     Before this existed the site carried eleven different near-black
+     hairlines — #111, #121212, #141414, #161616, #1d1d1d, #222, #1a1a1a —
+     all doing the identical job of a 1px rule, plus three light greys
+     (#c8c8c8, #d4d4d4, #e6e6e6) that were indistinguishable on screen.
+     Adding a colour here is a deliberate act; reaching for a raw hex in a
+     component is not. */
+
+  /* Surfaces. */
+  --color-bg: #000;
+  --color-raised: #060606;
+
+  /* Text ladder, lightest to darkest. Every step clears 4.5:1 on #000
+     except `ghost`, which is decorative only — never put readable text
+     on it. */
+  --color-text: #fff;
+  --color-body: #b4b4b4;
+  --color-dim: #9a9a9a;
+  --color-faint: #6e6e6e;
+  --color-ghost: #4a4a4a;
+
+  /* Rules and card edges. `line-hover` is the house hover: every bordered
+     surface on the site goes hairline → white in 0.12s. */
+  --color-line: #1a1a1a;
+  --color-line-hover: #fff;
+
+  /* Accents. Silver carries InnoProductions; red belongs to INNOSXNCE and
+     stays rare. */
+  --color-silver: #d4d4d4;
   --color-red-inno: #c83232;
+
+  /* Inverse context: ink on the white-filled brief form fields, where the
+     ladder above is unreadable. */
+  --color-field-ink: #141414;
 }
 
 @layer base {
@@ -19,8 +57,8 @@
   }
 
   body {
-    background: #000;
-    color: #fff;
+    background: var(--color-bg);
+    color: var(--color-text);
     font-family: var(--font-archivo), sans-serif;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
@@ -50,20 +88,34 @@
      focus ring a keyboard user would be moving through the grid blind.
      :focus-visible keeps it off during mouse clicks. */
   :focus-visible {
-    outline: 1px solid #fff;
+    outline: 1px solid var(--color-text);
     outline-offset: 3px;
   }
 
+  /* Brief form fields are white blocks on a black page. Neither ::placeholder
+     nor a focus override can be written as an inline style object, so both
+     live here. The site-wide focus ring above is white, which would be
+     invisible on a white field — this replaces it with an inset dark ring. */
+  .field-input::placeholder {
+    color: var(--color-faint);
+    opacity: 1;
+  }
+
+  .field-input:focus-visible {
+    outline: 2px solid var(--color-field-ink);
+    outline-offset: -2px;
+  }
+
   ::selection {
-    background: #c83232;
-    color: #fff;
+    background: var(--color-red-inno);
+    color: var(--color-text);
   }
 
   /* Thin but present: on a page this long, the bar is the only cue for how
      much is left. */
   html {
     scrollbar-width: thin;
-    scrollbar-color: #1a1a1a transparent;
+    scrollbar-color: var(--color-line) transparent;
   }
 
   ::-webkit-scrollbar {
@@ -76,11 +128,11 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #1a1a1a;
+    background: var(--color-line);
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #333;
+    background: var(--color-ghost);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -117,6 +169,17 @@
   50%      { transform: translateY(6px); }
 }
 
+/* The hero and the client-logo band that closes it share one viewport. Below
+   this height there is no room for all three, and the scroll cue is the piece
+   worth losing: the band's own top edge already reads as "the page continues",
+   and dropping the cue returns ~70px to the headline instead of squeezing it.
+
+   !important because the cue sets `display: flex` inline, as every component
+   here does, and an inline declaration outranks a plain rule. */
+@media (max-height: 760px) {
+  .hero-scroll-cue { display: none !important; }
+}
+
 /* ── Hero intro ──
    Plays on load. Each headline word rises out of focus and settles: the blur
    plus the slight over-scale reads like a lens pulling focus, which is the
@@ -129,13 +192,6 @@
 @keyframes heroFade {
   from { opacity: 0; transform: translateY(12px); }
   to   { opacity: 1; transform: translateY(0); }
-}
-
-/* Same motion as heroFade, but carrying the scroll cue's own centering
-   transform — an animated transform replaces the element's inline one. */
-@keyframes heroCue {
-  from { opacity: 0; transform: translate(-50%, 12px); }
-  to   { opacity: 1; transform: translate(-50%, 0); }
 }
 
 @keyframes heroRule {

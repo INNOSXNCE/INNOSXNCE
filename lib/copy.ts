@@ -9,6 +9,7 @@ export const COPY = {
       business: 'BISNIS',
     },
     heroTag: '1% PER HARI.',
+    clientsLabel: 'DIPERCAYA OLEH',
     onePctLabel: 'KENAPA SATU PERSEN',
     onePctBody:
       'Bukan transformasi. Bukan keajaiban semalam. Cuma satu persen lebih baik dari kemarin, diulang seribu kali. Disiplin yang nggak keliatan hari ini jadi hasil yang nggak bisa diabaikan tahun depan.',
@@ -146,6 +147,7 @@ export const COPY = {
       business: 'BUSINESS',
     },
     heroTag: 'One percent better. Every day. No compromise. No drama.',
+    clientsLabel: 'TRUSTED BY',
     onePctLabel: 'WHY ONE PERCENT',
     onePctBody:
       'Not a transformation. Not an overnight miracle. Just one percent better than yesterday, repeated a thousand times. The discipline nobody sees today becomes a result nobody can ignore next year.',

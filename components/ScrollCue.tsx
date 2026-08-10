@@ -5,6 +5,12 @@ import { T, TRACK, C } from '@/lib/type-scale'
 // A "scroll down" hint over the hero. Arrives after the hero intro has played
 // and fades out permanently the first time the user scrolls, pointing them at
 // the page below. Purely additive: if it never mounts, nothing else breaks.
+//
+// It sits in normal flow, last in the hero's headline block, rather than pinned
+// to the bottom. Pinned, it claimed no height, so on a short window it printed
+// straight through the social orbs above it — and with the client-logo band now
+// closing the hero there is no spare lane to pin it into. In flow it competes
+// for space like everything else and the collision cannot happen.
 export function ScrollCue() {
   const [hidden, setHidden] = useState(false)
 
@@ -20,12 +26,12 @@ export function ScrollCue() {
   return (
     <div
       aria-hidden
+      // Dropped entirely under 760px of viewport height — see globals.css.
+      className="hero-scroll-cue"
       style={{
-        position: 'absolute',
-        bottom: 'calc(9vh + 26px)',
-        left: '50%',
-        transform: 'translateX(-50%)',
+        position: 'relative',
         zIndex: 6,
+        marginTop: 'clamp(10px,2.2vh,30px)',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -35,9 +41,7 @@ export function ScrollCue() {
         transition: 'opacity 0.5s ease',
         // `backwards` (not `both`): the fill must hold the cue hidden during the
         // delay, then get out of the way so the scroll fade-out above can win.
-        // heroCue rather than heroFade because the keyframes have to carry the
-        // translateX(-50%) centering above — an animated transform replaces it.
-        animation: 'heroCue 0.9s cubic-bezier(0.16, 1, 0.3, 1) 1.35s backwards',
+        animation: 'heroFade 0.9s cubic-bezier(0.16, 1, 0.3, 1) 1.35s backwards',
       }}
     >
       <span
@@ -56,7 +60,7 @@ export function ScrollCue() {
           display: 'block',
           width: 1,
           height: 26,
-          background: 'linear-gradient(to bottom, #9a9a9a, transparent)',
+          background: `linear-gradient(to bottom, ${C.dim}, transparent)`,
           // Reduced-motion is handled globally in globals.css (neutralizes all animations).
           animation: 'scrollcue 1.8s ease-in-out infinite',
         }}

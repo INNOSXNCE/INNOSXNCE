@@ -9,10 +9,11 @@ import { WallpaperCard } from '@/components/WallpaperCard'
 import { PackCard } from '@/components/PackCard'
 import { ScrollCue } from '@/components/ScrollCue'
 import { SocialOrbs } from '@/components/SocialOrbs'
+import { ClientLogos } from '@/components/ClientLogos'
 import { ScrollPop } from '@/components/ScrollPop'
 import { T, TRACK, C } from '@/lib/type-scale'
 
-const innoRed = '#c83232'
+const innoRed = C.red
 
 // The hero intro plays on load instead of being scrubbed by scroll: the three
 // words are the first thing a visitor should read, not a reward for scrolling.
@@ -24,7 +25,11 @@ const EASE_OUT_EXPO = 'cubic-bezier(0.16, 1, 0.3, 1)'
 // in globals.css, which collapses every animation to its end state instantly.
 const heroWord = (i: number): CSSProperties => ({
   display: 'block',
-  fontSize: 'clamp(40px,9vw,126px)',
+  // Width alone is the wrong measure for three stacked lines: on a short wide
+  // window (1280×720) a pure 9vw gives a 115px word, and 3 of them plus the
+  // client band no longer fit the viewport. The vh term caps the headline by
+  // the space it actually has to live in; 9vw still wins on tall screens.
+  fontSize: 'clamp(40px,min(9vw,12vh),126px)',
   color: '#fff',
   animation: `heroWord 1.15s ${EASE_OUT_EXPO} ${0.18 + i * 0.17}s both`,
   willChange: 'transform, opacity, filter',
@@ -53,21 +58,23 @@ export default function HomePage() {
 
   return (
     <main>
-      {/* ── Hero ── */}
+      {/* ── Hero ──
+          Three layers stacked in a column: the fixed top letterbox bar (still
+          absolute, it overlays nothing), the centred headline block, and the
+          client-logo band closing the viewport. The band used to be an empty
+          9vh strip with the logos in a separate section below the fold; it now
+          carries them, so the proof lands inside the first screen. */}
       <section
         style={{
           position: 'relative',
           minHeight: '100vh',
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
           overflow: 'hidden',
           background: 'transparent',
         }}
       >
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '9vh', background: '#000', borderBottom: '1px solid #121212', zIndex: 5 }} />
-        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '9vh', background: '#000', borderTop: '1px solid #121212', zIndex: 5 }} />
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '9vh', background: C.bg, borderBottom: `1px solid ${C.line}`, zIndex: 5 }} />
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(120% 80% at 50% 44%, transparent 28%, rgba(0,0,0,0.9) 100%)', zIndex: 2, pointerEvents: 'none' }} />
         <div
           style={{
@@ -84,8 +91,27 @@ export default function HomePage() {
           }}
         />
 
+        {/* The headline block takes whatever height the logo band leaves and
+            centres itself in it. paddingTop clears the top letterbox bar so the
+            optical centre sits between the two bars, not in the raw viewport. */}
+        <div
+          style={{
+            position: 'relative',
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '100%',
+            paddingTop: '9vh',
+          }}
+        >
         {/* Eyebrow — the rules draw outward from the label as it fades in. */}
-        <div style={{ position: 'relative', zIndex: 6, display: 'flex', alignItems: 'center', gap: 18, marginBottom: 34 }}>
+        {/* The three gaps below (eyebrow → headline → tagline → socials) are
+            vh-clamped rather than fixed: they and the client band draw from the
+            same viewport budget, and rhythm is the cheapest thing to give up on
+            a short screen. All three keep their original value on tall ones. */}
+        <div style={{ position: 'relative', zIndex: 6, display: 'flex', alignItems: 'center', gap: 18, marginBottom: 'clamp(14px,3vh,34px)' }}>
           <span style={{ display: 'block', width: 58, height: 1, background: C.ghost, transformOrigin: 'right', animation: `heroRule 1s ${EASE_OUT_EXPO} 0.1s both` }} />
           <span style={{ fontFamily: 'var(--font-archivo)', fontSize: T.micro, letterSpacing: '0.42em', color: C.dim, whiteSpace: 'nowrap', ...heroFade(0) }}>INNOSXNCE PRESENTS</span>
           <span style={{ display: 'block', width: 58, height: 1, background: C.ghost, transformOrigin: 'left', animation: `heroRule 1s ${EASE_OUT_EXPO} 0.1s both` }} />
@@ -109,7 +135,7 @@ export default function HomePage() {
         <p
           style={{
             position: 'relative', zIndex: 6,
-            margin: '32px 0 0', maxWidth: 540, padding: '0 20px',
+            margin: 'clamp(12px,2.8vh,32px) 0 0', maxWidth: 540, padding: '0 20px',
             textAlign: 'center',
             fontFamily: 'var(--font-archivo), sans-serif',
             fontSize: T.item, letterSpacing: '0.04em', color: C.dim, lineHeight: 1.7,
@@ -124,12 +150,16 @@ export default function HomePage() {
         <SocialOrbs delay={1.15} />
 
         <ScrollCue />
+        </div>
+
+        {/* ── Clients — the hero's closing band ── */}
+        <ClientLogos label={c.clientsLabel} delay={1.5} />
       </section>
 
       {/* ── 1% ── */}
       <section
         style={{
-          borderTop: '1px solid #111',
+          borderTop: `1px solid ${C.line}`,
           padding: 'clamp(70px,12vh,150px) clamp(20px,5vw,64px)',
           maxWidth: 1280, margin: '0 auto',
           display: 'grid',
@@ -143,12 +173,12 @@ export default function HomePage() {
         </div>
         <div>
           <div style={{ fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.micro, letterSpacing: TRACK.wide, color: C.dim, marginBottom: 22 }}>{c.onePctLabel}</div>
-          <p style={{ fontFamily: 'var(--font-cormorant), serif', fontStyle: 'italic', fontSize: 'clamp(22px,2.6vw,32px)', lineHeight: 1.5, color: '#e6e6e6', margin: '0 0 28px' }}>{c.onePctBody}</p>
+          <p style={{ fontFamily: 'var(--font-cormorant), serif', fontStyle: 'italic', fontSize: 'clamp(22px,2.6vw,32px)', lineHeight: 1.5, color: C.silver, margin: '0 0 28px' }}>{c.onePctBody}</p>
           <div style={{ fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.item, letterSpacing: '0.04em', color: '#fff', borderLeft: `2px solid ${innoRed}`, paddingLeft: 14, lineHeight: 1.6 }}>{c.onePctSub}</div>
 
           {/* Closing line + signature, carried over from the retired Manifesto
               page so the brand argument still lands without costing a route. */}
-          <div style={{ marginTop: 34, paddingTop: 28, borderTop: '1px solid #1a1a1a' }}>
+          <div style={{ marginTop: 34, paddingTop: 28, borderTop: `1px solid ${C.line}` }}>
             <div
               style={{
                 fontFamily: 'var(--font-cinzel), serif',
@@ -177,7 +207,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Featured Wallpapers ── */}
-      <section style={{ borderTop: '1px solid #111', padding: 'clamp(60px,10vh,120px) clamp(20px,5vw,64px)', maxWidth: 1280, margin: '0 auto' }}>
+      <section style={{ borderTop: `1px solid ${C.line}`, padding: 'clamp(60px,10vh,120px) clamp(20px,5vw,64px)', maxWidth: 1280, margin: '0 auto' }}>
         <ScrollPop>
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 20, marginBottom: 42, flexWrap: 'wrap' }}>
           <div>
@@ -203,7 +233,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Packs ── */}
-      <section style={{ borderTop: '1px solid #111', padding: 'clamp(60px,10vh,120px) clamp(20px,5vw,64px)', maxWidth: 1280, margin: '0 auto' }}>
+      <section style={{ borderTop: `1px solid ${C.line}`, padding: 'clamp(60px,10vh,120px) clamp(20px,5vw,64px)', maxWidth: 1280, margin: '0 auto' }}>
         <ScrollPop>
         <div style={{ marginBottom: 42 }}>
           <div style={{ fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.micro, letterSpacing: TRACK.wide, color: C.dim, marginBottom: 14 }}>{c.packsLabel}</div>
@@ -231,7 +261,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Discord CTA ── */}
-      <section style={{ borderTop: '1px solid #111', padding: 'clamp(80px,14vh,160px) 20px', textAlign: 'center' }}>
+      <section style={{ borderTop: `1px solid ${C.line}`, padding: 'clamp(80px,14vh,160px) 20px', textAlign: 'center' }}>
         <div style={{ fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.micro, letterSpacing: TRACK.wide, color: C.dim }}>{c.discordLabel}</div>
         <h2 style={{ margin: '18px 0 0', fontFamily: 'var(--font-cinzel), serif', fontWeight: 700, fontSize: 'clamp(34px,6vw,74px)', lineHeight: 1.02 }}>{c.discordTitle}</h2>
         <p style={{ maxWidth: 520, margin: '24px auto 34px', fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.body, lineHeight: 1.7, color: C.body }}>{c.discordBody}</p>
@@ -266,8 +296,8 @@ function ExternalCta({ href, children }: { href: string; children: React.ReactNo
       onMouseLeave={() => setH(false)}
       style={{
         display: 'inline-block',
-        background: h ? '#c83232' : '#fff',
-        color: h ? '#fff' : '#000',
+        background: h ? C.red : C.text,
+        color: h ? C.text : C.bg,
         fontFamily: 'var(--font-archivo), sans-serif',
         fontSize: T.item, fontWeight: 600, letterSpacing: TRACK.button,
         padding: '15px 34px',

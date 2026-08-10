@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import { C } from '@/lib/type-scale'
 
 /**
  * The row of outlined circular social buttons under the hero tagline.
@@ -63,7 +64,9 @@ export function SocialOrbs({ delay = 1.15 }: { delay?: number }) {
         alignItems: 'center',
         justifyContent: 'center',
         gap: 'clamp(10px,2.2vw,16px)',
-        marginTop: 34,
+        // vh-clamped to share the viewport budget with the client band that now
+        // closes the hero; unchanged (34px) on a tall screen.
+        marginTop: 'clamp(14px,3vh,34px)',
       }}
     >
       {SOCIALS.map((s, i) => (
@@ -105,9 +108,9 @@ function Orb({ name, href, path }: Social) {
         width: 'clamp(40px,8.4vw,46px)',
         height: 'clamp(40px,8.4vw,46px)',
         borderRadius: '50%',
-        border: `1px solid ${h ? '#fff' : 'rgba(255,255,255,0.24)'}`,
-        background: h ? '#fff' : 'transparent',
-        color: h ? '#000' : '#9a9a9a',
+        border: `1px solid ${h ? C.lineHover : 'rgba(255,255,255,0.24)'}`,
+        background: h ? C.text : 'transparent',
+        color: h ? C.bg : C.dim,
         transform: h ? 'translateY(-3px)' : 'translateY(0)',
         transition: 'background 0.16s, color 0.16s, border-color 0.16s, transform 0.16s',
         textDecoration: 'none',
