@@ -9,7 +9,6 @@ import { WallpaperCard } from '@/components/WallpaperCard'
 import { PackCard } from '@/components/PackCard'
 import { ScrollCue } from '@/components/ScrollCue'
 import { SocialOrbs } from '@/components/SocialOrbs'
-import { ClientLogos } from '@/components/ClientLogos'
 import { ScrollPop } from '@/components/ScrollPop'
 import { T, TRACK, C } from '@/lib/type-scale'
 
@@ -26,9 +25,10 @@ const EASE_OUT_EXPO = 'cubic-bezier(0.16, 1, 0.3, 1)'
 const heroWord = (i: number): CSSProperties => ({
   display: 'block',
   // Width alone is the wrong measure for three stacked lines: on a short wide
-  // window (1280×720) a pure 9vw gives a 115px word, and 3 of them plus the
-  // client band no longer fit the viewport. The vh term caps the headline by
-  // the space it actually has to live in; 9vw still wins on tall screens.
+  // window (1280×720) a pure 9vw gives a 115px word, and three of those plus
+  // the eyebrow, tagline and socials overflow the space between the bars. The
+  // vh term caps the headline by the height it actually has; 9vw still wins on
+  // a tall screen.
   fontSize: 'clamp(40px,min(9vw,12vh),126px)',
   color: '#fff',
   animation: `heroWord 1.15s ${EASE_OUT_EXPO} ${0.18 + i * 0.17}s both`,
@@ -59,22 +59,26 @@ export default function HomePage() {
   return (
     <main>
       {/* ── Hero ──
-          Three layers stacked in a column: the fixed top letterbox bar (still
-          absolute, it overlays nothing), the centred headline block, and the
-          client-logo band closing the viewport. The band used to be an empty
-          9vh strip with the logos in a separate section below the fold; it now
-          carries them, so the proof lands inside the first screen. */}
+          Two letterbox bars framing a centred headline block. The bars are
+          absolute overlays, so the block centres in the raw viewport and the
+          frame reads as a crop rather than as two rows taking space. The
+          client logos briefly lived in the bottom bar; they now open the
+          InnoProductions page, where a visitor is actually shopping for an
+          editor. */}
       <section
         style={{
           position: 'relative',
           minHeight: '100vh',
           display: 'flex',
           flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
           overflow: 'hidden',
           background: 'transparent',
         }}
       >
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '9vh', background: C.bg, borderBottom: `1px solid ${C.line}`, zIndex: 5 }} />
+        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '9vh', background: C.bg, borderTop: `1px solid ${C.line}`, zIndex: 5 }} />
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(120% 80% at 50% 44%, transparent 28%, rgba(0,0,0,0.9) 100%)', zIndex: 2, pointerEvents: 'none' }} />
         <div
           style={{
@@ -91,26 +95,12 @@ export default function HomePage() {
           }}
         />
 
-        {/* The headline block takes whatever height the logo band leaves and
-            centres itself in it. paddingTop clears the top letterbox bar so the
-            optical centre sits between the two bars, not in the raw viewport. */}
-        <div
-          style={{
-            position: 'relative',
-            flex: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '100%',
-            paddingTop: '9vh',
-          }}
-        >
         {/* Eyebrow — the rules draw outward from the label as it fades in. */}
         {/* The three gaps below (eyebrow → headline → tagline → socials) are
-            vh-clamped rather than fixed: they and the client band draw from the
-            same viewport budget, and rhythm is the cheapest thing to give up on
-            a short screen. All three keep their original value on tall ones. */}
+            vh-clamped rather than fixed. Five things stack between the two bars
+            and on a 720px-tall window they do not all fit at full rhythm;
+            spacing is the cheapest of the five to give up. All three keep their
+            original value on a tall screen. */}
         <div style={{ position: 'relative', zIndex: 6, display: 'flex', alignItems: 'center', gap: 18, marginBottom: 'clamp(14px,3vh,34px)' }}>
           <span style={{ display: 'block', width: 58, height: 1, background: C.ghost, transformOrigin: 'right', animation: `heroRule 1s ${EASE_OUT_EXPO} 0.1s both` }} />
           <span style={{ fontFamily: 'var(--font-archivo)', fontSize: T.micro, letterSpacing: '0.42em', color: C.dim, whiteSpace: 'nowrap', ...heroFade(0) }}>INNOSXNCE PRESENTS</span>
@@ -150,10 +140,6 @@ export default function HomePage() {
         <SocialOrbs delay={1.15} />
 
         <ScrollCue />
-        </div>
-
-        {/* ── Clients — the hero's closing band ── */}
-        <ClientLogos label={c.clientsLabel} delay={1.5} />
       </section>
 
       {/* ── 1% ── */}
