@@ -52,14 +52,14 @@ export default function TutorialsPage() {
       <div
         style={{
           marginTop: 46,
-          border: '1px solid #1a1a1a',
+          border: `1px solid ${C.line}`,
           padding: 'clamp(28px,5vw,48px)',
           display: 'flex', alignItems: 'center',
           justifyContent: 'space-between', gap: 24, flexWrap: 'wrap',
         }}
       >
         <div>
-          <div style={{ fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.micro, letterSpacing: TRACK.wide, color: '#c83232', marginBottom: 12 }}>{tp.previewLabel}</div>
+          <div style={{ fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.micro, letterSpacing: TRACK.wide, color: C.red, marginBottom: 12 }}>{tp.previewLabel}</div>
           <h2 style={{ margin: '0 0 12px', fontFamily: 'var(--font-cinzel), serif', fontWeight: 700, fontSize: 'clamp(24px,3.2vw,38px)' }}>{tp.previewTitle}</h2>
           <p style={{ margin: 0, maxWidth: 440, fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.item, lineHeight: 1.7, color: C.body }}>{tp.previewBody}</p>
         </div>

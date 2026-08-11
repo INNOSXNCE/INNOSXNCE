@@ -80,7 +80,7 @@ function BundleBanner({
     <div
       style={{
         marginTop: 46,
-        border: `1px solid ${h ? '#2a2a2a' : '#1a1a1a'}`,
+        border: `1px solid ${h ? C.lineHover : C.line}`,
         padding: 'clamp(28px,5vw,52px)',
         display: 'flex', alignItems: 'center',
         justifyContent: 'space-between', gap: 24,
@@ -91,7 +91,7 @@ function BundleBanner({
       onMouseLeave={() => setH(false)}
     >
       <div>
-        <div style={{ fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.micro, letterSpacing: TRACK.wide, color: '#c83232', marginBottom: 12 }}>{label}</div>
+        <div style={{ fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.micro, letterSpacing: TRACK.wide, color: C.red, marginBottom: 12 }}>{label}</div>
         <h2 style={{ margin: '0 0 12px', fontFamily: 'var(--font-cinzel), serif', fontWeight: 700, fontSize: 'clamp(26px,3.4vw,40px)' }}>{title}</h2>
         <p style={{ margin: 0, maxWidth: 460, fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.item, lineHeight: 1.7, color: C.body }}>{body}</p>
       </div>
@@ -103,7 +103,7 @@ function BundleBanner({
         onMouseLeave={() => setBtnH(false)}
         style={{
           display: 'inline-block', whiteSpace: 'nowrap',
-          background: btnH ? '#c83232' : '#fff',
+          background: btnH ? C.red : C.text,
           color: btnH ? '#fff' : '#000',
           fontFamily: 'var(--font-archivo), sans-serif',
           fontSize: T.item, fontWeight: 600, letterSpacing: TRACK.button,

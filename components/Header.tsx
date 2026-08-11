@@ -4,6 +4,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { useLang } from '@/lib/lang-context'
 import { COPY } from '@/lib/copy'
 import { T, TRACK, C } from '@/lib/type-scale'
+import { StarMark } from '@/components/StarMark'
 
 // Main nav is the sales path only. /community still exists but is reached from
 // the footer and the Discord section on the home page.
@@ -95,7 +96,7 @@ export function Header() {
           padding: '0 clamp(16px,4vw,48px)',
           background: 'rgba(0,0,0,0.78)',
           backdropFilter: 'blur(10px)',
-          borderBottom: '1px solid #161616',
+          borderBottom: `1px solid ${C.line}`,
           zIndex: 60,
         }}
       >
@@ -113,7 +114,7 @@ export function Header() {
             padding: 0,
           }}
         >
-          <span style={{ fontSize: T.item }}>✦</span>
+          <StarMark size={19} priority />
           <span>INNOSXNCE</span>
         </button>
 
@@ -134,7 +135,7 @@ export function Header() {
                   color: active ? '#fff' : C.dim,
                   background: 'none',
                   border: 'none',
-                  borderBottom: `1px solid ${active ? '#c83232' : 'transparent'}`,
+                  borderBottom: `1px solid ${active ? C.red : 'transparent'}`,
                 }}
               >
                 {c.nav[key]}
@@ -161,7 +162,7 @@ export function Header() {
           </button>
 
           {/* Lang toggle */}
-          <div style={{ display: 'flex', alignItems: 'center', border: '1px solid #1d1d1d' }}>
+          <div style={{ display: 'flex', alignItems: 'center', border: `1px solid ${C.line}` }}>
             <button style={togBtn(lang === 'id')} onClick={() => setLang('id')}>ID</button>
             <button style={togBtn(lang === 'en')} onClick={() => setLang('en')}>EN</button>
           </div>
@@ -183,7 +184,7 @@ export function Header() {
                 fontWeight: 600,
                 fontSize: 22,
                 letterSpacing: TRACK.label,
-                color: pathname === href ? '#c83232' : '#fff',
+                color: pathname === href ? C.red : C.text,
                 background: 'none',
                 border: 'none',
               }}

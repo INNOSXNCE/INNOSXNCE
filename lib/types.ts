@@ -11,6 +11,8 @@ export interface PackItem {
   slug: string
   title: string
   price: string
+  /** Pre-discount price, shown struck through next to `price` when set. */
+  originalPrice?: string
   lessonsN: number
   tier: { id: string; en: string }
   dur: { id: string; en: string }
@@ -40,6 +42,8 @@ export interface TierItem {
   slug: string
   name: string
   price: string
+  /** Pre-discount price, shown struck through next to `price` when set. */
+  originalPrice?: string
   /** Billing unit, e.g. '/ video'. Omitted when the price is not a fixed figure. */
   unit?: Bi
   tagline: Bi

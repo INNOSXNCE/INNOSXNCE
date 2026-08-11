@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import type { CSSProperties } from 'react'
 import { T, TRACK, C } from '@/lib/type-scale'
+import { StarMark } from '@/components/StarMark'
 
 interface WallpaperCardProps {
   idx: string
@@ -33,7 +34,7 @@ export function WallpaperCard({
       className="relative block overflow-hidden bg-black"
       style={{
         aspectRatio: '9 / 16',
-        border: `1px solid ${hovered ? '#fff' : '#1a1a1a'}`,
+        border: `1px solid ${hovered ? C.lineHover : C.line}`,
         transition: 'border-color 0.12s',
         textDecoration: 'none',
         color: 'inherit',
@@ -60,7 +61,7 @@ export function WallpaperCard({
         }}
       >
         <span>{idx}</span>
-        <span aria-hidden>✦</span>
+        <StarMark size={14} opacity={0.5} />
       </div>
 
       {/* Bottom info */}

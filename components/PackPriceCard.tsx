@@ -2,13 +2,15 @@
 import { useState } from 'react'
 import type { Lang, PackItem } from '@/lib/types'
 import { T, TRACK, C } from '@/lib/type-scale'
+import { percentOff } from '@/lib/pricing'
+import { StarMark } from '@/components/StarMark'
 
 /**
  * Pricing card for the classes page.
  *
  * Structure follows the reference layout — label, title, price, meta, feature
  * list, full-width CTA — but the visual language stays house: sharp corners,
- * square buttons, and the ✦ bullet instead of a check glyph. One pack carries
+ * square buttons, and the INNOSXNCE mark as the bullet instead of a check glyph. One pack carries
  * `featured` and renders as a solid #c83232 block; everything else is black
  * with a hairline that goes white on hover, matching the rest of the site.
  *
@@ -38,7 +40,9 @@ export function PackPriceCard({ pack, num, lang, packLabel, takeLabel, href }: P
   const label = feat ? 'rgba(255,255,255,0.78)' : DIM
   const meta = feat ? 'rgba(255,255,255,0.82)' : DIM
   const item = feat ? 'rgba(255,255,255,0.94)' : C.body
-  const bullet = feat ? '#fff' : RED
+  // The mark is white art, so the bullet varies by tone rather than hue: full
+  // strength on the red card, slightly held back against black.
+  const bullet = feat ? 1 : 0.85
   const hair = feat ? 'rgba(255,255,255,0.24)' : LINE
 
   return (
@@ -52,6 +56,7 @@ export function PackPriceCard({ pack, num, lang, packLabel, takeLabel, href }: P
       onFocus={() => setHovered(true)}
       onBlur={() => setHovered(false)}
       style={{
+        position: 'relative',
         height: '100%',
         padding: 'clamp(24px,3vw,34px)',
         background: feat ? RED : '#000',
@@ -61,6 +66,25 @@ export function PackPriceCard({ pack, num, lang, packLabel, takeLabel, href }: P
         transition: 'border-color 0.12s',
       }}
     >
+      {pack.originalPrice && (
+        <div
+          style={{
+            position: 'absolute',
+            top: -1,
+            right: -1,
+            padding: '5px 11px',
+            background: feat ? '#fff' : RED,
+            color: feat ? RED : '#fff',
+            fontFamily: 'var(--font-archivo), sans-serif',
+            fontSize: T.micro,
+            fontWeight: 700,
+            letterSpacing: TRACK.label,
+          }}
+        >
+          -{percentOff(pack.originalPrice, pack.price)}%
+        </div>
+      )}
+
       <div
         style={{
           fontFamily: 'var(--font-archivo), sans-serif',
@@ -86,18 +110,31 @@ export function PackPriceCard({ pack, num, lang, packLabel, takeLabel, href }: P
         {pack.title}
       </h3>
 
-      <div
-        style={{
-          margin: '20px 0 0',
-          fontFamily: 'var(--font-cinzel), serif',
-          fontWeight: 700,
-          fontSize: 'clamp(32px,4.2vw,46px)',
-          lineHeight: 1,
-          letterSpacing: '-0.01em',
-          color: '#fff',
-        }}
-      >
-        {pack.price}
+      <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, margin: '20px 0 0' }}>
+        <div
+          style={{
+            fontFamily: 'var(--font-cinzel), serif',
+            fontWeight: 700,
+            fontSize: 'clamp(32px,4.2vw,46px)',
+            lineHeight: 1,
+            letterSpacing: '-0.01em',
+            color: '#fff',
+          }}
+        >
+          {pack.price}
+        </div>
+        {pack.originalPrice && (
+          <div
+            style={{
+              fontFamily: 'var(--font-archivo), sans-serif',
+              fontSize: T.meta,
+              color: meta,
+              textDecoration: 'line-through',
+            }}
+          >
+            {pack.originalPrice}
+          </div>
+        )}
       </div>
 
       <div
@@ -135,9 +172,7 @@ export function PackPriceCard({ pack, num, lang, packLabel, takeLabel, href }: P
               color: item,
             }}
           >
-            <span aria-hidden style={{ color: bullet, flexShrink: 0, fontSize: T.micro, lineHeight: 1.7 }}>
-              ✦
-            </span>
+            <StarMark size={14} opacity={bullet} style={{ marginTop: 4 }} />
             {f[lang]}
           </li>
         ))}

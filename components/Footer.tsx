@@ -3,6 +3,7 @@ import { useRouter } from 'next/navigation'
 import { useLang } from '@/lib/lang-context'
 import { COPY } from '@/lib/copy'
 import { T, TRACK, C } from '@/lib/type-scale'
+import { StarMark } from '@/components/StarMark'
 
 const SOCIALS = [
   { label: 'TIKTOK',    href: 'https://tiktok.com/@innosxnce1' },
@@ -28,7 +29,7 @@ export function Footer() {
       <footer
         className="flex items-center justify-between flex-wrap"
         style={{
-          borderTop: '1px solid #111',
+          borderTop: `1px solid ${C.line}`,
           padding: '26px clamp(20px,5vw,48px) 10px',
           gap: 18,
         }}
@@ -41,7 +42,7 @@ export function Footer() {
             color: C.dim,
           }}
         >
-          {c.footerMade} · <span style={{ color: '#fff' }}>✦ 1% PER HARI</span>
+          {c.footerMade} · <span style={{ color: '#fff' }}><StarMark size={15} style={{ marginRight: 5 }} />1% PER HARI</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 18, flexWrap: 'wrap' }}>
           {/* Community moved out of the main nav, but kept white here so it stays
@@ -61,7 +62,7 @@ export function Footer() {
             {c.nav.community}
           </a>
 
-          <span aria-hidden style={{ width: 1, height: 10, background: '#222' }} />
+          <span aria-hidden style={{ width: 1, height: 10, background: C.line }} />
 
           {SOCIALS.map(({ label, href }) => (
             <a

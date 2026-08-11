@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useLang } from '@/lib/lang-context'
 import { COPY } from '@/lib/copy'
 import { T, TRACK, C } from '@/lib/type-scale'
+import { StarMark } from '@/components/StarMark'
 
 export default function CommunityPage() {
   const { lang } = useLang()
@@ -31,7 +32,7 @@ export default function CommunityPage() {
           gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
           gap: 1,
           background: C.line,
-          border: '1px solid #1a1a1a',
+          border: `1px solid ${C.line}`,
           marginBottom: 46,
         }}
       >
@@ -60,7 +61,7 @@ export default function CommunityPage() {
           onMouseLeave={() => setBtnH(false)}
           style={{
             display: 'inline-block',
-            background: btnH ? '#c83232' : '#fff',
+            background: btnH ? C.red : C.text,
             color: btnH ? '#fff' : '#000',
             fontFamily: 'var(--font-archivo), sans-serif',
             fontSize: T.item, fontWeight: 600, letterSpacing: TRACK.button,
@@ -79,11 +80,11 @@ function BenefitCard({ title, desc }: { title: string; desc: string }) {
   const [h, setH] = useState(false)
   return (
     <div
-      style={{ border: `1px solid ${h ? '#fff' : '#1a1a1a'}`, padding: 28, transition: 'border-color 0.12s' }}
+      style={{ border: `1px solid ${h ? C.lineHover : C.line}`, padding: 28, transition: 'border-color 0.12s' }}
       onMouseEnter={() => setH(true)}
       onMouseLeave={() => setH(false)}
     >
-      <div style={{ color: '#c83232', fontSize: T.body, marginBottom: 16 }}>✦</div>
+      <div style={{ marginBottom: 16 }}><StarMark size={24} /></div>
       <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-cinzel), serif', fontWeight: 600, fontSize: 'clamp(18px,2.2vw,24px)', color: '#fff' }}>{title}</h3>
       <p style={{ margin: 0, fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.item, lineHeight: 1.7, color: C.body }}>{desc}</p>
     </div>

@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import type { CSSProperties } from 'react'
 import { T, TRACK, C } from '@/lib/type-scale'
+import { StarMark } from '@/components/StarMark'
 
 interface PackCardProps {
   num: string
@@ -30,7 +31,7 @@ export function PackCard({ num, tier, title, desc, lessons, dur, price, takeLabe
       rel="noopener noreferrer"
       className="flex flex-col bg-black"
       style={{
-        border: `1px solid ${hovered ? '#fff' : '#1a1a1a'}`,
+        border: `1px solid ${hovered ? C.lineHover : C.line}`,
         transition: 'border-color 0.12s',
         textDecoration: 'none',
         color: 'inherit',
@@ -56,19 +57,16 @@ export function PackCard({ num, tier, title, desc, lessons, dur, price, takeLabe
         >
           PACK {num}
         </span>
-        <span
-          aria-hidden
+        <StarMark
+          size={58}
+          opacity={0.18}
           style={{
             position: 'absolute',
             top: '50%',
             left: '50%',
             transform: 'translate(-50%,-50%)',
-            fontSize: 44,
-            color: 'rgba(255,255,255,0.18)',
           }}
-        >
-          ✦
-        </span>
+        />
       </div>
 
       {/* Content */}
@@ -77,7 +75,7 @@ export function PackCard({ num, tier, title, desc, lessons, dur, price, takeLabe
           <span style={{ fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.micro, letterSpacing: TRACK.label, color: C.dim }}>
             {tier}
           </span>
-          <span style={{ fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.micro, letterSpacing: '0.1em', color: '#444' }}>
+          <span style={{ fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.micro, letterSpacing: '0.1em', color: C.ghost }}>
             {num}
           </span>
         </div>
@@ -113,7 +111,7 @@ export function PackCard({ num, tier, title, desc, lessons, dur, price, takeLabe
             fontSize: T.micro,
             letterSpacing: '0.06em',
             color: C.dim,
-            borderTop: '1px solid #141414',
+            borderTop: `1px solid ${C.line}`,
             paddingTop: 14,
           }}
         >
@@ -132,7 +130,7 @@ export function PackCard({ num, tier, title, desc, lessons, dur, price, takeLabe
               fontSize: T.meta,
               letterSpacing: TRACK.button,
               color: '#fff',
-              borderBottom: '1px solid #c83232',
+              borderBottom: `1px solid ${C.red}`,
               paddingBottom: 2,
             }}
           >

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import type { CSSProperties } from 'react'
 import { useLang } from '@/lib/lang-context'
 import { COPY } from '@/lib/copy'
+import { C } from '@/lib/type-scale'
 
 interface DevicePreviewProps {
   name: string
@@ -29,7 +30,7 @@ export function DevicePreview({ name, artStyle }: DevicePreviewProps) {
 
   return (
     <div
-      className="fixed"
+      className="fixed hidden md:block"
       style={{
         right: 42,
         top: '50%',
@@ -37,9 +38,9 @@ export function DevicePreview({ name, artStyle }: DevicePreviewProps) {
         zIndex: 40,
         width: 228,
         height: 476,
-        border: '9px solid #0a0a0a',
+        border: `9px solid ${C.raised}`,
         borderRadius: 40,
-        boxShadow: '0 30px 90px rgba(0,0,0,0.85), 0 0 0 1px #1d1d1d',
+        boxShadow: `0 30px 90px rgba(0,0,0,0.85), 0 0 0 1px ${C.line}`,
         overflow: 'hidden',
         pointerEvents: 'none',
       }}
