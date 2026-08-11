@@ -45,7 +45,7 @@ export default function WallpapersPage() {
             subtextSize={11}
             artStyle={wpArt(i, w.red)}
             buyLabel={c.wp.buy}
-            href={productLink(w.slug)}
+            href={productLink()}
             onEnter={() => setHoveredWp({ name: w.name, artStyle: wpArt(i, w.red) })}
             onLeave={() => setHoveredWp(null)}
           />
@@ -96,7 +96,7 @@ function BundleBanner({
         <p style={{ margin: 0, maxWidth: 460, fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.item, lineHeight: 1.7, color: C.body }}>{body}</p>
       </div>
       <a
-        href={productLink('all-access')}
+        href={productLink()}
         target="_blank"
         rel="noopener noreferrer"
         onMouseEnter={() => setBtnH(true)}

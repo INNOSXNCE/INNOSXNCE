@@ -211,7 +211,7 @@ export default function HomePage() {
               subtext={'Rp 9K'}
               artStyle={wpArt(i, w.red)}
               buyLabel={c.wp.buy}
-              href={productLink(w.slug)}
+              href={productLink()}
             />
           ))}
         </div>
@@ -239,7 +239,7 @@ export default function HomePage() {
               price={p.price}
               takeLabel={c.tut.take}
               artStyle={p.artStyle}
-              href={productLink(p.slug)}
+              href={productLink()}
             />
           ))}
         </div>

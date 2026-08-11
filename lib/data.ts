@@ -3,7 +3,16 @@ import type { WallpaperItem, PackItem } from './types'
 /** Storefront every product links out to. Change it here, not at the call sites. */
 export const STORE_BASE = 'https://lynk.id/innosxnce'
 
-export const productLink = (slug: string) => `${STORE_BASE}/${slug}`
+/**
+ * Where a buy button goes.
+ *
+ * Every product points at the storefront root rather than a per-product page:
+ * the lynk.id catalogue is one page listing everything, so a `${STORE_BASE}/${slug}`
+ * URL had nowhere to land. The slugs stay in WP and PACKS — they are the React
+ * keys and the id we would need the day individual product pages exist, at
+ * which point this takes a slug argument again.
+ */
+export const productLink = () => STORE_BASE
 
 export const WP: WallpaperItem[] = [
   { slug: 'patience',    name: 'SABAR',    red: false, desc: { id: 'Diam bukan berarti kalah. Sabar itu strategi.',                 en: 'Silence is not defeat. Patience is the long game.' } },
