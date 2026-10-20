@@ -45,9 +45,10 @@ export function Footer() {
           {c.footerMade} · <span style={{ color: '#fff' }}><StarMark size={15} style={{ marginRight: 5 }} />1% PER HARI</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 18, flexWrap: 'wrap' }}>
-          {/* Community moved out of the main nav, but kept white here so it stays
-              findable. A real <a href> — the onClick only intercepts plain left
-              clicks, so ctrl/cmd/middle-click still open it in a new tab. */}
+          {/* Community is in the main nav as well; it stays here, in white,
+              beside the Discord link. A real <a href> — the onClick only
+              intercepts plain left clicks, so ctrl/cmd/middle-click still open
+              it in a new tab. */}
           <a
             href="/community"
             onClick={e => {
@@ -79,13 +80,16 @@ export function Footer() {
           ))}
         </div>
       </footer>
+      {/* Purchase terms are text a buyer has to be able to read, so they sit on
+          `dim` (7.5:1 on black). They were on `ghost`, the decorative step, at
+          2.4:1. `faint` would not do either: #6e6e6e is only 4.1:1. */}
       <div
         style={{
           padding: '6px clamp(20px,5vw,48px) 28px',
           fontFamily: 'var(--font-archivo), sans-serif',
           fontSize: T.micro,
           lineHeight: 1.6,
-          color: C.ghost,
+          color: C.dim,
           maxWidth: 660,
         }}
       >
