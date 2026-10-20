@@ -1,26 +1,28 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { usePathname, useRouter } from 'next/navigation'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useLang } from '@/lib/lang-context'
 import { COPY } from '@/lib/copy'
 import { T, TRACK, C } from '@/lib/type-scale'
 import { StarMark } from '@/components/StarMark'
 
-// Main nav is the sales path only. /community still exists but is reached from
-// the footer and the Discord section on the home page.
+// The sales path first, then the community. Every item is a real <Link>, so
+// it renders an <a href>: cmd/ctrl/middle-click open a new tab, the URL shows
+// on hover, and crawlers can follow it.
 const NAV: Array<{ key: keyof typeof COPY.id.nav; href: string }> = [
   { key: 'home',      href: '/' },
   { key: 'wallpapers',href: '/wallpapers' },
   { key: 'tutorials', href: '/tutorials' },
+  { key: 'community', href: '/community' },
   // Hidden while /innoproductions is being reworked. The page and its copy are
   // still in the repo — uncomment this to put it back in the nav (and restore
-  // the matching '4' entry in KeyboardNav).
+  // the matching '5' entry in KeyboardNav).
   // { key: 'business',  href: '/innoproductions' },
 ]
 
 export function Header() {
   const { lang, setLang } = useLang()
-  const router = useRouter()
   const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
   const c = COPY[lang]
@@ -82,10 +84,9 @@ export function Header() {
     border: 'none',
   })
 
-  const navigate = (href: string) => {
-    setMenuOpen(false)
-    router.push(href)
-  }
+  // A link to the page you are already on leaves the pathname unchanged, so the
+  // route-change effect above would not close the overlay. Close it on click.
+  const closeMenu = () => setMenuOpen(false)
 
   return (
     <>
@@ -101,31 +102,31 @@ export function Header() {
         }}
       >
         {/* Logo */}
-        <button
-          onClick={() => navigate('/')}
+        <Link
+          href="/"
+          onClick={closeMenu}
           className="flex items-center gap-[9px] text-white"
           style={{
             fontFamily: 'var(--font-cinzel), serif',
             fontWeight: 600,
             fontSize: T.body,
             letterSpacing: TRACK.wide,
-            background: 'none',
-            border: 'none',
-            padding: 0,
+            textDecoration: 'none',
           }}
         >
           <StarMark size={19} priority />
           <span>INNOSXNCE</span>
-        </button>
+        </Link>
 
         {/* Desktop nav */}
         <nav className="hidden lg:flex items-center" style={{ gap: 'clamp(12px,2.2vw,28px)' }}>
           {NAV.map(({ key, href }) => {
             const active = pathname === href
             return (
-              <button
+              <Link
                 key={key}
-                onClick={() => navigate(href)}
+                href={href}
+                aria-current={active ? 'page' : undefined}
                 style={{
                   padding: '4px 0',
                   fontFamily: 'var(--font-archivo), sans-serif',
@@ -133,13 +134,12 @@ export function Header() {
                   letterSpacing: TRACK.label,
                   whiteSpace: 'nowrap',
                   color: active ? '#fff' : C.dim,
-                  background: 'none',
-                  border: 'none',
+                  textDecoration: 'none',
                   borderBottom: `1px solid ${active ? C.red : 'transparent'}`,
                 }}
               >
                 {c.nav[key]}
-              </button>
+              </Link>
             )
           })}
         </nav>
@@ -148,6 +148,7 @@ export function Header() {
           {/* Mobile menu toggle */}
           <button
             className="lg:hidden"
+            aria-expanded={menuOpen}
             onClick={() => setMenuOpen(o => !o)}
             style={{
               fontFamily: 'var(--font-archivo), sans-serif',
@@ -176,17 +177,18 @@ export function Header() {
           style={{ top: 58, background: 'rgba(0,0,0,0.96)', zIndex: 55, gap: 28 }}
         >
           {NAV.map(({ key, href }, i) => (
-            <button
+            <Link
               key={key}
-              onClick={() => navigate(href)}
+              href={href}
+              onClick={closeMenu}
+              aria-current={pathname === href ? 'page' : undefined}
               style={{
                 fontFamily: 'var(--font-cinzel), serif',
                 fontWeight: 600,
                 fontSize: 22,
                 letterSpacing: TRACK.label,
                 color: pathname === href ? C.red : C.text,
-                background: 'none',
-                border: 'none',
+                textDecoration: 'none',
               }}
             >
               <span
@@ -201,7 +203,7 @@ export function Header() {
                 {String(i + 1).padStart(2, '0')}
               </span>
               {c.nav[key]}
-            </button>
+            </Link>
           ))}
         </div>
       )}
