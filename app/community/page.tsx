@@ -25,24 +25,9 @@ export default function CommunityPage() {
         <p style={{ margin: '0 auto', maxWidth: 480, fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.body, lineHeight: 1.7, color: C.body }}>{com.sub}</p>
       </div>
 
-      {/* Stats grid */}
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
-          gap: 1,
-          background: C.line,
-          border: `1px solid ${C.line}`,
-          marginBottom: 46,
-        }}
-      >
-        {com.stats.map(s => (
-          <div key={s.l} style={{ background: '#000', padding: '30px 14px', textAlign: 'center' }}>
-            <div style={{ fontFamily: 'var(--font-cinzel), serif', fontWeight: 700, fontSize: 'clamp(28px,4vw,46px)', color: '#fff', lineHeight: 1 }}>{s.n}</div>
-            <div style={{ fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.micro, letterSpacing: TRACK.label, color: C.dim, marginTop: 12 }}>{s.l}</div>
-          </div>
-        ))}
-      </div>
+      {/* No member or activity counts here. A hand-typed number goes stale
+          and stops matching the server; if a count comes back, read it from
+          Discord's invite API rather than typing it in. */}
 
       {/* Benefits */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 'clamp(12px,1.6vw,18px)' }}>
