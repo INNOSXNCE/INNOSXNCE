@@ -5,6 +5,8 @@ export interface WallpaperItem {
   name: string
   red: boolean
   desc: { id: string; en: string }
+  /** This wallpaper's own Lynk.id page. Unset means the button goes to the storefront root. */
+  url?: string
 }
 
 export interface PackItem {
@@ -21,6 +23,8 @@ export interface PackItem {
   features: Array<{ id: string; en: string }>
   /** Exactly one pack should carry this — it renders as the red card. */
   featured?: boolean
+  /** This pack's own Lynk.id page. Unset means the button goes to the storefront root. */
+  url?: string
 }
 
 /* ── InnoProductions ──────────────────────────────────────────────── */

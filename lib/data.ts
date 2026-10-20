@@ -4,15 +4,20 @@ import type { WallpaperItem, PackItem } from './types'
 export const STORE_BASE = 'https://lynk.id/innosxnce'
 
 /**
- * Where a buy button goes.
+ * Where a buy button goes: the product's own Lynk.id page when it has one,
+ * otherwise the storefront root.
  *
- * Every product points at the storefront root rather than a per-product page:
- * the lynk.id catalogue is one page listing everything, so a `${STORE_BASE}/${slug}`
- * URL had nowhere to land. The slugs stay in WP and PACKS — they are the React
- * keys and the id we would need the day individual product pages exist, at
- * which point this takes a slug argument again.
+ * Lynk.id product pages have opaque ids (lynk.id/innosxnce/7lkjk32qqdjg), not
+ * our slugs, which is why the old `${STORE_BASE}/${slug}` links had nowhere to
+ * land. Copy the product page's URL into the item's `url` instead.
  */
-export const productLink = () => STORE_BASE
+export const productLink = (url?: string) => url ?? STORE_BASE
+
+/** Every single wallpaper sells at the same price. */
+export const WP_PRICE = 'Rp 9K'
+
+/** The all-twelve bundle on /wallpapers. Its price is not shown until it is set here. */
+export const WP_BUNDLE: { price?: string; url?: string } = {}
 
 export const WP: WallpaperItem[] = [
   { slug: 'patience',    name: 'SABAR',    red: false, desc: { id: 'Diam bukan berarti kalah. Sabar itu strategi.',                 en: 'Silence is not defeat. Patience is the long game.' } },

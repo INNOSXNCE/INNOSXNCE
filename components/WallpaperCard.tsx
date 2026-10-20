@@ -7,7 +7,9 @@ import { StarMark } from '@/components/StarMark'
 interface WallpaperCardProps {
   idx: string
   name: string
-  subtext: string
+  /** Shown in white under the name, so the cost is visible before the click. */
+  price?: string
+  subtext?: string
   artStyle: CSSProperties
   buyLabel: string
   /** Product URL on the storefront. Build it with productLink() from lib/data. */
@@ -18,7 +20,7 @@ interface WallpaperCardProps {
 }
 
 export function WallpaperCard({
-  idx, name, subtext, artStyle, buyLabel, href,
+  idx, name, price, subtext, artStyle, buyLabel, href,
   onEnter, onLeave, subtextSize = 10,
 }: WallpaperCardProps) {
   const [hovered, setHovered] = useState(false)
@@ -77,18 +79,34 @@ export function WallpaperCard({
         >
           {name}
         </div>
-        <div
-          style={{
-            fontFamily: 'var(--font-archivo), sans-serif',
-            fontSize: subtextSize,
-            letterSpacing: TRACK.label,
-            color: C.body,
-            marginTop: 4,
-            lineHeight: subtextSize > 10 ? 1.5 : undefined,
-          }}
-        >
-          {subtext}
-        </div>
+        {price && (
+          <div
+            style={{
+              fontFamily: 'var(--font-archivo), sans-serif',
+              fontSize: T.micro,
+              fontWeight: 600,
+              letterSpacing: TRACK.label,
+              color: '#fff',
+              marginTop: 4,
+            }}
+          >
+            {price}
+          </div>
+        )}
+        {subtext && (
+          <div
+            style={{
+              fontFamily: 'var(--font-archivo), sans-serif',
+              fontSize: subtextSize,
+              letterSpacing: TRACK.label,
+              color: C.body,
+              marginTop: 4,
+              lineHeight: subtextSize > 10 ? 1.5 : undefined,
+            }}
+          >
+            {subtext}
+          </div>
+        )}
       </div>
 
       {/* Hover buy overlay */}

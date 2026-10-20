@@ -3,7 +3,7 @@ import { useState, type CSSProperties } from 'react'
 import { useRouter } from 'next/navigation'
 import { useLang } from '@/lib/lang-context'
 import { COPY } from '@/lib/copy'
-import { WP, PACKS, productLink } from '@/lib/data'
+import { WP, PACKS, WP_PRICE, productLink } from '@/lib/data'
 import { wpArt, packArt } from '@/lib/art'
 import { WallpaperCard } from '@/components/WallpaperCard'
 import { PackCard } from '@/components/PackCard'
@@ -208,10 +208,10 @@ export default function HomePage() {
               key={w.slug}
               idx={String(i + 1).padStart(2, '0')}
               name={w.name}
-              subtext={'Rp 9K'}
+              price={WP_PRICE}
               artStyle={wpArt(i, w.red)}
               buyLabel={c.wp.buy}
-              href={productLink()}
+              href={productLink(w.url)}
             />
           ))}
         </div>
@@ -239,7 +239,7 @@ export default function HomePage() {
               price={p.price}
               takeLabel={c.tut.take}
               artStyle={p.artStyle}
-              href={productLink()}
+              href={productLink(p.url)}
             />
           ))}
         </div>

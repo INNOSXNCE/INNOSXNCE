@@ -43,7 +43,7 @@ export default function TutorialsPage() {
             lang={lang}
             packLabel={c.tut.packLabel}
             takeLabel={c.tut.takePack}
-            href={productLink()}
+            href={productLink(p.url)}
           />
         ))}
       </div>

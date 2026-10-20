@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { useLang } from '@/lib/lang-context'
 import { COPY } from '@/lib/copy'
-import { WP, productLink } from '@/lib/data'
+import { WP, WP_PRICE, WP_BUNDLE, productLink } from '@/lib/data'
 import { wpArt } from '@/lib/art'
 import { WallpaperCard } from '@/components/WallpaperCard'
 import { DevicePreview } from '@/components/DevicePreview'
@@ -41,11 +41,12 @@ export default function WallpapersPage() {
             key={w.slug}
             idx={String(i + 1).padStart(2, '0')}
             name={w.name}
+            price={WP_PRICE}
             subtext={w.desc[lang]}
             subtextSize={11}
             artStyle={wpArt(i, w.red)}
             buyLabel={c.wp.buy}
-            href={productLink()}
+            href={productLink(w.url)}
             onEnter={() => setHoveredWp({ name: w.name, artStyle: wpArt(i, w.red) })}
             onLeave={() => setHoveredWp(null)}
           />
@@ -58,6 +59,8 @@ export default function WallpapersPage() {
         title={wp.bundleTitle}
         body={wp.bundleBody}
         cta={wp.bundleCta}
+        price={WP_BUNDLE.price}
+        href={productLink(WP_BUNDLE.url)}
       />
 
       {/* Device preview */}
@@ -69,9 +72,9 @@ export default function WallpapersPage() {
 }
 
 function BundleBanner({
-  label, title, body, cta,
+  label, title, body, cta, price, href,
 }: {
-  label: string; title: string; body: string; cta: string
+  label: string; title: string; body: string; cta: string; price?: string; href: string
 }) {
   const [h, setH] = useState(false)
   const [btnH, setBtnH] = useState(false)
@@ -95,24 +98,31 @@ function BundleBanner({
         <h2 style={{ margin: '0 0 12px', fontFamily: 'var(--font-cinzel), serif', fontWeight: 700, fontSize: 'clamp(26px,3.4vw,40px)' }}>{title}</h2>
         <p style={{ margin: 0, maxWidth: 460, fontFamily: 'var(--font-archivo), sans-serif', fontSize: T.item, lineHeight: 1.7, color: C.body }}>{body}</p>
       </div>
-      <a
-        href={productLink()}
-        target="_blank"
-        rel="noopener noreferrer"
-        onMouseEnter={() => setBtnH(true)}
-        onMouseLeave={() => setBtnH(false)}
-        style={{
-          display: 'inline-block', whiteSpace: 'nowrap',
-          background: btnH ? C.red : C.text,
-          color: btnH ? '#fff' : '#000',
-          fontFamily: 'var(--font-archivo), sans-serif',
-          fontSize: T.item, fontWeight: 600, letterSpacing: TRACK.button,
-          padding: '15px 30px', textDecoration: 'none',
-          transition: 'background 0.12s, color 0.12s',
-        }}
-      >
-        {cta}
-      </a>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 22, flexWrap: 'wrap' }}>
+        {price && (
+          <div style={{ fontFamily: 'var(--font-cinzel), serif', fontWeight: 700, fontSize: 'clamp(28px,3.4vw,40px)', lineHeight: 1, color: C.text }}>
+            {price}
+          </div>
+        )}
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          onMouseEnter={() => setBtnH(true)}
+          onMouseLeave={() => setBtnH(false)}
+          style={{
+            display: 'inline-block', whiteSpace: 'nowrap',
+            background: btnH ? C.red : C.text,
+            color: btnH ? '#fff' : '#000',
+            fontFamily: 'var(--font-archivo), sans-serif',
+            fontSize: T.item, fontWeight: 600, letterSpacing: TRACK.button,
+            padding: '15px 30px', textDecoration: 'none',
+            transition: 'background 0.12s, color 0.12s',
+          }}
+        >
+          {cta}
+        </a>
+      </div>
     </div>
   )
 }
